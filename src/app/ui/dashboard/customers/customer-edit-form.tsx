@@ -9,7 +9,10 @@ import CustomerForm from './customer-form';
 export default function EditCustomerForm({ customer }: { customer: Customer }) {
   // const updateInvoiceWithId = updateInvoice.bind(null, airWayBill.id);
   // const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
-  const updateCustomerWithId = CreateCustomerAccUpdate.bind(null, customer.id);
+  const updateCustomerWithId = CreateCustomerAccUpdate.bind(
+    null,
+    customer.customer_id,
+  );
   const [state, dispatch] = useFormState(updateCustomerWithId, undefined);
 
   return (
