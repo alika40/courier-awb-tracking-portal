@@ -16,7 +16,7 @@ const fetchData = async ({ params }: { params: { slug: string } }) => {
 const Page = async ({ params }: { params: { awb_num: string } }) => {
   const filteredAwb = awbs.filter((awb) => awb.awb_num === params.awb_num);
   // console.log(filteredAwb[0]);
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
 
   return <AwbStatus awb={filteredAwb[0]} />;
 };

@@ -12,7 +12,7 @@ import { clsx } from 'clsx';
 
 import { lusitana } from '../fonts';
 import { STATUS } from '@/app/lib/constants';
-import { AWB } from '@/app/lib/definitions';
+import { AWB, AWBInputData } from '@/app/lib/definitions';
 import { formatDateToLocal, formatTimeToLocal } from '@/app/lib/utils';
 
 const steps = [
@@ -30,7 +30,7 @@ const steps = [
   },
 ];
 
-export default function VerticalLinearStepper({ awb }: { awb: AWB }) {
+export default function VerticalLinearStepper({ awb }: { awb: AWBInputData }) {
   const initialActiveStep =
     awb.status === STATUS.DOCUMENTED
       ? 0
@@ -82,7 +82,9 @@ export default function VerticalLinearStepper({ awb }: { awb: AWB }) {
                 Delivery Date:{' '}
               </span>
               <span className="text-md font-bold text-slate-600 md:text-xl">
-                {formatDateToLocal(awb.delivery_date)}
+                {awb &&
+                  awb.delivery_date &&
+                  formatDateToLocal(awb.delivery_date)}
               </span>
             </div>
             <div className="flex items-start justify-between">
@@ -90,7 +92,9 @@ export default function VerticalLinearStepper({ awb }: { awb: AWB }) {
                 Delivery Time:{' '}
               </span>
               <span className="text-md font-bold text-slate-600 md:text-xl">
-                {formatTimeToLocal(awb.delivery_time)}
+                {awb &&
+                  awb.delivery_time &&
+                  formatDateToLocal(awb.delivery_time)}
               </span>
             </div>
             <div className="mt-5 flex flex-col items-center justify-center">

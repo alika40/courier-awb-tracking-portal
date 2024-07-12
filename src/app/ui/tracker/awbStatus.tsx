@@ -1,4 +1,4 @@
-import { AWB, ReactNode } from '@/app/lib/definitions';
+import { AWBInputData, ReactNode } from '@/app/lib/definitions';
 import VerticalLinearStepper from './verticalStepper';
 import { lusitana } from '../fonts';
 import NotFound from '@/app/tracker/[awb_num]/status/not-found';
@@ -6,7 +6,7 @@ import { NavHeader } from './header';
 import Footer from '../footer';
 
 interface ChildrenProps extends ReactNode {
-  awb: AWB;
+  awb: AWBInputData;
 }
 
 const AwbStatusWrapper = ({ children }: ChildrenProps) => (
@@ -19,7 +19,7 @@ const AwbStatusWrapper = ({ children }: ChildrenProps) => (
   </>
 );
 
-export const AwbStatus = ({ awb }: { awb: AWB }) => (
+export const AwbStatus = ({ awb }: { awb: AWBInputData }) => (
   <AwbStatusWrapper awb={awb}>
     <main className="flex h-screen items-center justify-center bg-[url('/delivery_man.jpg')] bg-cover bg-fixed">
       <div className="mt-8 rounded-sm border border-pink-300 bg-black bg-opacity-75 p-4 md:mt-20 md:rounded-md md:p-8">
