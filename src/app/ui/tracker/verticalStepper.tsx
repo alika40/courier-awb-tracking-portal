@@ -12,7 +12,7 @@ import { clsx } from 'clsx';
 
 import { lusitana } from '../fonts';
 import { STATUS } from '@/app/lib/constants';
-import { AWB, AWBInputData } from '@/app/lib/definitions';
+import { AWBInputData } from '@/app/lib/definitions';
 import { formatDateToLocal, formatTimeToLocal } from '@/app/lib/utils';
 
 const steps = [
@@ -94,7 +94,7 @@ export default function VerticalLinearStepper({ awb }: { awb: AWBInputData }) {
               <span className="text-md font-bold text-slate-600 md:text-xl">
                 {awb &&
                   awb.delivery_time &&
-                  formatDateToLocal(awb.delivery_time)}
+                  formatTimeToLocal(awb.delivery_time)}
               </span>
             </div>
             <div className="mt-5 flex flex-col items-center justify-center">
