@@ -1,5 +1,7 @@
 import { AwbStatus } from '@/app/ui/tracker/awbStatus';
 import { awbs, customers } from '@/app/lib/placeholder-data';
+import { fetchAwbByAwbNum } from '@/app/lib/data';
+import NotFound from './not-found';
 
 // Default: Static Site Generation method where data is cached and request is made only once
 const fetchData = async ({ params }: { params: { slug: string } }) => {
@@ -14,11 +16,12 @@ const fetchData = async ({ params }: { params: { slug: string } }) => {
 };
 
 const Page = async ({ params }: { params: { awb_num: string } }) => {
-  const filteredAwb = awbs.filter((awb) => awb.awb_num === params.awb_num);
-  // console.log(filteredAwb[0]);
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  const awb_num = params?.awb_num;
+  const awb = await fetchAwbByAwbNum(awb_num);
 
-  return <AwbStatus awb={filteredAwb[0]} />;
+  if (!awb) NotFound;
+
+  return <AwbStatus awb={awb} />;
 };
 
 export default Page;

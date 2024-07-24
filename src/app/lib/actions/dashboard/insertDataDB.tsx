@@ -1,7 +1,7 @@
 import { sql } from '@vercel/postgres';
 import { Awb } from './validations/validateForm';
 
-// Insert data into the database
+// Insert AWB data into the database
 export const insertDataDB = async ({
   customer_id,
   awb_num,
@@ -43,7 +43,7 @@ export const insertDataDB = async ({
               remark,
               delivered_to,
               delivery_date,
-              delivery_time,
+              delivery_time
               )
             VALUES (
               ${customer_id},
@@ -53,14 +53,14 @@ export const insertDataDB = async ({
               ${receiver_address},
               ${destination},
               ${item_description},
-              ${created_at}
+              ${created_at},
               ${due_date},
               ${status},
               ${weight},
               ${rem},
               ${del_to},
               ${del_date},
-              ${del_time},
+              ${del_time}
               )
         `;
   } catch (error) {
@@ -70,7 +70,7 @@ export const insertDataDB = async ({
   }
 };
 
-// Update data in the database
+// Update AWB data in the database
 export const updateDataDB = async (
   {
     customer_id,
@@ -107,12 +107,76 @@ export const updateDataDB = async (
     remark = ${remark},
     delivered_to = ${delivered_to},
     delivery_date = ${delivery_date},
-    delivery_time = ${delivery_time},
+    delivery_time = ${delivery_time}
     WHERE id = ${id}
   `;
   } catch (error) {
     return {
       message: 'Database Error: Failed to Update AWB.',
+    };
+  }
+};
+
+// Insert customer data into the database
+export const insertCustomerDataDB = async ({
+  customer_name,
+  phone_num,
+  email_address,
+}: {
+  customer_name: string;
+  phone_num: string;
+  email_address?: string;
+}) => {
+  const created_at = new Date().toISOString().split('T')[0];
+  const email = email_address ? email_address : null;
+  // Insert data into the database
+  try {
+    await sql`
+            INSERT INTO customers (
+              name,
+              email,
+              phone,
+              reg_date
+              )
+            VALUES (
+              ${customer_name},
+              ${email},
+              ${phone_num},
+              ${created_at}
+              )
+        `;
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Create a Customer.',
+    };
+  }
+};
+
+// Update customer data into the database
+export const updateCustomerDataDB = async (
+  {
+    customer_name,
+    phone_num,
+    email_address,
+  }: {
+    customer_name: string;
+    phone_num: string;
+    email_address?: string;
+  },
+  id: string,
+) => {
+  // Insert data into the database
+  try {
+    await sql`
+            UPDATE customers
+              SET name = ${customer_name},
+                  email = ${email_address},
+                  phone = ${phone_num}
+              WHERE customer_id = ${id}
+        `;
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Update a Customer.',
     };
   }
 };

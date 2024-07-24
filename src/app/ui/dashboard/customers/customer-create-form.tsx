@@ -1,17 +1,12 @@
 'use client';
 
-// import { Customer, CustomerField } from '@/app/lib/models';
-import { CreateCustomerAcc } from '@/app/lib/actions/dashboard/actionManager';
+import { createCustomerAcc } from '@/app/lib/actions/dashboard/actionManager';
 import { useFormState } from 'react-dom';
 import { ACTION } from '@/app/lib/constants';
 import CustomerForm from './customer-form';
 
-export default function CreateCustomerForm(/*{
-  customer,
-}: {
-  customer: Customer;
-}*/) {
-  const [state, dispatch] = useFormState(CreateCustomerAcc, undefined);
+export default function CreateCustomerForm() {
+  const [state, dispatch] = useFormState(createCustomerAcc, undefined);
 
   return (
     <CustomerForm

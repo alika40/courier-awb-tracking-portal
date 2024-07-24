@@ -22,7 +22,7 @@ export default function NotFound() {
         </p>
       </div>
       <Link
-        href="/"
+        href="/tracker"
         className="mt-4 rounded-md bg-pink-900 px-4 py-2 text-sm text-white transition-colors hover:bg-pink-400"
       >
         Go Back

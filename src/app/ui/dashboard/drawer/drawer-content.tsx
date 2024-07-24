@@ -97,6 +97,13 @@ export const DashboardDrawerContent = ({
         <List className="w-full rounded-lg bg-white">
           <div className="mb-2 flex flex-col items-center bg-pink-900 p-4">
             <AppLogo className="text-2xl md:text-8xl">
+              <h2
+                className={`whitespace-nowrap text-2xl font-bold text-white md:text-8xl`}
+              >
+                <span className="text-slate-400">e</span>
+                <span className=" text-pink-600">X</span>
+                <span className="text-slate-400">L</span>
+              </h2>
               <h3
                 className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400 md:text-base`}
               >
@@ -119,7 +126,7 @@ export const DashboardDrawerContent = ({
         <form action={actionDispatch}>
           <button
             // onMouseOver={() => setOpen(true)}
-            onMouseOut={handleDrawerClose}
+            // onMouseOut={handleDrawerClose}
             className="text-medium ml-2 flex h-[48px] w-full grow items-center justify-start gap-2 rounded-l-md bg-gray-100 p-3 font-medium text-gray-600 hover:bg-pink-50 hover:text-pink-900 md:h-[56px] md:flex-none md:justify-start md:p-2 md:px-3"
           >
             <Logout

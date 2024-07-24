@@ -1,5 +1,5 @@
-import { fetchAwbPages } from '@/app/lib/data';
-import CardWrapper from '@/app/ui/dashboard/cards';
+import { fetchCustomersPages, fetchFilteredCustomers } from '@/app/lib/data';
+import CardWrapperCustomers from '@/app/ui/dashboard/cards';
 import PaginationCustomer from '@/app/ui/dashboard/paginations/pagination-customer';
 import { CustomersTable } from '@/app/ui/dashboard/tables/customer-table';
 import { lusitana } from '@/app/ui/fonts';
@@ -18,7 +18,10 @@ const Page = async ({
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
 
-  // const totalPages = await fetchAwbPages(query);
+  const [totalPages, customers] = await Promise.all([
+    fetchCustomersPages(query),
+    fetchFilteredCustomers(query, currentPage),
+  ]);
   return (
     <>
       <div className="mb-5 mt-4 flex justify-start md:mb-10">
@@ -36,7 +39,7 @@ const Page = async ({
       <div className="flex flex-col items-center justify-center gap-y-7 divide-y-4 divide-dotted divide-gray-300 md:gap-y-14">
         <div className="mx-auto w-full">
           <Suspense fallback={<CardsSkeleton />}>
-            <CardWrapper />
+            <CardWrapperCustomers />
           </Suspense>
         </div>
         <div className="hidden w-full justify-center pt-14 md:flex">
@@ -45,10 +48,10 @@ const Page = async ({
               key={query + currentPage}
               fallback={<CustomersTableSkeleton />}
             >
-              <CustomersTable query={query} currentPage={currentPage} />
+              <CustomersTable customers={customers!!} />
             </Suspense>
             <div className="mt-2 flex w-full justify-center">
-              <PaginationCustomer totalPages={120} />
+              <PaginationCustomer totalPages={totalPages} />
             </div>
           </div>
         </div>

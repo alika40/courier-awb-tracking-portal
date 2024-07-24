@@ -9,7 +9,7 @@ interface HeadElemProps extends React.HTMLAttributes<HTMLHeadElement> {
 }
 
 const AppLogo = ({ children, className, ...rest }: HeadElemProps) => (
-  <>
+  <div>
     {/* image import method  */}
     {/* <div className={styles.center}> */}
     {/* <Image
@@ -51,7 +51,7 @@ const AppLogo = ({ children, className, ...rest }: HeadElemProps) => (
       <span className="text-slate-400">L</span>
     </h2>
     {children}
-  </>
+  </div>
 );
 
 export default AppLogo;

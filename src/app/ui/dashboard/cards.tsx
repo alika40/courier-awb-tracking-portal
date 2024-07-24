@@ -6,18 +6,20 @@ import {
 import { roboto } from '@/app/ui/fonts';
 // import { fetchCardData } from '@/app/lib/data';
 import clsx from 'clsx';
-import { fetchCardData } from '@/app/lib/data';
+import { fetchAwbCardData, fetchCustomersCardData } from '@/app/lib/data';
 
 const iconMap = {
-  // collected: FoodBankSharp,
   customers: CloudCircle,
   pending: AccountBalance,
   awbs: FoodBankSharp,
+  over_due: FoodBankSharp,
 };
 
-export default async function CardWrapper() {
+export default async function CardWrapperCustomers() {
   // await new Promise((resolve) => setTimeout(resolve, 3000));
-  // const { numberOfCustomers, numberOfAwbs, totalPendingAwbs } = await fetchCardData();
+  const { numberOfCustomers, numberOfAwbs, totalPendingAwbs } =
+    await fetchCustomersCardData();
+
   return (
     <div className="mx-auto w-full rounded-sm bg-gray-100 p-2 md:w-[80%] md:rounded-md md:p-5">
       <h3
@@ -30,13 +32,58 @@ export default async function CardWrapper() {
       </h3>
       <div className="md:space-around flex w-full flex-col justify-between gap-4 md:flex-row md:gap-10">
         {/* NOTE: comment in this code when you get to this point in the course */}
+        <Card
+          title="Total Corporate Customer"
+          value={numberOfCustomers}
+          type="customers"
+        />
+        <Card
+          title="Total AWBs For The Past One Month"
+          value={numberOfAwbs}
+          type="awbs"
+        />
+        <Card
+          title="A Month Pending Transactions"
+          value={totalPendingAwbs}
+          type="pending"
+        />
+      </div>
+    </div>
+  );
+}
 
-        {/* <Card title="Total Corporate Customer" value={numberOfCustomers} type="customers" />
-        <Card title="Total Air Way Bills" value={numberOfAwbs} type="awbs" />
-        <Card title="Total Pending Transactions" value={totalPendingAwbs} type="pending" /> */}
-        <Card title="Total Corporate Customer" value="900" type="customers" />
-        <Card title="Total AWBs For July, 2024" value="600" type="awbs" />
-        <Card title="A Month Pending Transactions" value="300" type="pending" />
+export async function CardWrapper({ customer_id }: { customer_id: string }) {
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  const { numberOfOverDueAwbs, numberOfAwbs, totalPendingAwbs } =
+    await fetchAwbCardData(customer_id);
+
+  return (
+    <div className="mx-auto w-full rounded-sm bg-gray-100 p-2 md:w-[80%] md:rounded-md md:p-5">
+      <h3
+        className={clsx(
+          roboto.className,
+          'mb-2 text-center text-lg font-bold text-gray-500 underline underline-offset-4 md:mb-4 md:text-xl',
+        )}
+      >
+        Slapshots
+      </h3>
+      <div className="md:space-around flex w-full flex-col justify-between gap-4 md:flex-row md:gap-10">
+        {/* NOTE: comment in this code when you get to this point in the course */}
+        <Card
+          title="Total AWBs For The Past One Month."
+          value={numberOfAwbs}
+          type="awbs"
+        />
+        <Card
+          title="One Month Pending Transactions"
+          value={totalPendingAwbs}
+          type="pending"
+        />
+        <Card
+          title="Total Over Due AWBs"
+          value={numberOfOverDueAwbs}
+          type="over_due"
+        />
       </div>
     </div>
   );
@@ -49,7 +96,7 @@ export function Card({
 }: {
   title: string;
   value: number | string;
-  type: 'customers' | 'awbs' | 'pending';
+  type: 'customers' | 'awbs' | 'pending' | 'over_due';
 }) {
   const Icon = iconMap[type];
 

@@ -16,7 +16,7 @@ import { CustomerField, AWBInputData, State } from '@/app/lib/definitions';
 // import CustomSnackbar from '../../snackbar';
 import { useCreateAwbFormReducer } from './customHooks/useCreateAwbForm';
 import { ErrorState } from '../error-state';
-import { useAccountTypeSelectReducer } from './customHooks/useAccountType';
+// import { useAccountTypeSelectReducer } from './customHooks/useAccountType';
 import { ACTION } from '@/app/lib/constants';
 // import { ERROR_MESSAGE } from '@/app/lib/constants';
 
@@ -35,7 +35,7 @@ export default function Form({
 }) {
   // const [open, setOpen] = useState<boolean>(false); // Snackbar Error Message
   // const [isErrorState, setIsErrorState] = useState<State>(state);
-  let defaultDate = '';
+  let defaultDueDate = '';
 
   const {
     inputToggleDisplay,
@@ -98,7 +98,7 @@ export default function Form({
   // }, []);
 
   if (btnText === ACTION.EDIT) {
-    defaultDate = new Date(awb!!.due_date).toISOString().substring(0, 10);
+    defaultDueDate = new Date(awb!!.due_date).toISOString().substring(0, 10);
   }
 
   return (
@@ -111,14 +111,12 @@ export default function Form({
 
       <div className="rounded-md bg-gray-50 p-2 md:p-6">
         {/* Customer Name */}
-        {/* {accountTypeSelect.account.corp && ( */}
         <CorporateAccountSelect
           customers={customers}
           state={state}
           awb={awb}
           btnText={btnText}
         />
-        {/* )} */}
 
         {/* Air Way Bill Number */}
         <div className="mb-4 md:mb-6">
@@ -301,7 +299,7 @@ export default function Form({
                   name="due_date"
                   type="date"
                   autoComplete="bday"
-                  defaultValue={defaultDate}
+                  defaultValue={defaultDueDate}
                   className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
                 />
               </div>

@@ -12,8 +12,9 @@ import { clsx } from 'clsx';
 
 import { lusitana } from '../fonts';
 import { STATUS } from '@/app/lib/constants';
-import { AWBInputData } from '@/app/lib/definitions';
+import { TrackAwbNum } from '@/app/lib/definitions';
 import { formatDateToLocal, formatTimeToLocal } from '@/app/lib/utils';
+import { Divider } from '@mui/material';
 
 const steps = [
   {
@@ -30,7 +31,7 @@ const steps = [
   },
 ];
 
-export default function VerticalLinearStepper({ awb }: { awb: AWBInputData }) {
+export default function VerticalLinearStepper({ awb }: { awb: TrackAwbNum }) {
   const initialActiveStep =
     awb.status === STATUS.DOCUMENTED
       ? 0
@@ -70,28 +71,50 @@ export default function VerticalLinearStepper({ awb }: { awb: AWBInputData }) {
           {/* <Typography>All steps completed - you&apos;re finished</Typography> */}
           <div>
             <div className="flex items-start justify-between">
-              <span className="text-md font-bold md:text-xl">
-                Delivery To:{' '}
+              <span className="text-md font-bold text-gray-700 md:text-xl">
+                Sender:{' '}
               </span>
-              <span className="text-md font-bold text-slate-600 md:text-xl">
+              <span className="text-md font-medium text-slate-600 md:text-xl">
+                {awb.sender}
+              </span>
+            </div>
+            <Divider
+              textAlign="left"
+              className="text-lg font-black italic text-pink-700"
+            >
+              Delivery Details
+            </Divider>
+            <div className="flex items-start justify-between">
+              <span className="text-md font-bold text-gray-700 md:text-xl">
+                Receiver:{' '}
+              </span>
+              <span className="text-md font-medium text-slate-600 md:text-xl">
+                {awb.receiver}
+              </span>
+            </div>
+            <div className="flex items-start justify-between">
+              <span className="text-md font-bold text-gray-700 md:text-xl">
+                Delivered To:{' '}
+              </span>
+              <span className="text-md font-medium text-slate-600 md:text-xl">
                 {awb.delivered_to}
               </span>
             </div>
             <div className="flex items-start justify-between">
-              <span className="text-md font-bold md:text-xl">
+              <span className="text-md font-bold text-gray-700 md:text-xl">
                 Delivery Date:{' '}
               </span>
-              <span className="text-md font-bold text-slate-600 md:text-xl">
+              <span className="text-md font-medium text-slate-600 md:text-xl">
                 {awb &&
                   awb.delivery_date &&
                   formatDateToLocal(awb.delivery_date)}
               </span>
             </div>
             <div className="flex items-start justify-between">
-              <span className="text-md font-bold md:text-xl">
+              <span className="text-md font-bold text-gray-700 md:text-xl">
                 Delivery Time:{' '}
               </span>
-              <span className="text-md font-bold text-slate-600 md:text-xl">
+              <span className="text-md font-medium text-slate-600 md:text-xl">
                 {awb &&
                   awb.delivery_time &&
                   formatTimeToLocal(awb.delivery_time)}

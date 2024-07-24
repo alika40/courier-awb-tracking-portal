@@ -9,9 +9,7 @@ export function AWBTrackerSkeleton() {
     >
       <div className="flex justify-center md:mt-8">
         <div className="stroke">
-          <h2 className="bg-gray-200 text-sm font-bold  md:p-8">
-            {'  '} {'  '}
-          </h2>
+          <h2 className="bg-gray-200 text-sm font-bold  md:p-8"></h2>
           <div className="w-full">
             <div className=" w-25 mb-8 mt-8 h-5 bg-gray-200 text-lg font-black" />
             <div className=" mb-2 h-5 w-20 bg-gray-200 text-lg font-black" />

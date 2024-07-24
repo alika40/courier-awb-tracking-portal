@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: '%s | eXL Tracking Portal',
     default: 'eXL Tracking Portal',
   },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
+  description: 'Dashboard built with App Router.',
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 };
 

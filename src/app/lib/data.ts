@@ -1,8 +1,17 @@
 import { sql } from '@vercel/postgres';
-import { User, AWB, Customer } from './definitions';
+import {
+  User,
+  AWB,
+  Customer,
+  AWBTable,
+  AWBInputData,
+  CustomerField,
+  TrackAwbNum,
+} from './definitions';
 import { unstable_noStore as noStore } from 'next/cache';
 import { STATUS } from './constants';
 
+/*
 export async function fetchAwbs() {
   noStore();
   try {
@@ -24,9 +33,8 @@ export async function fetchAwbs() {
         awbs.delivery_date,
         awbs.delivery_time
       FROM awbs
-      WHERE customer_id = customers.id
-      ORDER BY awbs.date DESC
-      LIMIT 20`;
+      ORDER BY awbs.created_at DESC
+      LIMIT 10`;
 
     // const latestAwbs = data.rows.map((awb) => ({
     //   ...awb,
@@ -37,35 +45,35 @@ export async function fetchAwbs() {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch the latest awbs.');
   }
-}
+}*/
 
-export async function fetchCardData() {
+export async function fetchAwbCardData(customer_id: string) {
   noStore();
   try {
-    // You can probably combine these into a single SQL query
-    // However, we are intentionally splitting them to demonstrate
-    // how to initialize multiple queries in parallel with JS.
-    const awbCountPromise = sql`SELECT COUNT(*) FROM awbs`;
-    const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
+    const awbCountPromise = sql`SELECT COUNT(*) FROM awbs WHERE awbs.customer_id = ${customer_id} AND awbs.created_at BETWEEN NOW() - INTERVAL '1 MONTH' AND NOW()`;
     const awbsStatusPendingPromise = sql`SELECT
-        SUM(CASE WHEN status = ${STATUS.PENDING} THEN 1 ELSE 0 END) AS "pending"
+        SUM(CASE WHEN status = ${STATUS.PENDING} THEN 1 ELSE 0 END) AS "Pending"
         FROM awbs
-        WHERE awbs.created_at BETWEEN NOW() - INTERVAL '1 MONTH' AND NOW()`;
+        WHERE awbs.customer_id = ${customer_id} AND awbs.created_at BETWEEN NOW() - INTERVAL '1 MONTH' AND NOW()`;
+    const awbsOverDuePromise = sql`SELECT
+        SUM(CASE WHEN status = ${STATUS.PENDING} THEN 1 ELSE 0 END) AS "over_due"
+        FROM awbs
+        WHERE awbs.due_date >= NOW() AND awbs.customer_id = ${customer_id}`;
 
     const data = await Promise.all([
       awbCountPromise,
-      customerCountPromise,
       awbsStatusPendingPromise,
+      awbsOverDuePromise,
     ]);
 
     const numberOfAwbs = Number(data[0].rows[0].count ?? '0');
-    const numberOfCustomers = Number(data[1].rows[0].count ?? '0');
-    const totalPendingAwbs = Number(data[2].rows[0].pending ?? '0');
+    const totalPendingAwbs = Number(data[1].rows[0].pending ?? '0');
+    const numberOfOverDueAwbs = Number(data[2].rows[0].over_due ?? '0');
 
     return {
-      numberOfCustomers,
       numberOfAwbs,
       totalPendingAwbs,
+      numberOfOverDueAwbs,
     };
   } catch (error) {
     console.error('Database Error:', error);
@@ -73,16 +81,21 @@ export async function fetchCardData() {
   }
 }
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 10;
 
-export async function fetchFilteredAwbs(query: string, currentPage: number) {
+export async function fetchFilteredAwbs(
+  customer_id: string,
+  query: string,
+  currentPage: number,
+) {
   noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
     // type, that's, STATUS to be looked at
-    const awbs = await sql<AWB>`
+    const awbs = await sql<AWBTable>`
       SELECT
+        customers.name,
         awbs.id,
         awbs.awb_num,
         awbs.sender,
@@ -99,16 +112,19 @@ export async function fetchFilteredAwbs(query: string, currentPage: number) {
         awbs.delivery_date,
         awbs.delivery_time
       FROM awbs
+      JOIN customers ON awbs.customer_id = customers.customer_id
       WHERE
-        awbs.customer_id = customers.id AND
-        awbs.awb_num ILIKE ${`%${query}%`} OR
-        awbs.sender ILIKE ${`%${query}%`} OR
-        awbs.due_date::text ILIKE ${`%${query}%`} OR
-        awbs.created_at::text ILIKE ${`%${query}%`} OR
-        awbs.status ILIKE ${`%${query}%`}
-      ORDER BY awbs.date DESC
+        awbs.customer_id = ${customer_id} AND awbs.awb_num ILIKE ${`%${query}%`}
+      ORDER BY awbs.created_at DESC
       LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
+
+    //     awbs.customer_id = ${customer_id} AND
+    //     awbs.awb_num ILIKE ${`%${query}%`} OR
+    //     awbs.sender ILIKE ${`%${query}%`} OR
+    //     awbs.due_date::text ILIKE ${`%${query}%`} OR
+    //     awbs.created_at::text ILIKE ${`%${query}%`} OR
+    //     awbs.status ILIKE ${`%${query}%`}
 
     return awbs.rows;
   } catch (error) {
@@ -117,21 +133,18 @@ export async function fetchFilteredAwbs(query: string, currentPage: number) {
   }
 }
 
-export async function fetchAwbPages(query: string) {
+export async function fetchAwbPages(customer_id: string) {
   noStore();
   try {
     const count = await sql`SELECT COUNT(*)
     FROM awbs
+    JOIN customers ON awbs.customer_id = customers.customer_id
     WHERE
-      awbs.customer_id = customers.id AND
-      awbs.awb_num ILIKE ${`%${query}%`} OR
-      awbs.sender ILIKE ${`%${query}%`} OR
-      awbs.due_date::text ILIKE ${`%${query}%`} OR
-      awbs.created_at::text ILIKE ${`%${query}%`} OR
-      awbs.status ILIKE ${`%${query}%`}
+      awbs.customer_id = ${customer_id}
   `;
 
     const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+    // console.log(totalPages, customer_id);
     return totalPages;
   } catch (error) {
     console.error('Database Error:', error);
@@ -143,9 +156,10 @@ export async function fetchAwbById(id: string) {
   noStore();
   try {
     // type, that's, STATUS to be looked at
-    const data = await sql<AWB>`
-      SELECT
+    const data = await sql`
+        SELECT
         awbs.id,
+        awbs.customer_id,
         awbs.awb_num,
         awbs.sender,
         awbs.receiver,
@@ -159,26 +173,33 @@ export async function fetchAwbById(id: string) {
         awbs.remark,
         awbs.delivered_to,
         awbs.delivery_date,
-        awbs.delivery_time
+        awbs.delivery_time,
+        customers.name
       FROM awbs
-      WHERE awbs.id = ${id};
+      JOIN customers ON awbs.customer_id = customers.customer_id
+      WHERE
+        awbs.id = ${id}
     `;
 
-    // const invoice = data.rows.map((invoice) => ({
-    //   ...invoice,
-    //   // Convert amount from cents to dollars
-    //   amount: invoice.amount / 100,
-    // }));
+    const combinedData = data.rows[0];
+    const customer = [
+      {
+        customer_id: combinedData.customer_id,
+        name: combinedData.name,
+      },
+    ] as CustomerField[];
+    const awb = combinedData as AWBInputData;
 
-    // return invoice[0];
-    return data.rows[0];
+    return { awb, customer };
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch awb.');
   }
 }
 
-export async function fetchCorporateCustomers() {
+/*
+export async function fetchCustomersTable() {
+  noStore();
   try {
     const data = await sql<Customer>`
       SELECT
@@ -188,14 +209,82 @@ export async function fetchCorporateCustomers() {
         phone,
         reg_date
       FROM customers
-      ORDER BY name ASC
+      ORDER BY reg_date ASC
     `;
 
-    const customers = data.rows;
-    return customers;
+    return data.rows[0];
   } catch (err) {
     console.error('Database Error:', err);
-    throw new Error('Failed to fetch all customers.');
+    // throw new Error('Failed to fetch all customers.');
+  }
+}*/
+
+export async function fetchCustomersCardData() {
+  noStore();
+  try {
+    const customersCountPromise = sql`SELECT COUNT(*)
+        FROM customers`;
+    const awbsStatusPendingPromise = sql`SELECT
+        SUM(CASE WHEN status = ${STATUS.PENDING} THEN 1 ELSE 0 END) AS "Pending"
+        FROM awbs
+        WHERE awbs.created_at BETWEEN NOW() - INTERVAL '1 MONTH' AND NOW()`;
+    const awbsCountPromise = sql`SELECT COUNT(*)
+        FROM customers 
+        WHERE customers.reg_date BETWEEN NOW() - INTERVAL '1 MONTH' AND NOW()`;
+
+    const data = await Promise.all([
+      awbsCountPromise,
+      awbsStatusPendingPromise,
+      customersCountPromise,
+      ,
+    ]);
+
+    const numberOfAwbs = Number(data[0].rows[0].count ?? '0');
+    const totalPendingAwbs = Number(data[1].rows[0].pending ?? '0');
+    const numberOfCustomers = Number(data[2].rows[0].count ?? '0');
+
+    return {
+      numberOfAwbs,
+      totalPendingAwbs,
+      numberOfCustomers,
+    };
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch card data.');
+  }
+}
+
+export async function fetchCustomersCreate() {
+  noStore();
+  try {
+    const data = await sql<CustomerField>`
+      SELECT
+        customer_id,
+        name
+      FROM customers
+    `;
+
+    return data.rows;
+  } catch (err) {
+    console.error('Database Error:', err);
+    // throw new Error('Failed to fetch all customers.');
+  }
+}
+
+export async function fetchCustomersPages(query: string) {
+  noStore();
+  try {
+    const count = await sql`SELECT COUNT(*)
+    FROM customers
+    WHERE
+      customers.name ILIKE ${`%${query}%`}
+  `;
+
+    const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+    return totalPages;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch total number of customers.');
   }
 }
 
@@ -210,14 +299,12 @@ export async function fetchCustomerById(id: string) {
         customers.reg_date
       FROM customers
       WHERE customers.customer_id = ${id}
-      ORDER BY name ASC
     `;
 
-    const customers = data.rows;
-    return customers;
+    return data.rows[0];
   } catch (err) {
     console.error('Database Error:', err);
-    throw new Error('Failed to fetch all customers.');
+    throw new Error('Failed to fetch a customer.');
   }
 }
 
@@ -231,7 +318,7 @@ export async function fetchFilteredCustomers(
   try {
     const data = await sql<Customer>`
 		SELECT
-		  customers.id,
+		  customers.customer_id,
 		  customers.name,
 		  customers.email,
 		  customers.phone,
@@ -239,7 +326,7 @@ export async function fetchFilteredCustomers(
 		FROM customers
 		WHERE
 		  customers.name ILIKE ${`%${query}%`}
-		ORDER BY customers.name ASC
+		ORDER BY customers.reg_date ASC
     LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
 	  `;
 
@@ -253,6 +340,31 @@ export async function fetchFilteredCustomers(
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch customer table.');
+  }
+}
+
+export async function fetchAwbByAwbNum(awb_num: string) {
+  noStore();
+  try {
+    // type, that's, STATUS to be looked at
+    const data = await sql<TrackAwbNum>`
+        SELECT
+        awbs.sender,
+        receiver,
+        awbs.status,
+        awbs.remark,
+        awbs.delivered_to,
+        awbs.delivery_date,
+        awbs.delivery_time
+      FROM awbs
+      WHERE
+        awbs.awb_num = ${awb_num}
+    `;
+
+    return data.rows[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch awb.');
   }
 }
 

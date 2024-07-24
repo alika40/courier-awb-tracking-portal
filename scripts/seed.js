@@ -4,11 +4,12 @@ const {
   customers,
   STATUS,
   users,
-} = require('../app/lib/placeholder-data.js');
+} = require('../src/app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
 async function seedUsers(client) {
   try {
+    await client.sql`DROP TABLE users CASCADE`;
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     // Create the "users" table if it doesn't exist
     const createTable = await client.sql`
@@ -49,32 +50,38 @@ async function seedUsers(client) {
 
 async function seedAWBs(client) {
   try {
+    await client.sql`DROP TABLE awbs CASCADE`; 
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`; 
     
-    await client.sql`CREATE TYPE status AS ENUM(${STATUS.DOCUMENTED}, ${STATUS.PENDING}, ${STATUS.DELIVERED})`;
+    // await client.sql`CREATE TYPE status AS ENUM (
+    //   ${STATUS.DOCUMENTED}, 
+    //   ${STATUS.PENDING}, 
+    //   ${STATUS.DELIVERED}
+    //   )`;
 
     // Create the "invoices" table if it doesn't exist
     const createTable = await client.sql`
     CREATE TABLE IF NOT EXISTS awbs (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     customer_id UUID NOT NULL,
-    awb_num VARCHAR(20) NOT NULL,
-    sender VARCHAR(50) NOT NULL,
-    receiver VARCHAR(50) NOT NULL,
-    receiver_address VARCHAR(100) NOT NULL,
-    destination VARCHAR(20) NOT NULL,
+    awb_num VARCHAR(100) NOT NULL,
+    sender VARCHAR(100) NOT NULL,
+    receiver VARCHAR(100) NOT NULL,
+    receiver_address VARCHAR(225) NOT NULL,
+    destination VARCHAR(100) NOT NULL,
     item_description VARCHAR(225) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     due_date DATE NOT NULL,
-    status STATUS NOT NULL,
-    weight INT NOT NULL CHECK (weight >= 0.5),
+    status VARCHAR(100) NOT NULL,
+    weight REAL NOT NULL CHECK(weight >= 0.5),
     remark VARCHAR(225),
-    delivered_to VARCHAR(50) NOT NULL,
-    delivery_date DATE NOT NULL DEFAULT CURRENT_DATE,
-    delivery_time TIME NOT NULL,
+    delivered_to VARCHAR(100),
+    delivery_date DATE,
+    delivery_time TIME,
     CONSTRAINT fk_customer
       FOREIGN KEY(customer_id) 
         REFERENCES customers(customer_id)
+        ON UPDATE CASCADE
         ON DELETE CASCADE
   );
 `;
@@ -86,6 +93,7 @@ async function seedAWBs(client) {
       awbs.map(
         (awb) => client.sql`
         INSERT INTO awbs (
+          id,
           customer_id,
           awb_num,
           sender,
@@ -100,27 +108,28 @@ async function seedAWBs(client) {
           remark,
           delivered_to,
           delivery_date,
-          delivery_time,
+          delivery_time
           )
         VALUES (
+          ${awb.id},
           ${awb.customer_id},
-          ${awb_num},
+          ${awb.awb_num},
           ${awb.sender},
           ${awb.receiver},
           ${awb.receiver_address},
           ${awb.destination},
           ${awb.item_description},
-          ${awb.created_at}
+          ${awb.created_at},
           ${awb.due_date},
           ${awb.status},
           ${awb.weight},
           ${awb.remark},
           ${awb.delivered_to},
           ${awb.delivery_date},
-          ${awb.delivery_time},
+          ${awb.delivery_time}
           )
         ON CONFLICT (id) DO NOTHING;
-      `,
+      `
       ),
     );
 
@@ -138,17 +147,17 @@ async function seedAWBs(client) {
 
 async function seedCustomers(client) {
   try {
+    await client.sql`DROP TABLE customers CASCADE`; 
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
     // Create the "customers" table if it doesn't exist
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS customers (
         customer_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
+        name VARCHAR(255) UNIQUE NOT NULL,
+        email VARCHAR(255),
         phone VARCHAR(25) NOT NULL,
-        reg_date TIMESTAMP NOT NULL,
-
+        reg_date TIMESTAMP NOT NULL
       );
     `;
 
@@ -172,7 +181,7 @@ async function seedCustomers(client) {
           ${customer.phone},
           ${customer.reg_date}
           )
-        ON CONFLICT (id) DO NOTHING;
+        ON CONFLICT (customer_id) DO NOTHING;
       `,
       ),
     );

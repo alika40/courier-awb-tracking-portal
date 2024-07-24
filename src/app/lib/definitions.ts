@@ -97,9 +97,8 @@ export interface User {
 
 export type Customer = {
   customer_id: string;
-  // account_type: string | string;
   name: string;
-  email: string;
+  email?: string;
   phone: string;
   reg_date: string;
 };
@@ -144,6 +143,37 @@ export type AWBInputData = {
   delivery_time?: string;
 };
 
+export type AWBTable = {
+  customer_name: string;
+  id: string;
+  customer_id: string;
+  awb_num: string; // number
+  sender: string;
+  receiver: string;
+  receiver_address: string;
+  destination: string;
+  item_description: string;
+  weight: number; // string
+  created_at: string;
+  due_date: string;
+  status: string;
+  remark?: string;
+  delivered_to?: string;
+  delivery_date?: string;
+  delivery_time?: string;
+};
+
+export type TrackAwbNum = {
+  sender: string;
+  receiver: string;
+  status: string;
+  remark: string;
+  delivered_to: string;
+  delivery_date: string;
+  delivery_time: string;
+};
+
+/*
 export type LatestInvoice = {
   id: string;
   name: string;
@@ -186,16 +216,16 @@ export type FormattedCustomersTable = {
   total_invoices: number;
   total_pending: string;
   total_paid: string;
-};
+};*/
 
 export type CustomerField = {
   customer_id: string;
   name: string;
 };
 
-export type AirWayBillForm = {
-  id: string;
-  customer_id: string;
-  amount: number;
-  status: 'pending' | 'paid';
-};
+// export type AirWayBillForm = {
+//   id: string;
+//   customer_id: string;
+//   amount: number;
+//   status: 'pending' | 'paid';
+// };

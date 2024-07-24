@@ -12,14 +12,17 @@ export const TH = ({ children, className, ...rest }: THProps) => (
   <th
     {...rest}
     scope="col"
-    className={clsx('px-2 py-3 font-medium text-pink-900', className)}
+    className={clsx(
+      'whitespace-nowrap px-2 py-3 font-black text-pink-900',
+      className,
+    )}
   >
     {children}
   </th>
 );
 
 export const TD = ({ children, className, ...rest }: TDProps) => (
-  <th {...rest} className={clsx('whitespace-nowrap px-2 py-2', className)}>
+  <td {...rest} className={clsx(' px-2 py-2 font-light', className)}>
     {children}
-  </th>
+  </td>
 );

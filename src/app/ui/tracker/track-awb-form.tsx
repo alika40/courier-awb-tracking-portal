@@ -28,7 +28,7 @@ export default function TrackAwbForm() {
 
       <form
         action={dispatch}
-        className="mt-4 flex w-[60%] flex-col items-center justify-between md:mt-20 md:w-[50%]"
+        className="mt-4 flex w-[80%] flex-col items-center justify-between md:mt-20 md:w-[50%]"
       >
         <div className="relative flex w-full flex-1 flex-shrink-0">
           <div className="w-full">
