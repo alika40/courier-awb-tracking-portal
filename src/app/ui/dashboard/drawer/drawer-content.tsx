@@ -97,13 +97,6 @@ export const DashboardDrawerContent = ({
         <List className="w-full rounded-lg bg-white">
           <div className="mb-2 flex flex-col items-center bg-pink-900 p-4">
             <AppLogo className="text-2xl md:text-8xl">
-              <h2
-                className={`whitespace-nowrap text-2xl font-bold text-white md:text-8xl`}
-              >
-                <span className="text-slate-400">e</span>
-                <span className=" text-pink-600">X</span>
-                <span className="text-slate-400">L</span>
-              </h2>
               <h3
                 className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400 md:text-base`}
               >
