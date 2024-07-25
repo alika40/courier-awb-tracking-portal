@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt');
 
 async function seedUsers(client) {
   try {
-    await client.sql`DROP TABLE users CASCADE`;
+    // await client.sql`DROP TABLE users CASCADE`;
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     // Create the "users" table if it doesn't exist
     const createTable = await client.sql`
@@ -50,7 +50,7 @@ async function seedUsers(client) {
 
 async function seedAWBs(client) {
   try {
-    await client.sql`DROP TABLE awbs CASCADE`; 
+    // await client.sql`DROP TABLE awbs CASCADE`; 
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`; 
     
     // await client.sql`CREATE TYPE status AS ENUM (
@@ -147,7 +147,7 @@ async function seedAWBs(client) {
 
 async function seedCustomers(client) {
   try {
-    await client.sql`DROP TABLE customers CASCADE`; 
+    // await client.sql`DROP TABLE customers CASCADE`; 
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
     // Create the "customers" table if it doesn't exist
