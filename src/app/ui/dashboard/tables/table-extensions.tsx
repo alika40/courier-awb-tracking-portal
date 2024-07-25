@@ -13,7 +13,7 @@ export const TH = ({ children, className, ...rest }: THProps) => (
     {...rest}
     scope="col"
     className={clsx(
-      'whitespace-nowrap px-2 py-3 font-black text-pink-900',
+      'whitespace-nowrap px-2 py-3 font-bold text-pink-900',
       className,
     )}
   >

@@ -102,13 +102,16 @@ export async function AwbTable({
                   <TH className="border-r">Destination</TH>
                   <TH className="border-r">AWB No.</TH>
                   <TH className="border-r">Issued Date</TH>
-                  <TH className="border-r">Status/Due date</TH>
+                  <TH className="border-r">
+                    <div>Status &</div>
+                    <div>Due date</div>
+                  </TH>
                   {/* <TH className="border-r">Remark</TH> */}
                   <TH className="border-r">Receiver</TH>
                   <TH className="border-r">Delivered To</TH>
                   <TH className="border-r">
-                    <div>Delivery Date</div>
-                    <div>& Time</div>
+                    <div>Delivery</div>
+                    <div> Date & Time</div>
                   </TH>
                   {/* <TH className="border-r">Delivery Time</TH> */}
                   <TH className="relative">
@@ -144,7 +147,9 @@ export async function AwbTable({
                     {awb.remark}
                   </td> */}
                     <TD className="border-r">{awb.receiver}</TD>
-                    <TD className="border-r">{awb.delivered_to && ''}</TD>
+                    <TD className="border-r">
+                      {awb.delivered_to && awb.delivered_to}
+                    </TD>
                     <TD className="border-r">
                       <div>
                         {awb.delivery_date
