@@ -23,7 +23,7 @@ export default function Breadcrumbs({
             className={clsx(
               breadcrumb.active
                 ? 'text-gray-400'
-                : 'md:underline-offset-3 font-bold text-pink-900 underline underline-offset-2',
+                : 'font-bold uppercase text-pink-900 underline decoration-pink-900 decoration-dashed decoration-2 underline-offset-2 md:decoration-8 md:underline-offset-8',
             )}
           >
             <Link href={breadcrumb.href}>{breadcrumb.label}</Link>

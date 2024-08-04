@@ -7,8 +7,9 @@ import {
 } from '../authentication/validateform';
 import { signIn, signOut } from '../../../../../auth';
 import { AuthError } from 'next-auth';
-import { sql } from '@vercel/postgres';
-import bcrypt from 'bcrypt';
+// import { sql } from '@vercel/postgres';
+// import bcrypt from 'bcrypt';
+import { insertUserDataDB } from './insertDataDB';
 
 export async function authenticate(
   prevState: FormStateAuth2,
@@ -60,8 +61,9 @@ export async function signup(state: FormStateAuth, formData: FormData) {
 
   // Call the provider or db to create a user..
   // 2. Prepare data for insertion into database
-  const { firstName, lastName, email, password } = validatedFields.data;
-  console.log(validatedFields.data);
+  // const { firstName, lastName, email, password } = validatedFields.data;
+  // console.log(validatedFields.data);
+  insertUserDataDB(validatedFields.data);
   // e.g. Hash the user's password before storing it
   //   const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -86,6 +88,6 @@ export async function signup(state: FormStateAuth, formData: FormData) {
 }
 
 export const handleSignOut = async () => {
-  console.log('HERE');
+  // console.log('HERE');
   await signOut();
 };

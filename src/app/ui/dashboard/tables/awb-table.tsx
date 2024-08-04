@@ -73,14 +73,14 @@ export async function AwbTable({
     <>
       <div className="flow-root">
         <div className="inline-block min-w-full align-middle">
-          <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+          <div className="rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
             <table className="hidden min-w-full md:table">
               <caption className="caption-top">
                 <div className="mb-4 mt-4 flex w-full justify-center">
                   <h3
                     className={clsx(
                       roboto.className,
-                      'flex text-lg font-bold text-gray-500 underline underline-offset-4 md:text-xl',
+                      'flex text-lg font-bold text-gray-500 underline underline-offset-4 dark:text-slate-400 md:text-xl',
                     )}
                   >
                     Table 2: Individual Customers' AWBs
@@ -126,31 +126,43 @@ export async function AwbTable({
                 {awbs?.map((awb) => (
                   <tr
                     key={awb.id}
-                    className="w-full border-b bg-white py-3 text-sm odd:bg-pink-50 last-of-type:border-none"
+                    className="w-full border-b-2 bg-white py-3 text-sm odd:bg-pink-50 last-of-type:border-none dark:border-zinc-900 dark:bg-zinc-800 dark:odd:bg-opacity-50 [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                   >
                     {/* <TD className="border-r sm:pl-6">{awb.id}</TD> */}
-                    <TD className="border-r">{awb.sender}</TD>
-                    <TD className="border-r">{awb.item_description}</TD>
-                    <TD className="border-r">{awb.receiver_address}</TD>
-                    <TD className="border-r">{awb.destination}</TD>
-                    <TD className="border-r">{awb.awb_num}</TD>
-                    <TD className="border-r">
+                    <TD className="border-r-2 dark:border-zinc-900">
+                      {awb.sender}
+                    </TD>
+                    <TD className="border-r-2 dark:border-zinc-900">
+                      {awb.item_description}
+                    </TD>
+                    <TD className="border-r-2 dark:border-zinc-900">
+                      {awb.receiver_address}
+                    </TD>
+                    <TD className="border-r-2 dark:border-zinc-900">
+                      {awb.destination}
+                    </TD>
+                    <TD className="border-r-2 dark:border-zinc-900">
+                      {awb.awb_num}
+                    </TD>
+                    <TD className="border-r-2 dark:border-zinc-900">
                       {formatDateToLocal(awb.created_at)}
                     </TD>
-                    <TD className="border-r">
+                    <TD className="border-r-2 dark:border-zinc-900">
                       <AwbStatus status={awb.status} />
-                      <div className="mt-1 font-light text-gray-700">
+                      <div className="mt-1 font-light text-gray-700 dark:text-white">
                         {formatDateToLocal(awb.due_date)}
                       </div>
                     </TD>
                     {/* <td className="text-md border-r px-3 py-3 font-bold">
                     {awb.remark}
                   </td> */}
-                    <TD className="border-r">{awb.receiver}</TD>
-                    <TD className="border-r">
+                    <TD className="border-r-2 dark:border-zinc-900">
+                      {awb.receiver}
+                    </TD>
+                    <TD className="border-r-2 dark:border-zinc-900">
                       {awb.delivered_to && awb.delivered_to}
                     </TD>
-                    <TD className="border-r">
+                    <TD className="border-r-2 dark:border-zinc-900">
                       <div>
                         {awb.delivery_date
                           ? formatDateToLocal(awb.delivery_date)

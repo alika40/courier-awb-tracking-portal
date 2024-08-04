@@ -109,7 +109,7 @@ export default function Form({
         handleAcctTypeSelect={handleAcctTypeSelect}
       /> */}
 
-      <div className="rounded-md bg-gray-50 p-2 md:p-6">
+      <div className="rounded-md bg-gray-50 p-2 dark:bg-zinc-900 dark:text-slate-400 md:p-6">
         {/* Customer Name */}
         <CorporateAccountSelect
           customers={customers}
@@ -135,7 +135,7 @@ export default function Form({
                 // onChange={(e) => trackErrorState(e)}
                 defaultValue={awb && awb.awb_num}
                 placeholder="Enter Air Way Bill Number"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
               />
               {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
@@ -162,7 +162,7 @@ export default function Form({
                 defaultValue={awb && awb.sender}
                 // onChange={(e) => trackErrorState(e)}
                 placeholder="Sender's Name"
-                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
+                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider "
               />
               {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
@@ -188,7 +188,7 @@ export default function Form({
                 type="text"
                 defaultValue={awb && awb.receiver}
                 placeholder="Enter Receiver's Name"
-                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
+                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
               />
               {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
@@ -215,7 +215,7 @@ export default function Form({
                 defaultValue={awb && awb.receiver_address}
                 placeholder="Enter Receiver's Address"
                 autoComplete="street-address"
-                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
+                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
               />
               {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
@@ -242,7 +242,7 @@ export default function Form({
                 defaultValue={awb && awb.destination}
                 placeholder="Enter Destination"
                 autoComplete="street-address1"
-                className="md:text-medium peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
+                className="md:text-medium peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
               />
               {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
@@ -270,7 +270,7 @@ export default function Form({
                 rows={3}
                 defaultValue={awb && awb.item_description}
                 placeholder="Enter Item Description"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:font-medium md:tracking-wider"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:md:font-bold md:tracking-wider"
               />
               {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
@@ -285,12 +285,12 @@ export default function Form({
           <legend className="mb-2 block text-sm font-bold md:text-lg">
             Other Details:
           </legend>
-          <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3 shadow-sm">
+          <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3 shadow-sm dark:bg-black">
             <div className="md:flex-stretch flex flex-col gap-4 md:grid md:grid-flow-col md:gap-6">
               <div className="flex items-center">
                 <label
                   htmlFor="due_date"
-                  className="mr-1 flex items-center whitespace-nowrap rounded-md bg-gray-100 px-3 py-1.5 text-sm font-bold text-gray-600 md:text-base md:font-semibold"
+                  className="mr-1 flex items-center whitespace-nowrap rounded-md bg-gray-100 px-3 py-1.5 text-sm font-bold text-gray-600 dark:bg-zinc-900 dark:text-slate-400 md:text-base md:font-semibold"
                 >
                   Due Date:
                 </label>
@@ -300,13 +300,13 @@ export default function Form({
                   type="date"
                   autoComplete="bday"
                   defaultValue={defaultDueDate}
-                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
+                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium font-medium text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold md:tracking-wider"
                 />
               </div>
               <div className="flex items-center">
                 <label
                   htmlFor="weight"
-                  className="mr-1 flex items-center rounded-md bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-600 md:text-base md:font-bold"
+                  className="mr-1 flex items-center rounded-md bg-gray-100 px-3 py-1.5 text-sm font-semibold text-gray-600 dark:bg-zinc-900 dark:text-slate-400 md:text-base md:font-bold"
                 >
                   Weight:
                 </label>
@@ -315,9 +315,9 @@ export default function Form({
                   name="weight"
                   type="number"
                   step="0.5"
-                  placeholder="eg, 5kg"
+                  placeholder="5kg"
                   defaultValue={awb && awb.weight}
-                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base"
+                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold"
                 />
               </div>
             </div>

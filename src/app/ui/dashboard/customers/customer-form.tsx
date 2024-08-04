@@ -25,7 +25,7 @@ export default function CustomerForm({
 
   return (
     <form action={dispatch}>
-      <div className="rounded-md bg-gray-50 p-4 md:p-6">
+      <div className="rounded-md bg-gray-50 p-4 dark:bg-zinc-900 dark:text-slate-400 md:p-6">
         {/* Customer Name */}
         <div className="mb-4 md:mb-6">
           <label
@@ -42,7 +42,7 @@ export default function CustomerForm({
                 type="text"
                 defaultValue={customer && customer.name}
                 placeholder="Enter Company's Name"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
               />
               {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
@@ -69,7 +69,7 @@ export default function CustomerForm({
                 type="email"
                 defaultValue={customer && customer.email}
                 placeholder="Enter Email Address"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
               />
               {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
@@ -95,7 +95,7 @@ export default function CustomerForm({
                 // defaultValue={customer && customer.phone}
                 placeholder="080 6006 3003"
                 maxLength={13}
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:pl-6 md:text-base md:tracking-wider"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:font-bold md:tracking-wider"
               />
               {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
@@ -110,7 +110,7 @@ export default function CustomerForm({
       <div className="mb-6 mt-12 flex justify-end gap-4">
         <Link
           href="/dashboard"
-          className="flex h-10 items-center rounded-md bg-gray-100 px-4 text-sm font-medium text-gray-600 shadow-sm transition-colors hover:bg-gray-200 hover:shadow-none md:rounded-lg md:text-base"
+          className="flex h-10 items-center rounded-md bg-gray-100 px-4 text-sm font-medium text-gray-600 shadow-sm transition-colors hover:bg-gray-200 hover:shadow-none md:rounded-lg md:text-base md:font-bold"
         >
           Cancel
         </Link>

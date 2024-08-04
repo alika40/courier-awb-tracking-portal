@@ -9,6 +9,11 @@ export const ACCOUNT_TYPE = {
     INDIVIDUAL: "Individual Account",
 }
 
+export const APP_THEME = {
+    LIGHT: "light",
+    DARK: "dark",
+}
+
 export const ACTION = {
     CREATE: "Create",
     EDIT: "Edit",

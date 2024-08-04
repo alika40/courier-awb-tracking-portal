@@ -16,6 +16,7 @@ const users = [
     last_name: 'Alika',
     email: 'anthony2024@rocketmail.com',
     password: 'SuperUser2024#',
+    created_at: '2024-06-15',
   },
   {
     id: '410544b2-4001-4271-9855-fec4b6a6443b',
@@ -23,6 +24,7 @@ const users = [
     last_name: 'Doe',
     email: 'alikaanthony2024@gmail.com',
     password: 'SuperUser2024#',
+    created_at: '2024-06-25',
   },
 ];
 

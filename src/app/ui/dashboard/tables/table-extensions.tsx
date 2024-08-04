@@ -22,7 +22,13 @@ export const TH = ({ children, className, ...rest }: THProps) => (
 );
 
 export const TD = ({ children, className, ...rest }: TDProps) => (
-  <td {...rest} className={clsx(' px-2 py-2 font-light', className)}>
+  <td
+    {...rest}
+    className={clsx(
+      'px-2 py-2 font-light text-gray-950 dark:text-slate-300',
+      className,
+    )}
+  >
     {children}
   </td>
 );

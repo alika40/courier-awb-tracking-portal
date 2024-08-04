@@ -227,7 +227,7 @@ export const CorporateAccountSelect = ({
     <div className="mb-4 md:mb-6">
       <label
         htmlFor="customer"
-        className="mb-2 block text-sm font-bold md:text-lg"
+        className="mb-2 block text-sm font-bold dark:text-slate-400 md:text-lg"
       >
         Choose customer:
       </label>
@@ -235,12 +235,12 @@ export const CorporateAccountSelect = ({
         <select
           id="customer"
           name="customer_id"
-          className="md:text-md peer col-start-1 row-start-1 block w-full cursor-pointer appearance-none rounded-md border-gray-200 py-2 pl-10 text-sm font-medium shadow-sm hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900"
+          className="peer col-start-1 row-start-1 block w-full cursor-pointer appearance-none rounded-md border-gray-200 py-2 pl-10 text-sm font-medium text-gray-600 shadow-sm hover:shadow-none focus:border-pink-900 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:text-base md:font-black"
           defaultValue={awb && awb.customer_id}
           aria-describedby="awb-error"
         >
           <option
-            className="italic text-gray-500 outline-2 md:text-base md:font-medium"
+            className="italic text-gray-600 outline-2 dark:text-slate-200 md:text-base md:font-black"
             value=""
             disabled
           >
@@ -250,7 +250,7 @@ export const CorporateAccountSelect = ({
             <option
               key={customer.customer_id}
               value={customer.customer_id}
-              className="sm:text-md pl-4 text-sm text-gray-500 md:pl-6 md:text-base md:font-medium md:tracking-wider"
+              className="sm:text-md pl-4 text-sm text-gray-600 dark:text-slate-200 md:pl-6 md:text-base md:font-black md:tracking-wider"
             >
               {customer.name}
             </option>

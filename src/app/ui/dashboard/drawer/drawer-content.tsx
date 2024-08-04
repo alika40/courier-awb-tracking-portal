@@ -84,52 +84,53 @@ export const DashboardDrawerContent = ({
   };
 
   return (
-    <>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose} sx={{ fontSize: '20px' }}>
-            {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
-          </IconButton>
-        </DrawerHeader>
+    <Drawer variant="permanent" open={open} elevation={16}>
+      <DrawerHeader className="bg-white dark:bg-black">
+        <IconButton
+          onClick={handleDrawerClose}
+          sx={{ fontSize: '20px' }}
+          className="dark:bg-zinc-900 dark:hover:bg-pink-300"
+        >
+          {theme.direction === 'rtl' ? (
+            <ChevronRight className="text-pink-900" />
+          ) : (
+            <ChevronLeft className="text-pink-900" />
+          )}
+        </IconButton>
+      </DrawerHeader>
 
-        <Divider />
+      <Divider />
 
-        <List className="w-full rounded-lg bg-white">
-          <div className="mb-2 flex flex-col items-center bg-pink-900 p-4">
-            <AppLogo className="text-2xl md:text-8xl">
-              <h3
-                className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400 md:text-base`}
-              >
-                XL Express & Logistics LTD.
-              </h3>
-            </AppLogo>
-          </div>
-          {linkItems.map((item, index) => (
-            <NavLinks
-              key={item.name}
-              item={item}
-              open={open}
-              setOpen={setOpen}
-            />
-          ))}
-        </List>
+      <List className="w-full bg-white dark:bg-black">
+        <div className="mb-2 flex flex-col items-center bg-pink-900 p-4">
+          <AppLogo className="text-2xl md:text-8xl">
+            <h3
+              className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400 md:text-base`}
+            >
+              XL Express & Logistics LTD.
+            </h3>
+          </AppLogo>
+        </div>
+        {linkItems.map((item, index) => (
+          <NavLinks key={item.name} item={item} open={open} setOpen={setOpen} />
+        ))}
+      </List>
 
-        <div className="h-auto w-full grow rounded-md bg-white"></div>
+      <div className="h-auto w-full grow bg-white dark:bg-black"></div>
 
-        <form action={actionDispatch}>
-          <button
-            // onMouseOver={() => setOpen(true)}
-            // onMouseOut={handleDrawerClose}
-            className="text-medium ml-2 flex h-[48px] w-full grow items-center justify-start gap-2 rounded-l-md bg-gray-100 p-3 font-medium text-gray-600 hover:bg-pink-50 hover:text-pink-900 md:h-[56px] md:flex-none md:justify-start md:p-2 md:px-3"
-          >
-            <Logout
-              sx={{ fontSize: '20px' }}
-              className="ml-3 mr-5 w-6 text-pink-900"
-            />
-            <div className="font-semibold">Sign Out</div>
-          </button>
-        </form>
-      </Drawer>
-    </>
+      <form action={actionDispatch} className="bg-white dark:bg-black">
+        <button
+          // onMouseOver={() => setOpen(true)}
+          // onMouseOut={handleDrawerClose}
+          className="text-medium ml-2 mt-4 flex h-[48px] w-full grow items-center justify-start gap-2 rounded-l-md bg-gray-100 p-3 font-medium text-pink-900 hover:bg-pink-50 dark:bg-zinc-900 dark:hover:bg-pink-400 md:h-[56px] md:flex-none md:justify-start md:p-2 md:px-3 md:font-semibold"
+        >
+          <Logout
+            sx={{ fontSize: '20px' }}
+            className="ml-3 mr-5 w-6 text-pink-900"
+          />
+          <div>Sign Out</div>
+        </button>
+      </form>
+    </Drawer>
   );
 };

@@ -21,11 +21,11 @@ export default async function CardWrapperCustomers() {
     await fetchCustomersCardData();
 
   return (
-    <div className="mx-auto w-full rounded-sm bg-gray-100 p-2 md:w-[80%] md:rounded-md md:p-5">
+    <div className="mx-auto w-full rounded-sm bg-gray-100 p-2 dark:bg-zinc-900 md:w-[80%] md:rounded-md md:p-5">
       <h3
         className={clsx(
           roboto.className,
-          'mb-2 text-center text-lg font-bold text-gray-500 underline underline-offset-4 md:mb-4 md:text-xl',
+          'mb-2 text-center text-lg font-bold text-gray-500 underline underline-offset-4 dark:text-slate-400 md:mb-4 md:text-xl',
         )}
       >
         Slapshots
@@ -58,11 +58,11 @@ export async function CardWrapper({ customer_id }: { customer_id: string }) {
     await fetchAwbCardData(customer_id);
 
   return (
-    <div className="mx-auto w-full rounded-sm bg-gray-100 p-2 md:w-[80%] md:rounded-md md:p-5">
+    <div className="mx-auto w-full rounded-sm bg-gray-100 p-2 dark:bg-zinc-900 md:w-[80%] md:rounded-md md:p-5">
       <h3
         className={clsx(
           roboto.className,
-          'mb-2 text-center text-lg font-bold text-gray-500 underline underline-offset-4 md:mb-4 md:text-xl',
+          'mb-2 text-center text-lg font-bold text-gray-500 underline underline-offset-4 dark:text-slate-400 md:mb-4 md:text-xl',
         )}
       >
         Slapshots
@@ -108,7 +108,7 @@ export function Card({
       </div>
       <p
         className={`${roboto.className}
-          truncate rounded-xl bg-white px-4 py-8 text-center text-2xl font-black text-pink-900`}
+          truncate rounded-xl bg-white px-4 py-8 text-center text-2xl font-black text-pink-900 dark:bg-zinc-900`}
       >
         {value}
       </p>

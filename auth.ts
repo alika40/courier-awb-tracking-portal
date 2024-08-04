@@ -23,6 +23,7 @@ export const { auth, signIn, signOut } = NextAuth({
     Credentials({
       async authorize(credentials) {
         const parsedCredentials = SigninFormSchema.safeParse(credentials);
+        // console.log(parsedCredentials);
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
@@ -33,7 +34,7 @@ export const { auth, signIn, signOut } = NextAuth({
           if (passwordsMatch) return user;
         }
 
-        //   console.log('Invalid credentials');
+        // console.log('Invalid credentials');
         return null;
       },
     }),

@@ -56,7 +56,7 @@ export default async function Page({
       />
       {/* <AwbTable awbs={filterdAwbs} /> */}
       {/* <AwbTable /> */}
-      <div className="flex flex-col items-center justify-center gap-y-7 divide-y-4 divide-dotted divide-gray-300 md:gap-y-14">
+      <div className="flex flex-col items-center justify-center gap-y-7 divide-y-4 divide-dotted divide-gray-300 dark:divide-pink-900 md:gap-y-14">
         <div className="mx-auto w-full">
           <Suspense fallback={<CardsSkeleton />}>
             <CardWrapper customer_id={id} />

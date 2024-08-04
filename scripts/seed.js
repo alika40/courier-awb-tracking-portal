@@ -10,6 +10,7 @@ const bcrypt = require('bcrypt');
 async function seedUsers(client) {
   try {
     // await client.sql`DROP TABLE users CASCADE`;
+    await client.sql`DROP TABLE IF EXISTS users CASCADE`
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     // Create the "users" table if it doesn't exist
     const createTable = await client.sql`
@@ -18,7 +19,8 @@ async function seedUsers(client) {
         first_name VARCHAR(100) NOT NULL,
         last_name VARCHAR(100) NOT NULL,
         email TEXT NOT NULL UNIQUE,
-        password TEXT NOT NULL
+        password TEXT NOT NULL,
+        created_at Date NOT NULL
       );
     `;
 
@@ -29,8 +31,22 @@ async function seedUsers(client) {
       users.map(async (user) => {
         const hashedPassword = await bcrypt.hash(user.password, 10);
         return client.sql`
-        INSERT INTO users (id, first_name, last_name, email, password)
-        VALUES (${user.id}, ${user.first_name}, ${user.last_name}, ${user.email}, ${hashedPassword})
+        INSERT INTO users (
+          id,
+          first_name,
+          last_name,
+          email,
+          password,
+          created_at
+          )
+        VALUES (
+          ${user.id},
+          ${user.first_name},
+          ${user.last_name},
+          ${user.email},
+          ${hashedPassword},
+          ${user.created_at}
+          )
         ON CONFLICT (id) DO NOTHING;
       `;
       }),
@@ -50,21 +66,17 @@ async function seedUsers(client) {
 
 async function seedAWBs(client) {
   try {
-    // await client.sql`DROP TABLE awbs CASCADE`; 
+    await client.sql`DROP TABLE IF EXISTS awbs CASCADE`;
+    // await client.sql`CREATE TYPE status AS ENUM(${STATUS.DOCUMENTED},${STATUS.PENDING},${STATUS.DELIVERED})`;
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`; 
-    
-    // await client.sql`CREATE TYPE status AS ENUM (
-    //   ${STATUS.DOCUMENTED}, 
-    //   ${STATUS.PENDING}, 
-    //   ${STATUS.DELIVERED}
-    //   )`;
+  
 
     // Create the "invoices" table if it doesn't exist
     const createTable = await client.sql`
     CREATE TABLE IF NOT EXISTS awbs (
     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     customer_id UUID NOT NULL,
-    awb_num VARCHAR(100) NOT NULL,
+    awb_num VARCHAR(100) NOT NULL UNIQUE,
     sender VARCHAR(100) NOT NULL,
     receiver VARCHAR(100) NOT NULL,
     receiver_address VARCHAR(225) NOT NULL,
@@ -147,7 +159,7 @@ async function seedAWBs(client) {
 
 async function seedCustomers(client) {
   try {
-    // await client.sql`DROP TABLE customers CASCADE`; 
+    await client.sql`DROP TABLE IF EXISTS customers CASCADE`; 
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
     // Create the "customers" table if it doesn't exist

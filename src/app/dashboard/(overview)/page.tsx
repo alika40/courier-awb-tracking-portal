@@ -28,7 +28,7 @@ const Page = async ({
         <h1
           className={clsx(
             lusitana.className,
-            'flex text-xl font-black text-pink-900 underline underline-offset-8 md:text-2xl',
+            'flex text-xl font-black uppercase text-pink-900 underline decoration-pink-900 decoration-dotted decoration-2 underline-offset-2 md:text-2xl md:decoration-8 md:underline-offset-8',
           )}
         >
           DASHBOARD
@@ -36,7 +36,7 @@ const Page = async ({
       </div>
       {/* <DashboardContents /> */}
 
-      <div className="flex flex-col items-center justify-center gap-y-7 divide-y-4 divide-dotted divide-gray-300 md:gap-y-14">
+      <div className="flex flex-col items-center justify-center gap-y-7 divide-y-4 divide-dotted divide-gray-300 dark:divide-pink-900 md:gap-y-14">
         <div className="mx-auto w-full">
           <Suspense fallback={<CardsSkeleton />}>
             <CardWrapperCustomers />

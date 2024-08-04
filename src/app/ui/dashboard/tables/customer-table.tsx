@@ -26,14 +26,14 @@ export const CustomersTable = async ({
   return (
     <div className="flow-root">
       <div className="inline-block min-w-full align-middle">
-        <div className=" rounded-lg bg-gray-50 p-2 md:pt-0">
-          <table className="hidden min-w-full text-gray-900 md:table">
+        <div className=" rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
+          <table className="hidden min-w-full md:table">
             <caption className="caption-top">
               <div className="mb-4 mt-4 flex w-full justify-center">
                 <h3
                   className={clsx(
                     roboto.className,
-                    'flex text-lg font-bold text-gray-500 underline underline-offset-4 md:text-xl',
+                    'flex text-lg font-bold text-gray-500 underline underline-offset-4 dark:text-slate-400 md:text-xl',
                   )}
                 >
                   Table: Customers
@@ -61,19 +61,23 @@ export const CustomersTable = async ({
               {customers?.map((customer) => (
                 <tr
                   key={customer.customer_id}
-                  className="w-full border-b bg-white py-3 text-sm odd:bg-pink-50 last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                  className="w-full border-b-2 bg-white py-3 text-sm odd:bg-pink-50 last-of-type:border-none dark:border-zinc-900 dark:bg-zinc-800 dark:odd:bg-opacity-50 [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
-                  <TD className="border-r sm:pl-6">
+                  <TD className="border-r-2 dark:border-zinc-900 sm:pl-6">
                     <div className="flex items-center gap-3">
-                      <span className="rounded-full border-2 border-slate-400 bg-slate-200 p-2">
+                      <span className="rounded-full border-2 border-slate-400 bg-slate-200 p-2 dark:border-pink-900 dark:bg-black">
                         <BusinessRounded className=" text-pink-900" />
                       </span>
                       <p>{customer.name}</p>
                     </div>
                   </TD>
-                  <TD className="border-r">{customer.email}</TD>
-                  <TD className="border-r">{customer.phone}</TD>
-                  <TD className="border-r">
+                  <TD className="border-r-2 dark:border-zinc-900">
+                    {customer.email}
+                  </TD>
+                  <TD className="border-r-2 dark:border-zinc-900">
+                    {customer.phone}
+                  </TD>
+                  <TD className="border-r-2 dark:border-zinc-900">
                     {formatDateToLocal(customer.reg_date)}
                   </TD>
                   <TD>{''}</TD>

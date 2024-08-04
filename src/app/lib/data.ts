@@ -58,7 +58,7 @@ export async function fetchAwbCardData(customer_id: string) {
     const awbsOverDuePromise = sql`SELECT
         SUM(CASE WHEN status = ${STATUS.PENDING} THEN 1 ELSE 0 END) AS "over_due"
         FROM awbs
-        WHERE awbs.due_date >= NOW() AND awbs.customer_id = ${customer_id}`;
+        WHERE awbs.due_date <= NOW() AND awbs.customer_id = ${customer_id}`;
 
     const data = await Promise.all([
       awbCountPromise,
@@ -229,8 +229,8 @@ export async function fetchCustomersCardData() {
         FROM awbs
         WHERE awbs.created_at BETWEEN NOW() - INTERVAL '1 MONTH' AND NOW()`;
     const awbsCountPromise = sql`SELECT COUNT(*)
-        FROM customers 
-        WHERE customers.reg_date BETWEEN NOW() - INTERVAL '1 MONTH' AND NOW()`;
+        FROM awbs 
+        WHERE awbs.created_at BETWEEN NOW() - INTERVAL '1 MONTH' AND NOW()`;
 
     const data = await Promise.all([
       awbsCountPromise,

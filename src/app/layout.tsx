@@ -13,15 +13,14 @@ export const metadata: Metadata = {
     template: '%s | eXL Tracking Portal',
     default: 'eXL Tracking Portal',
   },
-  description: 'Dashboard built with App Router.',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+  description: 'Courier Shipment Tracking Portal',
 };
 
 export default function RootLayout({ children }: ReactNode) {
   return (
     <html lang="en">
       <head />
-      <body className={`${inter.className} bg-white antialiased`}>
+      <body className={`${inter.className} darK:bg-black bg-white antialiased`}>
         {/* 
         Use the options prop to override the default cache options—for example,
         the code snippet below shows how to change the 
