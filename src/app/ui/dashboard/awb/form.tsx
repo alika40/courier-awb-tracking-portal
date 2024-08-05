@@ -300,7 +300,7 @@ export default function Form({
                   type="date"
                   autoComplete="bday"
                   defaultValue={defaultDueDate}
-                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium font-medium text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold md:tracking-wider"
+                  className="f w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold md:tracking-wider"
                 />
               </div>
               <div className="flex items-center">
@@ -317,7 +317,7 @@ export default function Form({
                   step="0.5"
                   placeholder="5kg"
                   defaultValue={awb && awb.weight}
-                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold"
+                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm  font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold"
                 />
               </div>
             </div>
