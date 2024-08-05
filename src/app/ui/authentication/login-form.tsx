@@ -143,7 +143,7 @@ export default function LoginForm() {
               </Button>
             </div>
             <Link
-              href="/authentication/sign-up"
+              href="/sign-up"
               className="flex h-10 items-center rounded-md bg-gray-100 px-4 text-sm font-medium text-pink-900 shadow-sm transition-colors hover:bg-gray-200 hover:shadow-none md:rounded-lg md:text-base"
             >
               Sign up
