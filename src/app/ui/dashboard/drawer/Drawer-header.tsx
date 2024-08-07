@@ -12,6 +12,7 @@ import { AppBarProps } from '@/app/lib/definitions';
 import AppLogo from '../../app-logo';
 import { APP_THEME } from '@/app/lib/constants';
 import { DarkMode, LightMode } from '@mui/icons-material';
+import ThemeSwitcher from '../../hooks/useThemeSwitcher';
 
 export const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -41,30 +42,28 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 export const DashboardDrawerHeader = ({ open, setOpen }: DrawerState) => {
-  const initialValue =
-    global?.localStorage?.getItem('theme') || APP_THEME.LIGHT;
-  const [theme, setTheme] = useState(initialValue);
+  // const initialValue =
+  //   global?.localStorage?.getItem('theme') || APP_THEME.LIGHT;
+  // const [theme, setTheme] = useState(initialValue);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
-  const themeHandler = (newTheme: string) => {
-    if (newTheme === APP_THEME.DARK || newTheme === APP_THEME.LIGHT) {
-      setTheme(newTheme);
-      global?.localStorage?.setItem('theme', newTheme);
-    }
-  };
+  // const themeHandler = (newTheme: string) => {
+  //   if (newTheme === APP_THEME.DARK || newTheme === APP_THEME.LIGHT) {
+  //     setTheme(newTheme);
+  //     global?.localStorage?.setItem('theme', newTheme);
+  //   }
+  // };
 
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (theme === APP_THEME.DARK) {
-      root.classList.add(APP_THEME.DARK);
-      // console.log(root.classList.contains(APP_THEME.DARK), theme);
-    } else {
-      root.classList.remove(APP_THEME.DARK);
-      // console.log(root.classList.contains(APP_THEME.DARK), theme);
-    }
-  }, [theme]);
+  // useEffect(() => {
+  //   const root = window.document.documentElement;
+  //   if (theme === APP_THEME.DARK) {
+  //     root.classList.add(APP_THEME.DARK);
+  //   } else {
+  //     root.classList.remove(APP_THEME.DARK);
+  //   }
+  // }, [theme]);
 
   return (
     <AppBar position="fixed" open={open} style={{ background: '#831843' }}>
@@ -84,11 +83,7 @@ export const DashboardDrawerHeader = ({ open, setOpen }: DrawerState) => {
         <div className="flex w-full flex-row justify-between">
           <AppLogo className="my-auto text-2xl md:text-3xl"> </AppLogo>
           <div className="my-auto cursor-pointer">
-            {theme === APP_THEME.LIGHT ? (
-              <DarkMode onClick={() => themeHandler(APP_THEME.DARK)} />
-            ) : (
-              <LightMode onClick={() => themeHandler(APP_THEME.LIGHT)} />
-            )}
+            <ThemeSwitcher />
           </div>
         </div>
       </Toolbar>

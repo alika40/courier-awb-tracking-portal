@@ -33,10 +33,25 @@ export function CardsSkeleton() {
   );
 }
 
+export function UsersTableSkeleton() {
+  return (
+    <div
+      className={`${shimmer} relative mx-auto w-full overflow-hidden rounded-lg bg-gray-200 p-2 dark:bg-zinc-700`}
+    >
+      <div className="mb-4 mt-4 flex w-full flex-col justify-center">
+        <div
+          className={`mx-auto h-7 w-64 rounded-md bg-gray-300 text-lg font-bold dark:bg-zinc-800 md:text-xl`}
+        />
+      </div>
+      <div className="h-[200px] w-full overflow-x-auto overflow-y-auto rounded-lg bg-gray-300 dark:bg-zinc-800" />
+    </div>
+  );
+}
+
 export function CustomersTableSkeleton() {
   return (
     <div
-      className={`${shimmer} relative mx-auto hidden w-full overflow-hidden rounded-lg bg-gray-200 p-2 dark:bg-zinc-700 sm:w-[500px] md:block md:w-[700px]`}
+      className={`${shimmer} relative mx-auto w-full overflow-hidden rounded-lg bg-gray-200 p-2 dark:bg-zinc-700`}
     >
       <div className="mb-4 mt-4 flex w-full flex-col justify-center">
         <div
@@ -80,7 +95,13 @@ export default function DashboardSkeleton() {
           <CardsSkeleton />
         </div>
 
-        <div className="hidden w-full justify-center pt-14 md:flex">
+        <div className="w-full justify-center pt-14">
+          <div>
+            <UsersTableSkeleton />
+          </div>
+        </div>
+
+        <div className="hidden w-full justify-center pt-14 md:block">
           <div>
             <CustomersTableSkeleton />
             <div className="mt-2 flex w-full justify-center">
@@ -94,11 +115,10 @@ export default function DashboardSkeleton() {
           </div>
         </div>
 
-        <div className="hidden w-full justify-center pt-14 md:flex">
+        {/* <div className="hidden w-full justify-center pt-14 md:flex">
           <div>
             <AWBsTableSkeleton />
             <div className="mt-2 flex w-full justify-center">
-              {/* PaginationAWB */}
               <div className="mr-5 h-10 w-10 rounded-md bg-gray-200 dark:bg-zinc-700" />
               <div
                 className={`${shimmer} relative h-10 w-1/4 overflow-hidden rounded-md bg-gray-200 dark:bg-zinc-700`}
@@ -106,7 +126,7 @@ export default function DashboardSkeleton() {
               <div className="ml-5 h-10 w-10 rounded-md bg-gray-200 dark:bg-zinc-700" />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

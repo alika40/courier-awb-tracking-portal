@@ -1,9 +1,18 @@
-import { fetchCustomersPages, fetchFilteredCustomers } from '@/app/lib/data';
+import {
+  fetchCustomersPages,
+  fetchUsers,
+  fetchFilteredCustomers,
+} from '@/app/lib/data';
 import CardWrapperCustomers from '@/app/ui/dashboard/cards';
 import PaginationCustomer from '@/app/ui/dashboard/paginations/pagination-customer';
 import { CustomersTable } from '@/app/ui/dashboard/tables/customer-table';
+import { UsersTable } from '@/app/ui/dashboard/tables/user-table';
 import { lusitana } from '@/app/ui/fonts';
-import { CardsSkeleton, CustomersTableSkeleton } from '@/app/ui/skeletons';
+import {
+  CardsSkeleton,
+  UsersTableSkeleton,
+  CustomersTableSkeleton,
+} from '@/app/ui/skeletons';
 import clsx from 'clsx';
 import { Suspense } from 'react';
 
@@ -18,8 +27,9 @@ const Page = async ({
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
 
-  const [totalPages, customers] = await Promise.all([
+  const [totalPages, users, customers] = await Promise.all([
     fetchCustomersPages(query),
+    fetchUsers(),
     fetchFilteredCustomers(query, currentPage),
   ]);
   return (
@@ -42,7 +52,12 @@ const Page = async ({
             <CardWrapperCustomers />
           </Suspense>
         </div>
-        <div className="hidden w-full justify-center pt-14 md:flex">
+        <div className="mx-auto w-full justify-center pt-14">
+          <Suspense fallback={<UsersTableSkeleton />}>
+            <UsersTable users={users} />
+          </Suspense>
+        </div>
+        <div className="mx-auto hidden w-full justify-center pt-14 md:block">
           <div>
             <Suspense
               key={query + currentPage}

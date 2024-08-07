@@ -40,7 +40,7 @@ export function NavLinks({ item, open, setOpen }: NavItems) {
       >
         <Link
           href={item.href}
-          onClick={() => setOpen(false)}
+          // onClick={() => setOpen(false)}
           // target={item.target}
           // onMouseOver={() => setOpen(true)}
           // onMouseOut={() => setOpen(false)}

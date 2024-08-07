@@ -1,24 +1,26 @@
 'use client';
 
-// import { useState, useEffect, ChangeEvent } from 'react';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
+import {
+  House,
+  LocalShipping,
+  NumbersTwoTone,
+  Person,
+} from '@mui/icons-material';
 // import { useDebouncedCallback } from 'use-debounce';
 import {
   StatusInTransitRemarks,
   DeliveryDetails,
   StatusCheckDocumented,
   StatusCheckOthers,
-  // AccountTypeSelect,
   CorporateAccountSelect,
 } from './create-form-helper';
 import { CustomerField, AWBInputData, State } from '@/app/lib/definitions';
 // import CustomSnackbar from '../../snackbar';
-import { useCreateAwbFormReducer } from './customHooks/useCreateAwbForm';
+import { useCreateAwbFormReducer } from '../../hooks/useCreateAwbForm';
 import { ErrorState } from '../error-state';
-// import { useAccountTypeSelectReducer } from './customHooks/useAccountType';
 import { ACTION } from '@/app/lib/constants';
-// import { ERROR_MESSAGE } from '@/app/lib/constants';
 
 export default function Form({
   awb,
@@ -103,12 +105,6 @@ export default function Form({
 
   return (
     <form action={dispatch}>
-      {/* Account Type */}
-      {/* <AccountTypeSelect
-        accountTypeSelect={accountTypeSelect}
-        handleAcctTypeSelect={handleAcctTypeSelect}
-      /> */}
-
       <div className="rounded-md bg-gray-50 p-2 dark:bg-zinc-900 dark:text-slate-400 md:p-6">
         {/* Customer Name */}
         <CorporateAccountSelect
@@ -135,9 +131,12 @@ export default function Form({
                 // onChange={(e) => trackErrorState(e)}
                 defaultValue={awb && awb.awb_num}
                 placeholder="Enter Air Way Bill Number"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
-              {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
+              <NumbersTwoTone
+                sx={{ fontSize: '18px' }}
+                className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
+              />
             </div>
             {/* Manage Error Component */}
             {state?.errors?.awb_num && (
@@ -162,9 +161,12 @@ export default function Form({
                 defaultValue={awb && awb.sender}
                 // onChange={(e) => trackErrorState(e)}
                 placeholder="Sender's Name"
-                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider "
+                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider "
               />
-              {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
+              <Person
+                sx={{ fontSize: '18px' }}
+                className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
+              />
             </div>
             {/* Manage Error Component */}
             {state?.errors?.sender && (
@@ -188,9 +190,12 @@ export default function Form({
                 type="text"
                 defaultValue={awb && awb.receiver}
                 placeholder="Enter Receiver's Name"
-                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
+                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
-              {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
+              <Person
+                sx={{ fontSize: '18px' }}
+                className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
+              />
             </div>
             {/* Manage Error Component */}
             {state?.errors?.receiver && (
@@ -215,9 +220,12 @@ export default function Form({
                 defaultValue={awb && awb.receiver_address}
                 placeholder="Enter Receiver's Address"
                 autoComplete="street-address"
-                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
+                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
-              {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
+              <House
+                sx={{ fontSize: '18px' }}
+                className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
+              />
             </div>
             {/* Manage Error Component */}
             {state?.errors?.receiver_address && (
@@ -242,9 +250,12 @@ export default function Form({
                 defaultValue={awb && awb.destination}
                 placeholder="Enter Destination"
                 autoComplete="street-address1"
-                className="md:text-medium peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:font-bold md:tracking-wider"
+                className="md:text-medium peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
-              {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
+              <LocalShipping
+                sx={{ fontSize: '18px' }}
+                className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
+              />
             </div>
             {/* Manage Error Component */}
             {state?.errors?.destination && (
@@ -272,7 +283,6 @@ export default function Form({
                 placeholder="Enter Item Description"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:md:font-bold md:tracking-wider"
               />
-              {/* <CurrencyDollarIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" /> */}
             </div>
             {/* Manage Error Component */}
             {state?.errors?.item_description && (

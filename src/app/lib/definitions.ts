@@ -88,11 +88,13 @@ export type FormStateAuth2 =
 
 export interface User {
   id: string;
-  name: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
-  privilege: 'LEVEL-1' | 'LEVEL-2';
-  role: 'ADMINISTRATOR' | 'USER';
+  created_at: string;
+  // privilege: 'LEVEL-1' | 'LEVEL-2';
+  // role: 'ADMINISTRATOR' | 'USER';
 }
 
 export type Customer = {

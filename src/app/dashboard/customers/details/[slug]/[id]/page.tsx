@@ -62,7 +62,7 @@ export default async function Page({
             <CardWrapper customer_id={id} />
           </Suspense>
         </div>
-        <div className="hidden w-full justify-center pt-14 md:flex">
+        <div className="hidden w-full justify-center pt-14 md:block">
           <div>
             <Suspense
               key={query + currentPage}

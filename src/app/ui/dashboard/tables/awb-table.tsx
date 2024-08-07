@@ -176,7 +176,7 @@ export async function AwbTable({
                     </TD>
                     <TD>{''}</TD>
                     <TD>
-                      <div className="flex justify-end gap-3">
+                      <div className="flex justify-start gap-3">
                         <UpdateAwb id={awb.id} />
                         <DeleteAwb id={awb.id} />
                       </div>

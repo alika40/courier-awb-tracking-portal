@@ -81,6 +81,26 @@ export async function fetchAwbCardData(customer_id: string) {
   }
 }
 
+export async function fetchUsers() {
+  noStore();
+  try {
+    const data = await sql<User>`
+      SELECT
+        id,
+        first_name,
+        last_name,
+        email,
+        created_at
+      FROM users
+    `;
+
+    return data.rows;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all Users.');
+  }
+}
+
 const ITEMS_PER_PAGE = 10;
 
 export async function fetchFilteredAwbs(
@@ -267,7 +287,7 @@ export async function fetchCustomersCreate() {
     return data.rows;
   } catch (err) {
     console.error('Database Error:', err);
-    // throw new Error('Failed to fetch all customers.');
+    throw new Error('Failed to fetch all customers.');
   }
 }
 

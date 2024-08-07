@@ -102,14 +102,18 @@ export const DashboardDrawerContent = ({
       <Divider />
 
       <List className="w-full bg-white dark:bg-black">
-        <div className="mb-2 flex flex-col items-center bg-pink-900 p-4">
-          <AppLogo className="text-2xl md:text-8xl">
-            <h3
-              className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400 md:text-base`}
-            >
-              XL Express & Logistics LTD.
-            </h3>
-          </AppLogo>
+        <div className="mb-2 flex h-36 flex-col items-center bg-white dark:bg-black">
+          {open ? (
+            <AppLogo className="text-2xl md:text-8xl">
+              <h3
+                className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400 md:text-base`}
+              >
+                XL Express & Logistics LTD.
+              </h3>
+            </AppLogo>
+          ) : (
+            <div className="ml-4 h-auto w-full grow rounded-l-md bg-gray-100 dark:bg-zinc-900"></div>
+          )}
         </div>
         {linkItems.map((item, index) => (
           <NavLinks key={item.name} item={item} open={open} setOpen={setOpen} />

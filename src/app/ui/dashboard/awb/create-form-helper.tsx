@@ -1,7 +1,7 @@
 'use client';
 
-import { ACTION, ERROR_MESSAGE, STATUS } from '@/app/lib/constants';
-import { AWB, AWBInputData, CustomerField, State } from '@/app/lib/definitions';
+import { ERROR_MESSAGE, STATUS } from '@/app/lib/constants';
+import { AWBInputData, CustomerField, State } from '@/app/lib/definitions';
 import {
   Schedule,
   Done,
@@ -9,7 +9,7 @@ import {
   PeopleAltRounded,
 } from '@mui/icons-material';
 import clsx from 'clsx';
-import CustomSnackbar from '../../snackbar';
+// import CustomSnackbar from '../../snackbar';
 import { ErrorState } from '../error-state';
 
 export const StatusInTransitRemarks = ({ awb }: { awb: AWBInputData }) => (
@@ -235,7 +235,7 @@ export const CorporateAccountSelect = ({
         <select
           id="customer"
           name="customer_id"
-          className="peer col-start-1 row-start-1 block w-full cursor-pointer appearance-none rounded-md border-gray-200 py-2 pl-10 text-sm font-medium text-gray-600 shadow-sm hover:shadow-none focus:border-pink-900 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:text-base md:font-black"
+          className="peer col-start-1 row-start-1 block w-full cursor-pointer appearance-none rounded-md border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm hover:shadow-none focus:border-pink-900 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:text-base md:font-black"
           defaultValue={awb && awb.customer_id}
           aria-describedby="awb-error"
         >
@@ -250,13 +250,16 @@ export const CorporateAccountSelect = ({
             <option
               key={customer.customer_id}
               value={customer.customer_id}
-              className="sm:text-md pl-4 text-sm text-gray-600 dark:text-slate-200 md:pl-6 md:text-base md:font-black md:tracking-wider"
+              className="sm:text-md peer text-sm text-gray-600 dark:text-slate-200 md:text-base md:font-black md:tracking-wider"
             >
               {customer.name}
             </option>
           ))}
         </select>
-        <PeopleAltRounded className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+        <PeopleAltRounded
+          sx={{ fontSize: '18px' }}
+          className="pointer-events-none absolute left-2 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
+        />
       </div>
       {/* Manage Error Component */}
       <div id="awb-error" aria-live="polite" aria-atomic="true">

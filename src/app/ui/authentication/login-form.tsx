@@ -29,29 +29,27 @@ export default function LoginForm() {
     <div className="bg-[url('/web-contour.jpg')] bg-cover bg-fixed pb-4 pt-20 md:pb-20 md:pt-40">
       <form
         action={dispatch}
-        // mb-4 mt-24 md:mb-20 md:mt-40
         className="m-auto sm:w-[50%] md:w-[40%] lg:w-[35%]"
       >
-        <div className="round-md z-20 flex-1 px-6 pb-6 shadow-none shadow-slate-950 sm:bg-gray-100 md:rounded-lg md:pt-6 md:shadow-lg">
-          <div className="flex w-full flex-col items-center">
-            <AppLogo className="text-3xl md:text-4xl">
+        <div className="round-md z-20 flex-1 px-6 pb-6 pt-6 shadow-none shadow-slate-950 sm:bg-gray-100 md:rounded-lg md:pt-6 md:shadow-lg">
+          <div className="round-t-md md:rounded-t-lg md:bg-pink-900 md:py-5">
+            <AppLogo className="w-full text-center text-3xl md:text-4xl">
               <h3
-                className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400`}
+                className={`${lusitana.className} -mt-[5px] text-center text-sm font-semibold text-slate-400`}
               >
                 XL Express & Logistics LTD.
               </h3>
             </AppLogo>
-
-            <h1
-              className={`${lusitana.className} mb-2 mt-5 text-center text-2xl font-black text-slate-900 md:text-gray-600`}
-            >
-              Log In
-            </h1>
           </div>
+          <h1
+            className={`${lusitana.className} mb-2 mt-5 text-center text-2xl font-black text-white md:text-gray-600`}
+          >
+            Log In
+          </h1>
           <div className="w-full">
             <div>
               <label
-                className="mb-1 mt-3 block text-xs font-medium text-slate-900 md:text-base"
+                className="mb-1 mt-3 block text-xs font-medium text-white md:text-base md:text-gray-600"
                 htmlFor="email"
               >
                 Email
@@ -78,7 +76,7 @@ export default function LoginForm() {
 
             <div>
               <label
-                className="mb-1 mt-3 block text-xs font-medium text-slate-900 md:text-base"
+                className="mb-1 mt-3 block text-xs font-medium text-white md:text-base md:text-gray-600"
                 htmlFor="password"
               >
                 Password
@@ -139,7 +137,7 @@ export default function LoginForm() {
                 className="w-full rounded-md md:rounded-lg md:text-base"
                 pendingText="Authencating..."
               >
-                Log in <ArrowRight className="ml-auto h-5 w-5 text-gray-50" />
+                Log in <ArrowRight className="text-whte ml-auto h-5 w-5" />
               </Button>
             </div>
             <Link

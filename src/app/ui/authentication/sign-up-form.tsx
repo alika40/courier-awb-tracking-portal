@@ -12,7 +12,7 @@ import {
 import Link from 'next/link';
 import { useFormState } from 'react-dom';
 import AppLogo from '../app-logo';
-import useEmailValidator from './customHooks/useEmailValidator';
+// import useEmailValidator from '../hooks/useEmailValidator';
 import { signup } from '@/app/lib/actions/authentication/actionManager';
 import { Button } from '../button';
 import { useState } from 'react';
@@ -37,26 +37,27 @@ export default function SignUpForm() {
         action={dispatch}
         className="m-auto sm:w-[50%] md:w-[40%] lg:w-[35%]"
       >
-        <div className="round-md z-20 flex-1 px-6 shadow-none shadow-black sm:bg-gray-100 md:rounded-lg md:pt-6 md:shadow-lg">
-          <div className="flex w-full flex-col items-center">
-            <AppLogo className="text-3xl md:text-4xl">
+        <div className="round-md z-20 flex-1 px-6 pt-6 shadow-none shadow-black sm:bg-gray-100 md:rounded-lg md:pt-6 md:shadow-lg">
+          <div className="md:rounded-t-lg md:bg-pink-900 md:py-5">
+            <AppLogo className="w-full text-center text-3xl md:text-4xl">
               <h3
-                className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400`}
+                className={`${lusitana.className} -mt-[5px] text-center text-sm font-semibold text-slate-400`}
               >
                 XL Express & Logistics LTD.
               </h3>
             </AppLogo>
-
-            <h1
-              className={`${lusitana.className} mb-2 mt-5 text-center text-2xl font-black text-slate-900 md:text-gray-600`}
-            >
-              Register
-            </h1>
           </div>
+
+          <h1
+            className={`${lusitana.className} mb-2 mt-5 text-center text-2xl font-black text-white md:text-gray-600`}
+          >
+            Register
+          </h1>
+
           <div className="w-full">
             <div>
               <label
-                className="mb-1 mt-3 block text-xs font-medium text-slate-900 md:text-base"
+                className="mb-1 mt-3 block text-xs font-medium text-white md:text-base md:text-slate-900"
                 htmlFor="first-name"
               >
                 First Name
@@ -82,7 +83,7 @@ export default function SignUpForm() {
 
             <div>
               <label
-                className="mb-1 mt-3 block text-xs font-medium text-slate-900 md:text-base"
+                className="mb-1 mt-3 block text-xs font-medium text-white md:text-base md:text-slate-900"
                 htmlFor="last-name"
               >
                 Last Name
@@ -108,7 +109,7 @@ export default function SignUpForm() {
 
             <div>
               <label
-                className="mb-1 mt-3 block text-xs font-medium text-slate-900 md:text-base"
+                className="mb-1 mt-3 block text-xs font-medium text-white md:text-base md:text-slate-900"
                 htmlFor="email"
               >
                 Email
@@ -138,7 +139,7 @@ export default function SignUpForm() {
 
             <div>
               <label
-                className="mb-1 mt-3 block text-xs font-medium text-slate-900 md:text-base"
+                className="mb-1 mt-3 block text-xs font-medium text-white md:text-base md:text-slate-900"
                 htmlFor="password"
               >
                 Password
@@ -195,7 +196,7 @@ export default function SignUpForm() {
 
             <div>
               <label
-                className="mb-1 mt-3 block text-xs font-medium text-slate-900 md:text-base"
+                className="mb-1 mt-3 block text-xs font-medium text-white md:text-base md:text-slate-900"
                 htmlFor="confirm-password"
               >
                 Confirm Password
