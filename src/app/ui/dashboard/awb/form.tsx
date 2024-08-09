@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-import {
-  House,
-  LocalShipping,
-  NumbersTwoTone,
-  Person,
-} from '@mui/icons-material';
+import House from '@mui/icons-material/House';
+import LocalShipping from '@mui/icons-material/LocalShipping';
+import NumbersTwoTone from '@mui/icons-material/NumbersTwoTone';
+import Person from '@mui/icons-material/Person';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 // import { useDebouncedCallback } from 'use-debounce';
 import {
   StatusInTransitRemarks,
@@ -37,6 +37,8 @@ export default function Form({
 }) {
   // const [open, setOpen] = useState<boolean>(false); // Snackbar Error Message
   // const [isErrorState, setIsErrorState] = useState<State>(state);
+  const style = useTheme();
+  const matches = useMediaQuery(style.breakpoints.up('sm'));
   let defaultDueDate = '';
 
   const {
@@ -45,59 +47,6 @@ export default function Form({
     showStatusTextareaField,
     hideAllDisplayFields,
   } = useCreateAwbFormReducer(awb!!);
-
-  // const { accountTypeSelect, handleAcctTypeSelect } =
-  //   useAccountTypeSelectReducer(btnText, awb!!);
-
-  //const handleClick = () => {
-  // Handles 'CustomSnackbar' click
-  // setOpen(() => true);
-  //};
-
-  /*
-  const removeObjProps = (propName: string, state: State) => {
-    delete state.errors[propName];
-    console.log(state);
-    return JSON.stringify(state.errors) === '{}'
-      ? { ...state, massage: null }
-      : state;
-  };
-
-  const addObjProps = (propName: string, state: State) => {
-    const newState = {
-      ...state,
-      errors: { ...state.errors, [propName]: [`${ERROR_MESSAGE[propName]}`] },
-    };
-    console.log(newState);
-    return newState;
-  };
-
-  const trackErrorState = useDebouncedCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      e.preventDefault();
-      const getInputValue = e.target.value;
-      const getInputName = e.target.name;
-      const isError = JSON.stringify(state.errors) === '{}';
-      //only run if there's an error
-      setIsErrorState(() => {
-        if (!isError) {
-          return getInputValue.trim()
-            ? removeObjProps(getInputName, state)
-            : addObjProps(getInputName, state);
-        }
-        return state;
-      });
-    },
-    1000,
-  );*/
-
-  // useEffect(() => {
-  // window.onbeforeunload = () => true;
-  // return () => {
-  //   window.onbeforeunload = null;
-  // };
-  // setIsErrorState(() => state);
-  // }, []);
 
   if (btnText === ACTION.EDIT) {
     defaultDueDate = new Date(awb!!.due_date).toISOString().substring(0, 10);
@@ -128,13 +77,14 @@ export default function Form({
                 id="awb_num"
                 name="awb_num"
                 type="text"
-                // onChange={(e) => trackErrorState(e)}
                 defaultValue={awb && awb.awb_num}
                 placeholder="Enter Air Way Bill Number"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
               <NumbersTwoTone
-                sx={{ fontSize: '18px' }}
+                sx={{
+                  fontSize: matches ? '20px' : '18px',
+                }}
                 className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
               />
             </div>
@@ -159,12 +109,13 @@ export default function Form({
                 name="sender"
                 type="text"
                 defaultValue={awb && awb.sender}
-                // onChange={(e) => trackErrorState(e)}
                 placeholder="Sender's Name"
                 className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider "
               />
               <Person
-                sx={{ fontSize: '18px' }}
+                sx={{
+                  fontSize: matches ? '20px' : '18px',
+                }}
                 className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
               />
             </div>
@@ -193,7 +144,9 @@ export default function Form({
                 className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
               <Person
-                sx={{ fontSize: '18px' }}
+                sx={{
+                  fontSize: matches ? '20px' : '18px',
+                }}
                 className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
               />
             </div>
@@ -223,7 +176,9 @@ export default function Form({
                 className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
               <House
-                sx={{ fontSize: '18px' }}
+                sx={{
+                  fontSize: matches ? '20px' : '18px',
+                }}
                 className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
               />
             </div>
@@ -253,7 +208,9 @@ export default function Form({
                 className="md:text-medium peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
               <LocalShipping
-                sx={{ fontSize: '18px' }}
+                sx={{
+                  fontSize: matches ? '20px' : '18px',
+                }}
                 className="pointer-events-none absolute left-2 top-1/2  h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-pink-900"
               />
             </div>

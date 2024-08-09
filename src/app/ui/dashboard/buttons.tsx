@@ -6,6 +6,7 @@ import { Edit, Delete, VisibilityRounded } from '@mui/icons-material';
 import { CircularProgress, Tooltip } from '@mui/material';
 import Link from 'next/link';
 import { useFormStatus } from 'react-dom';
+import { ActionButton } from '../button';
 // import { deleteInvoice } from '@/app/lib/actions';
 
 export function UpdateCustomer({ id }: { id: string }) {
@@ -47,7 +48,7 @@ export function DeleteCustomer({ id }: { id: string }) {
   const deleteCustomerWithId = deleteCustomer.bind(null, id);
   return (
     <form action={deleteCustomerWithId}>
-      <Submit />
+      <ActionButton />
     </form>
   );
 }
@@ -69,26 +70,7 @@ export function DeleteAwb({ id }: { id: string }) {
   const deleteAwbWithId = deleteAwb.bind(null, id);
   return (
     <form action={deleteAwbWithId}>
-      <Submit />
+      <ActionButton />
     </form>
-  );
-}
-
-function Submit() {
-  const status = useFormStatus();
-  return (
-    <Tooltip title="Delete" placement="bottom" arrow>
-      <button
-        disabled={status.pending}
-        className="rounded-md border p-2 hover:bg-gray-100 dark:border-none dark:hover:bg-opacity-50"
-      >
-        <span className="sr-only">Delete</span>
-        {status.pending ? (
-          <CircularProgress size={16} className="w-4 text-pink-900" />
-        ) : (
-          <Delete sx={{ fontSize: '20px' }} className="w-4 text-pink-900" />
-        )}
-      </button>
-    </Tooltip>
   );
 }

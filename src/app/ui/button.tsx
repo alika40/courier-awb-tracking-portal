@@ -1,4 +1,7 @@
-import { CircularProgress } from '@mui/material';
+'use client';
+
+import { Delete } from '@mui/icons-material';
+import { CircularProgress, Tooltip } from '@mui/material';
 import clsx from 'clsx';
 import { MouseEvent } from 'react';
 import { useFormStatus } from 'react-dom';
@@ -41,5 +44,24 @@ export function Button({
         </>
       )}
     </button>
+  );
+}
+
+export function ActionButton() {
+  const status = useFormStatus();
+  return (
+    <Tooltip title="Delete" placement="bottom" arrow>
+      <button
+        disabled={status.pending}
+        className="rounded-md border p-2 hover:bg-gray-100 dark:border-none dark:hover:bg-opacity-50"
+      >
+        <span className="sr-only">Delete</span>
+        {status.pending ? (
+          <CircularProgress size={16} className="w-4 text-pink-900" />
+        ) : (
+          <Delete sx={{ fontSize: '20px' }} className="w-4 text-pink-900" />
+        )}
+      </button>
+    </Tooltip>
   );
 }

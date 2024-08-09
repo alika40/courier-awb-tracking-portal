@@ -1,10 +1,7 @@
-'use client';
-
 import clsx from 'clsx';
 import { roboto } from '../../fonts';
 import SearchCustomer from '../searches/search-customer';
 import { TD, TH } from './table-extensions';
-// import { customers } from '@/app/lib/placeholder-data';
 import {
   DeleteCustomer,
   UpdateCustomer,
@@ -12,21 +9,22 @@ import {
 } from '../buttons';
 import { BusinessRounded } from '@mui/icons-material';
 import { formatDateToLocal } from '@/app/lib/utils';
-import { Customer } from '@/app/lib/definitions';
+import { fetchFilteredCustomers } from '@/app/lib/data';
 
 export const CustomersTable = async ({
-  customers,
+  query,
+  currentPage,
 }: {
-  customers: Customer[];
+  query: string;
+  currentPage: number;
 }) => {
   // await new Promise((resolve) => setTimeout(resolve, 3000));
-  // console.log(query, currentPage); 'Google Inc'
-  // const customers = await fetchCorporateCustomers();
+  const customers = await fetchFilteredCustomers(query, currentPage);
 
   return (
     <div className="flow-root">
       <div className="inline-block min-w-full align-middle">
-        <div className=" rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
+        <div className=" overflow-x-auto rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
           <table className="hidden min-w-full md:table">
             <caption className="caption-top">
               <div className="mb-4 mt-4 flex w-full justify-center">

@@ -1,18 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import MuiAppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { drawerWidth, DrawerState } from './drawer-style';
+import { drawerWidth } from './drawer-style';
 import { AppBarProps } from '@/app/lib/definitions';
 import AppLogo from '../../app-logo';
-import { APP_THEME } from '@/app/lib/constants';
-import { DarkMode, LightMode } from '@mui/icons-material';
 import ThemeSwitcher from '../../hooks/useThemeSwitcher';
+import { DashboardContext } from '../dashboard';
 
 export const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -41,29 +40,8 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-export const DashboardDrawerHeader = ({ open, setOpen }: DrawerState) => {
-  // const initialValue =
-  //   global?.localStorage?.getItem('theme') || APP_THEME.LIGHT;
-  // const [theme, setTheme] = useState(initialValue);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  // const themeHandler = (newTheme: string) => {
-  //   if (newTheme === APP_THEME.DARK || newTheme === APP_THEME.LIGHT) {
-  //     setTheme(newTheme);
-  //     global?.localStorage?.setItem('theme', newTheme);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const root = window.document.documentElement;
-  //   if (theme === APP_THEME.DARK) {
-  //     root.classList.add(APP_THEME.DARK);
-  //   } else {
-  //     root.classList.remove(APP_THEME.DARK);
-  //   }
-  // }, [theme]);
+export const DashboardDrawerHeader = () => {
+  const { open, setOpen } = useContext(DashboardContext);
 
   return (
     <AppBar position="fixed" open={open} style={{ background: '#831843' }}>
@@ -71,7 +49,7 @@ export const DashboardDrawerHeader = ({ open, setOpen }: DrawerState) => {
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          onClick={handleDrawerOpen}
+          onClick={() => setOpen(true)}
           edge="start"
           sx={{
             marginRight: 1,

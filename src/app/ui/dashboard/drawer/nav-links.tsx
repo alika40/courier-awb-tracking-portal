@@ -8,6 +8,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Dispatcher } from '@/app/lib/definitions';
 import clsx from 'clsx';
+import { useContext } from 'react';
+import { DashboardContext } from '../dashboard';
 // import Divider from '@mui/material/Divider';
 // import { lusitana, roboto } from '../../fonts';
 
@@ -19,11 +21,12 @@ type NavItems = {
     icon: JSX.Element;
     color: string;
   };
-  open: boolean;
-  setOpen: Dispatcher<boolean>;
+  // open: boolean;
+  // setOpen: Dispatcher<boolean>;
 };
 
-export function NavLinks({ item, open, setOpen }: NavItems) {
+export function NavLinks({ item }: NavItems) {
+  const { open, setOpen } = useContext(DashboardContext);
   const pathname = usePathname();
 
   return (
@@ -50,7 +53,6 @@ export function NavLinks({ item, open, setOpen }: NavItems) {
               minHeight: 48,
               justifyContent: open ? 'initial' : 'center',
               px: 2.5,
-              // background: pathname === item.href ? '#fce7f3' : '',
             }}
           >
             <ListItemIcon
@@ -64,7 +66,6 @@ export function NavLinks({ item, open, setOpen }: NavItems) {
               {item.icon}
             </ListItemIcon>
             <ListItemText
-              // className="text-blue-600 md:font-black"
               primary={item.name}
               sx={{
                 opacity: open ? 1 : 0,

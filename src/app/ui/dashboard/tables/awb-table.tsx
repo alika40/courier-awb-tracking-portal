@@ -1,16 +1,12 @@
-'use client';
-
-// import Image from 'next/image';
 import { UpdateAwb, DeleteAwb } from '@/app/ui/dashboard/buttons';
-import { awbs } from '@/app/lib/placeholder-data';
 import { STATUS } from '@/app/lib/constants';
 import { Schedule, Done, LocalShipping } from '@mui/icons-material';
 import clsx from 'clsx';
 import SearchAWB from '../searches/search-awb';
 import { roboto } from '../../fonts';
 import { TD, TH } from './table-extensions';
-import { AWBTable } from '@/app/lib/definitions';
 import { formatDateToLocal, formatTimeToLocal } from '@/app/lib/utils';
+import { fetchFilteredAwbs } from '@/app/lib/data';
 
 const AwbStatus = ({ status }: { status: string }) => {
   return (
@@ -50,30 +46,22 @@ const AwbStatus = ({ status }: { status: string }) => {
 };
 
 export async function AwbTable({
-  awbs,
   customer_id,
   query,
   currentPage,
 }: {
-  awbs: AWBTable[];
   customer_id: string;
   query: string;
   currentPage: number;
 }) {
-  // const [query, setQueryTerm] = useState<string>('');
+  const awbs = await fetchFilteredAwbs(customer_id, query, currentPage);
   // await new Promise((resolve) => setTimeout(resolve, 3000));
-
-  // const filterdAwbs = query
-  //   ? awbs
-  //       .filter((awb) => !awb.customer_id)
-  //       .filter((awb) => (!query ? awb : awb.awb_num === query))
-  //   : awbs;
 
   return (
     <>
       <div className="flow-root">
         <div className="inline-block min-w-full align-middle">
-          <div className="rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
+          <div className="overflow-x-auto rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
             <table className="hidden min-w-full md:table">
               <caption className="caption-top">
                 <div className="mb-4 mt-4 flex w-full justify-center">

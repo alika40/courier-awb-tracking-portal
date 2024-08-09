@@ -5,7 +5,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Logout,
-  AddBusiness,
   DashboardCustomize,
   ManageAccounts,
   Troubleshoot,
@@ -21,6 +20,8 @@ import { DrawerHeader } from './Drawer-header';
 import { NavLinks } from './nav-links';
 import AppLogo from '../../app-logo';
 import { lusitana } from '../../fonts';
+import { useContext } from 'react';
+import { DashboardContext } from '../dashboard';
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
@@ -47,13 +48,6 @@ const linkItems = [
     icon: <Create sx={{ fontSize: '20px' }} />,
     color: '#831843',
   },
-  // {
-  //   name: 'Customers',
-  //   href: '/dashboard/customers',
-  //   target: '_self',
-  //   icon: <AddBusiness sx={{ fontSize: '20px' }} />,
-  //   color: '#831843',
-  // },
   {
     name: 'Add Customer',
     href: '/dashboard/customers/create',
@@ -69,25 +63,21 @@ const linkItems = [
     color: '#831843',
   },
 ];
-interface DrawerStatePlus extends DrawerState {
-  actionDispatch?: () => void;
-}
 
 export const DashboardDrawerContent = ({
-  open,
-  setOpen,
   actionDispatch,
-}: DrawerStatePlus) => {
+}: {
+  actionDispatch?: () => void;
+}) => {
   const theme = useTheme();
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const { open, setOpen } = useContext(DashboardContext);
 
   return (
     <Drawer variant="permanent" open={open} elevation={16}>
       <DrawerHeader className="bg-white dark:bg-black">
         <IconButton
-          onClick={handleDrawerClose}
+          onClick={() => setOpen(false)}
+          // onClick={handleDrawerClose}
           sx={{ fontSize: '20px' }}
           className="dark:bg-zinc-900 dark:hover:bg-pink-300"
         >
@@ -102,9 +92,9 @@ export const DashboardDrawerContent = ({
       <Divider />
 
       <List className="w-full bg-white dark:bg-black">
-        <div className="mb-2 flex h-36 flex-col items-center bg-white dark:bg-black">
+        <div className="mb-2 flex h-20 flex-col items-center bg-white dark:bg-black md:h-36">
           {open ? (
-            <AppLogo className="text-2xl md:text-8xl">
+            <AppLogo className="text-center text-2xl md:text-8xl">
               <h3
                 className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400 md:text-base`}
               >
@@ -116,7 +106,7 @@ export const DashboardDrawerContent = ({
           )}
         </div>
         {linkItems.map((item, index) => (
-          <NavLinks key={item.name} item={item} open={open} setOpen={setOpen} />
+          <NavLinks key={item.name} item={item} />
         ))}
       </List>
 

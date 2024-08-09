@@ -1,20 +1,19 @@
-'use client';
-
 import clsx from 'clsx';
 import { roboto } from '../../fonts';
 import { TD, TH } from './table-extensions';
-// import { customers } from '@/app/lib/placeholder-data';
-import { DeleteCustomer, UpdateCustomer } from '../buttons';
+// import { DeleteCustomer, UpdateCustomer } from '../buttons';
 import { BusinessRounded, Delete, Edit } from '@mui/icons-material';
 import { formatDateToLocal } from '@/app/lib/utils';
-import { User } from '@/app/lib/definitions';
+import { fetchUsers } from '@/app/lib/data';
 
-export const UsersTable = async ({ users }: { users: User[] }) => {
+export const UsersTable = async () => {
+  const users = await fetchUsers();
+
   return (
-    <div className="flow-root">
-      <div className="inline-block min-w-full align-middle">
-        <div className=" rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
-          <table className="hidden min-w-full md:table">
+    <div className="flow-root ">
+      <div className="inline-block w-full align-middle md:min-w-full">
+        <div className=" overflow-x-auto rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
+          <table className=" min-w-full">
             <caption className="caption-top">
               <div className="mb-4 mt-4 flex w-full justify-center">
                 <h3

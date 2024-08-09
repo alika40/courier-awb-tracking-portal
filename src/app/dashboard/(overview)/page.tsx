@@ -27,11 +27,13 @@ const Page = async ({
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
 
-  const [totalPages, users, customers] = await Promise.all([
-    fetchCustomersPages(query),
-    fetchUsers(),
-    fetchFilteredCustomers(query, currentPage),
-  ]);
+  const totalPages = await fetchCustomersPages(query);
+  //  const [totalPages, users, customers] = await Promise.all([
+  //    fetchCustomersPages(query),
+  //    fetchUsers(),
+  //    fetchFilteredCustomers(query, currentPage),
+  //  ]);
+
   return (
     <>
       <div className="mb-5 mt-4 flex justify-start md:mb-10">
@@ -44,7 +46,6 @@ const Page = async ({
           DASHBOARD
         </h1>
       </div>
-      {/* <DashboardContents /> */}
 
       <div className="flex flex-col items-center justify-center gap-y-7 divide-y-4 divide-dotted divide-gray-300 dark:divide-pink-900 md:gap-y-14">
         <div className="mx-auto w-full">
@@ -54,7 +55,7 @@ const Page = async ({
         </div>
         <div className="mx-auto w-full justify-center pt-14">
           <Suspense fallback={<UsersTableSkeleton />}>
-            <UsersTable users={users} />
+            <UsersTable />
           </Suspense>
         </div>
         <div className="mx-auto hidden w-full justify-center pt-14 md:block">
@@ -63,23 +64,13 @@ const Page = async ({
               key={query + currentPage}
               fallback={<CustomersTableSkeleton />}
             >
-              <CustomersTable customers={customers!!} />
+              <CustomersTable query={query} currentPage={currentPage} />
             </Suspense>
             <div className="mt-2 flex w-full justify-center">
               <PaginationCustomer totalPages={totalPages} />
             </div>
           </div>
         </div>
-        {/* <div className="hidden w-full justify-center pt-14 md:flex">
-          <div>
-            <Suspense
-              key={'query' + 'currentPage'}
-              fallback={<AWBsTableSkeleton />}
-            >
-              <AwbTable />
-            </Suspense>
-          </div>
-        </div> */}
         <div className="block w-full pt-4 text-center font-semibold md:hidden">
           Login to PC for better User Experience
         </div>

@@ -27,15 +27,6 @@ const ThemeSwitcher = () => {
     return null;
   }
 
-  // useEffect(() => {
-  //   const root = window.document.documentElement;
-  //   if (theme === APP_THEME.DARK) {
-  //     root.classList.add(APP_THEME.DARK);
-  //   } else {
-  //     root.classList.remove(APP_THEME.DARK);
-  //   }
-  // }, [theme]);
-
   const renderThemeChanger = () => {
     if (!mounted) return null;
 
