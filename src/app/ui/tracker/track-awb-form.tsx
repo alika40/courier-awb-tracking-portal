@@ -6,16 +6,29 @@ import { Metadata } from 'next';
 import { trackAwb } from '@/app/lib/actions/dashboard/actionManager';
 import { Button } from '../button';
 import { useFormState } from 'react-dom';
+import clsx from 'clsx';
 
 export const metadata: Metadata = {
   title: 'Search For Air Way Bill',
 };
 
-export default function TrackAwbForm() {
+export default function TrackAwbForm({
+  bg_image_for,
+}: {
+  bg_image_for: string;
+}) {
   const [state, dispatch] = useFormState(trackAwb, undefined);
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center bg-[url('/delivery_man.jpg')] bg-cover bg-fixed">
+    <div
+      className={`flex h-screen flex-col items-center justify-center bg-cover bg-fixed
+        ${clsx(
+          bg_image_for === 'DASHBOARD'
+            ? "bg-white bg-[url('/background-network.jpg')] dark:bg-black"
+            : "bg-[url('/delivery_man.jpg')]",
+        )}
+        `}
+    >
       <div
         className={`stroke rounded-sm bg-black bg-opacity-50 p-2 md:rounded-md`}
       >
@@ -38,12 +51,12 @@ export default function TrackAwbForm() {
             <input
               id="awb_num"
               name="awb_num"
-              className="placeholder:text-1xl peer block h-10 w-full rounded-l-md border border-pink-400 py-[9px] pl-10 text-sm placeholder:italic placeholder:text-gray-500 focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:h-12 md:rounded-l-lg md:text-2xl md:placeholder:text-2xl"
+              className="placeholder:text-1xl peer block h-10 w-full rounded-l-md border border-pink-900 py-[9px] pl-10 text-sm ring-pink-900 placeholder:italic placeholder:text-gray-500 focus:border-pink-900 focus:bg-opacity-50 focus:ring-pink-900 dark:bg-zinc-900 dark:placeholder:text-gray-300 md:h-12 md:rounded-l-lg md:text-2xl md:placeholder:text-2xl"
               placeholder="0001234"
               type="text"
             />
 
-            <SearchIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+            <SearchIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-pink-900 dark:text-gray-300" />
           </div>
           <Button
             type="submit"

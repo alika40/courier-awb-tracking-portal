@@ -19,7 +19,7 @@ export const StatusInTransitRemarks = ({ awb }: { awb: AWBInputData }) => (
         Remarks <span className="italic text-gray-400">(Optional):</span>
       </label>
       <textarea
-        className="mt-1 block w-full rounded-md border-gray-200 py-2 pl-2 text-sm text-gray-500 placeholder:italic placeholder:text-gray-400 focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:w-[50%] md:text-base md:font-medium md:tracking-wider"
+        className="mt-1 block w-full rounded-md border-gray-200 py-2 pl-2 text-sm text-gray-500 placeholder:italic placeholder:text-gray-400 focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200 md:w-[50%] md:pl-6 md:text-base md:font-bold md:tracking-wider"
         rows={3}
         id="remark"
         name="remark"
@@ -53,12 +53,12 @@ export const DeliveryDetails = ({
         <legend className="mb-2 block text-sm font-bold md:text-lg">
           Delivery Details:
         </legend>
-        <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3 shadow-sm">
+        <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3 shadow-sm dark:border-black dark:bg-black dark:text-slate-400">
           <div className="sm:flex-stretch flex flex-col gap-4 sm:grid sm:grid-flow-col sm:gap-6">
             <div className="flex items-center">
               <label
                 htmlFor="delivered_to"
-                className="mr-1 flex items-center whitespace-nowrap rounded-md bg-gray-100 px-3 py-1.5 text-sm font-bold text-gray-600"
+                className="mr-1 flex items-center whitespace-nowrap rounded-md bg-gray-100 px-3 py-1.5 text-sm font-bold text-gray-600 dark:bg-zinc-900 dark:text-slate-400 md:text-base md:font-semibold"
               >
                 Delivered To:
               </label>
@@ -68,13 +68,13 @@ export const DeliveryDetails = ({
                 type="text"
                 placeholder="Enter Receiver's Name"
                 defaultValue={awb && awb.delivered_to}
-                className="w-full rounded-md border border-gray-200 py-2 pl-2 text-sm text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:text-base md:font-medium md:tracking-wider"
+                className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium  text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold"
               />
             </div>
             <div className="flex items-center">
               <label
                 htmlFor="delivery_date"
-                className="mr-1 flex items-center whitespace-nowrap rounded-md bg-gray-100 px-3 py-1.5 text-sm font-bold text-gray-600"
+                className="mr-1 flex items-center whitespace-nowrap rounded-md bg-gray-100 px-3 py-1.5 text-sm font-bold text-gray-600 dark:bg-zinc-900 dark:text-slate-400 md:text-base md:font-semibold"
               >
                 Delivery Date:
               </label>
@@ -84,13 +84,13 @@ export const DeliveryDetails = ({
                 type="date"
                 autoComplete="day"
                 defaultValue={defaultDeliveryDate}
-                className="w-full rounded-md border border-gray-200 py-2 pl-2 text-sm text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:text-base md:font-medium md:tracking-wider"
+                className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold md:tracking-wider"
               />
             </div>
             <div className="flex items-center">
               <label
                 htmlFor="delivery_time"
-                className="mr-1 flex items-center whitespace-nowrap rounded-md bg-gray-100 px-3 py-1.5 text-sm font-bold text-gray-600"
+                className="mr-1 flex items-center whitespace-nowrap rounded-md bg-gray-100 px-3 py-1.5 text-sm font-bold text-gray-600 dark:bg-zinc-900 dark:text-slate-400 md:text-base md:font-semibold"
               >
                 Delivery Time:
               </label>
@@ -99,7 +99,7 @@ export const DeliveryDetails = ({
                 name="delivery_time"
                 type="time"
                 defaultValue={awb && awb.delivery_time}
-                className="w-full rounded-md border border-gray-200 py-2 pl-2 text-sm text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:opacity-50 focus:ring-2 focus:ring-pink-900 md:text-base md:font-medium md:tracking-wider"
+                className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold md:tracking-wider"
               />
             </div>
           </div>
@@ -235,7 +235,7 @@ export const CorporateAccountSelect = ({
         <select
           id="customer"
           name="customer_id"
-          className="peer col-start-1 row-start-1 block w-full cursor-pointer appearance-none rounded-md border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm hover:shadow-none focus:border-pink-900 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:text-base md:font-black"
+          className="peer col-start-1 row-start-1 block w-full cursor-pointer appearance-none rounded-md border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm hover:shadow-none focus:border-pink-900 focus:ring-2 focus:ring-pink-900 dark:border-black dark:bg-zinc-700 dark:text-slate-200 md:text-base md:font-black"
           defaultValue={awb && awb.customer_id}
           aria-describedby="awb-error"
         >

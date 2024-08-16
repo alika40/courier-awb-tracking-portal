@@ -79,7 +79,7 @@ export default function Form({
                 type="text"
                 defaultValue={awb && awb.awb_num}
                 placeholder="Enter Air Way Bill Number"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
               <NumbersTwoTone
                 sx={{
@@ -110,7 +110,7 @@ export default function Form({
                 type="text"
                 defaultValue={awb && awb.sender}
                 placeholder="Sender's Name"
-                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider "
+                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider "
               />
               <Person
                 sx={{
@@ -141,7 +141,7 @@ export default function Form({
                 type="text"
                 defaultValue={awb && awb.receiver}
                 placeholder="Enter Receiver's Name"
-                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
+                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
               <Person
                 sx={{
@@ -173,7 +173,7 @@ export default function Form({
                 defaultValue={awb && awb.receiver_address}
                 placeholder="Enter Receiver's Address"
                 autoComplete="street-address"
-                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
+                className="md:text-md peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
               <House
                 sx={{
@@ -205,7 +205,7 @@ export default function Form({
                 defaultValue={awb && awb.destination}
                 placeholder="Enter Destination"
                 autoComplete="street-address1"
-                className="md:text-medium peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
+                className="md:text-medium peer block w-full rounded-md border border-gray-200 py-2 pl-8 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200  md:text-lg md:font-bold md:tracking-wider"
               />
               <LocalShipping
                 sx={{
@@ -238,7 +238,7 @@ export default function Form({
                 rows={3}
                 defaultValue={awb && awb.item_description}
                 placeholder="Enter Item Description"
-                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:md:font-bold md:tracking-wider"
+                className="peer block w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-600 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-lg md:md:font-bold md:tracking-wider"
               />
             </div>
             {/* Manage Error Component */}
@@ -252,7 +252,7 @@ export default function Form({
           <legend className="mb-2 block text-sm font-bold md:text-lg">
             Other Details:
           </legend>
-          <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3 shadow-sm dark:bg-black">
+          <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3 shadow-sm dark:border-black dark:bg-black">
             <div className="md:flex-stretch flex flex-col gap-4 md:grid md:grid-flow-col md:gap-6">
               <div className="flex items-center">
                 <label
@@ -267,7 +267,7 @@ export default function Form({
                   type="date"
                   autoComplete="bday"
                   defaultValue={defaultDueDate}
-                  className="f w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold md:tracking-wider"
+                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium text-gray-500 shadow-sm hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold md:tracking-wider"
                 />
               </div>
               <div className="flex items-center">
@@ -284,7 +284,7 @@ export default function Form({
                   step="0.5"
                   placeholder="5kg"
                   defaultValue={awb && awb.weight}
-                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm  font-medium text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold"
+                  className="w-full rounded-md border border-gray-200 py-2 pl-4 text-sm font-medium  text-gray-500 shadow-sm placeholder:italic placeholder:text-gray-300 hover:shadow-none focus:border-pink-900 focus:bg-opacity-50 focus:ring-2 focus:ring-pink-900 dark:border-zinc-700 dark:bg-zinc-700 dark:text-slate-200 md:pl-6 md:text-base md:md:font-bold"
                 />
               </div>
             </div>

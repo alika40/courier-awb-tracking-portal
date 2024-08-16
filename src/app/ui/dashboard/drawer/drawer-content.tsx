@@ -9,13 +9,12 @@ import {
   ManageAccounts,
   Troubleshoot,
   Create,
-  Home,
 } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 
-import { Drawer, DrawerState } from './drawer-style';
+import { Drawer } from './drawer-style';
 import { DrawerHeader } from './Drawer-header';
 import { NavLinks } from './nav-links';
 import AppLogo from '../../app-logo';
@@ -26,14 +25,14 @@ import { DashboardContext } from '../dashboard';
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const linkItems = [
-  {
-    name: 'Home',
-    href: '/',
-    // href: 'https://google.com',
-    // target: '_blank',
-    icon: <Home sx={{ fontSize: '20px' }} />,
-    color: '#831843',
-  },
+  // {
+  //   name: 'Home',
+  //   href: '/',
+  //   href: 'https://google.com',
+  //   target: '_blank',
+  //   icon: <Home sx={{ fontSize: '20px' }} />,
+  //   color: '#831843',
+  // },
   {
     name: 'Dashboard',
     href: '/dashboard',
@@ -57,7 +56,7 @@ const linkItems = [
   },
   {
     name: 'Track AWB',
-    href: '/tracker',
+    href: '/dashboard/tracker',
     // target: '_self',
     icon: <Troubleshoot sx={{ fontSize: '20px' }} />,
     color: '#831843',

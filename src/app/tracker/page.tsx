@@ -53,7 +53,7 @@ const Page = () => {
   return (
     <main className="flex min-h-screen flex-col">
       <NavHeader />
-      <TrackAwbForm />
+      <TrackAwbForm bg_image_for="NON-ADMIN" />
       <Footer />
     </main>
   );
