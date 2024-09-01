@@ -25,7 +25,8 @@ export const CustomersTable = async ({
     <div className="flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className=" overflow-x-auto rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
-          <table className="hidden min-w-full md:table">
+          {/* <table className="hidden min-w-full md:table"> */}
+          <table className="min-w-full">
             <caption className="caption-top">
               <div className="mb-4 mt-4 flex w-full justify-center">
                 <h3

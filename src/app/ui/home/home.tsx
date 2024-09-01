@@ -47,22 +47,35 @@ const Home = () => {
   );*/
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-[url('/delivery_man.jpg')] bg-cover bg-fixed">
-      <div
-        className={`stroke rounded-sm bg-black bg-opacity-50 p-2 md:rounded-md`}
-      >
-        <h1
-          className={`${lusitana.className} mb-8 text-2xl font-bold text-pink-600 md:text-6xl md:font-black`}
+    <main className="mt-14 flex min-h-screen flex-col items-center justify-center md:mt-20">
+      <div className="min-h-96 w-full bg-[url('/delivery_man.jpg')] bg-cover bg-fixed">
+        <div
+          className={`stroke m-auto mb-28 mt-28 rounded-sm bg-black bg-opacity-50 p-2 md:rounded-md`}
         >
-          WELCOME TO
-        </h1>
-        <AppLogo className="text-2xl md:text-9xl ">
-          <h3
-            className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400 md:text-lg`}
+          <h1
+            className={`${lusitana.className} mb-8 text-2xl font-bold text-pink-600 md:text-6xl md:font-black`}
           >
-            XL Express & Logistics LTD.
-          </h3>
-        </AppLogo>
+            WELCOME TO
+          </h1>
+          <AppLogo className="text-2xl md:text-9xl ">
+            <h3
+              className={`${lusitana.className} -mt-[6px] text-center text-sm font-semibold text-slate-400 md:text-lg`}
+            >
+              XL Express & Logistics LTD.
+            </h3>
+          </AppLogo>
+        </div>
+      </div>
+      <div id="about_us" className="h-80 w-full bg-blue-500">
+        <h1 className="text-center text-lg font-black uppercase">About Us</h1>
+      </div>
+      <div id="testimonials" className="h-80 w-full bg-teal-500">
+        <h1 className="text-center text-lg font-black uppercase">
+          Testimonials
+        </h1>
+      </div>
+      <div id="contact_us" className="h-80 w-full bg-slate-500">
+        <h1 className="text-center text-lg font-black uppercase">Contact Us</h1>
       </div>
       {/* <Button variant="outlined">Hello world</Button>
       <div>

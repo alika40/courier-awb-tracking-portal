@@ -2,7 +2,7 @@ import { TrackAwbNum, ReactNode } from '@/app/lib/definitions';
 import VerticalLinearStepper from './verticalStepper';
 import { lusitana } from '../fonts';
 import NotFound from '@/app/tracker/[awb_num]/status/not-found';
-import { NavHeader } from './header';
+import { NavHeader } from '../header';
 import Footer from '../footer';
 
 interface ChildrenProps extends ReactNode {

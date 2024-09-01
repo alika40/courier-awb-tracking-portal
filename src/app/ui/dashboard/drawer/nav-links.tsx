@@ -6,12 +6,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Dispatcher } from '@/app/lib/definitions';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import clsx from 'clsx';
 import { useContext } from 'react';
 import { DashboardContext } from '../dashboard';
-// import Divider from '@mui/material/Divider';
-// import { lusitana, roboto } from '../../fonts';
 
 type NavItems = {
   item: {
@@ -28,6 +27,9 @@ type NavItems = {
 export function NavLinks({ item }: NavItems) {
   const { open, setOpen } = useContext(DashboardContext);
   const pathname = usePathname();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  // console.log(matches);
 
   return (
     <>
@@ -43,7 +45,9 @@ export function NavLinks({ item }: NavItems) {
       >
         <Link
           href={item.href}
-          // onClick={() => setOpen(false)}
+          onClick={() => {
+            if (matches) setOpen(false);
+          }}
           // target={item.target}
           // onMouseOver={() => setOpen(true)}
           // onMouseOut={() => setOpen(false)}

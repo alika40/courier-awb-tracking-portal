@@ -115,6 +115,7 @@ export const DashboardDrawerContent = ({
         <button
           // onMouseOver={() => setOpen(true)}
           // onMouseOut={handleDrawerClose}
+          onClick={() => setOpen(false)}
           className="text-medium ml-2 mt-4 flex h-[48px] w-full grow items-center justify-start gap-2 rounded-l-md bg-gray-100 p-3 font-medium text-pink-900 hover:bg-pink-50 dark:bg-zinc-900 dark:hover:bg-pink-400 md:h-[56px] md:flex-none md:justify-start md:p-2 md:px-3 md:font-semibold"
         >
           <Logout

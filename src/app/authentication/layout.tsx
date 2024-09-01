@@ -1,6 +1,6 @@
 import { ReactNode } from '../lib/definitions';
 import Footer from '../ui/footer';
-import { NavHeader } from '../ui/tracker/header';
+import { NavHeader } from '../ui/header';
 
 export default function AuthenticationLayout({ children }: ReactNode) {
   return (

@@ -9,7 +9,7 @@
  */
 //"use client";
 import Breadcrumbs from '@/app/ui/dashboard/breadcrumbs';
-import TrackAwbForm from '../../ui/tracker/track-awb-form';
+import TrackAWBForm from '../../ui/tracker/dashboard/track-awb-form';
 
 const Page = () => {
   return (
@@ -24,7 +24,7 @@ const Page = () => {
           },
         ]}
       />
-      <TrackAwbForm bg_image_for="DASHBOARD" />
+      <TrackAWBForm />
     </main>
   );
 };

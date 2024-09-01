@@ -11,7 +11,7 @@
 // https://android-server.cyclic.app/api/courses
 
 import Link from 'next/link';
-import { NavHeader } from '../ui/tracker/header';
+import { NavHeader } from '../ui/header';
 import TrackAwbForm from '../ui/tracker/track-awb-form';
 import Footer from '../ui/footer';
 // import Image from 'next/image';
@@ -53,7 +53,7 @@ const Page = () => {
   return (
     <main className="flex min-h-screen flex-col">
       <NavHeader />
-      <TrackAwbForm bg_image_for="NON-ADMIN" />
+      <TrackAwbForm />
       <Footer />
     </main>
   );

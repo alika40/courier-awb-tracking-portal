@@ -33,6 +33,7 @@ export default async function Page({
     escapedSlug += ' ' + str;
   }
 
+  // const escapedSlug = slug.replace('%20', ' ');
   const totalPages = await fetchAwbPages(id);
 
   if (!(id && slug)) notFound();
@@ -72,7 +73,7 @@ export default async function Page({
             </div>
           </div>
         </div>
-        <div className="block w-full pt-4 text-center font-semibold md:hidden">
+        <div className="mt-4 block w-full pt-4 text-center font-semibold text-gray-950 dark:text-white md:hidden">
           Login to PC for better User Experience{' '}
         </div>
       </div>

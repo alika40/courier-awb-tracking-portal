@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { NavHeader } from './ui/tracker/header';
+import { NavHeader } from './ui/header';
 import Footer from './ui/footer';
 import Home from './ui/home/home';
 

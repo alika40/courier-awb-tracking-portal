@@ -110,7 +110,7 @@ export default function CustomerForm({
       <div className="mb-6 mt-12 flex justify-end gap-4">
         <Link
           href="/dashboard"
-          className="flex h-10 items-center rounded-md bg-gray-100 px-4 text-sm font-medium text-gray-600 shadow-sm transition-colors hover:bg-gray-200 hover:shadow-none md:rounded-lg md:text-base md:font-bold"
+          className="flex h-10 items-center rounded-md bg-gray-100 px-4 text-sm font-medium text-gray-600 shadow-sm transition-colors hover:bg-gray-200 hover:shadow-none dark:bg-pink-300 md:rounded-lg md:text-base md:font-bold"
         >
           Cancel
         </Link>

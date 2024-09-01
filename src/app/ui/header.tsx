@@ -1,11 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { lusitana } from '../fonts';
+import { useEffect, useState } from 'react';
+import { lusitana } from './fonts';
 import clsx from 'clsx';
-import AppLogo from '../app-logo';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import AppLogo from './app-logo';
+// import { usePathname } from 'next/navigation';
 
 interface AnchorProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
@@ -27,9 +26,46 @@ const A = ({ children, className, ...rest }: AnchorProps) => (
 
 export const NavHeader = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
-
   const handleClick = () => setIsActive(() => (isActive ? false : true));
-  const pathname = usePathname();
+  const [pathnameOrHash, setPathnameOrHash] = useState('');
+  // const pathname = usePathname();
+
+  const handleClick2 = (urlSegment: string) => {
+    setPathnameOrHash(urlSegment);
+    smoothScroll(urlSegment);
+  };
+
+  const smoothScroll = (urlSegment: string) => {
+    // ScrollToView for jump to section
+    if (urlSegment) {
+      const element = document.querySelector(urlSegment);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'start',
+          });
+        }, 500);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // Check if the code is running on the client side: NodeJS.Process
+    if (process) {
+      const location = window.location;
+      const includesHash = location.href.includes('#');
+      if (!includesHash) {
+        setPathnameOrHash(location.pathname);
+      }
+      if (includesHash) {
+        const hash = location.hash;
+        setPathnameOrHash(hash);
+        smoothScroll(hash);
+      }
+    }
+  }, []);
 
   const slideUp = `-translate-y-44 transition duration-[700ms] ease-in md:translate-y-0 md:transition-none bg-opacity-0`;
   const slideDown = `translate-y-44 border-t border-double border-pink-400 py-3 transition duration-[600ms] 
@@ -70,7 +106,7 @@ export const NavHeader = () => {
               <li>
                 {/* <!-- Home link --> */}
                 <A
-                  className={`${clsx(pathname == '/' && 'text-opacity-50')}`}
+                  className={`${clsx(pathnameOrHash === '/' && 'text-opacity-50')}`}
                   href="/"
                   onClick={handleClick}
                 >
@@ -80,7 +116,7 @@ export const NavHeader = () => {
               <li>
                 {/* <!-- Portal link --> */}
                 <A
-                  className={`${clsx(pathname == '/tracker' && 'text-opacity-50')}`}
+                  className={`${clsx(pathnameOrHash === '/tracker' && 'text-opacity-50')}`}
                   href="/tracker"
                   onClick={handleClick}
                 >
@@ -90,9 +126,12 @@ export const NavHeader = () => {
               {/* <!-- About me link --> */}
               <li>
                 <A
-                  className={`${clsx(pathname == '#' && 'text-opacity-50')}`}
-                  href="#"
-                  onClick={handleClick}
+                  className={`${clsx(pathnameOrHash === '#about_us' && 'text-opacity-50')}`}
+                  href="/#about_us"
+                  onClick={() => {
+                    handleClick();
+                    handleClick2('#about_us');
+                  }}
                 >
                   About us
                 </A>
@@ -100,9 +139,12 @@ export const NavHeader = () => {
               {/* <!-- Testimonials link --> */}
               <li>
                 <A
-                  className={`${clsx(pathname == '#' && 'text-opacity-50')}`}
-                  href="#"
-                  onClick={handleClick}
+                  className={`${clsx(pathnameOrHash === '#testimonials' && 'text-opacity-50')}`}
+                  href="/#testimonials"
+                  onClick={() => {
+                    handleClick();
+                    handleClick2('#testimonials');
+                  }}
                 >
                   Testimonials
                 </A>
@@ -110,9 +152,12 @@ export const NavHeader = () => {
               {/* <!-- Contact link --> */}
               <li>
                 <A
-                  className={`${clsx(pathname == '#' && 'text-opacity-50')}`}
-                  href="#"
-                  onClick={handleClick}
+                  className={`${clsx(pathnameOrHash === '#contact_us' && 'text-opacity-50')}`}
+                  href="/#contact_us"
+                  onClick={() => {
+                    handleClick();
+                    handleClick2('#contact_us');
+                  }}
                 >
                   Contact us
                 </A>

@@ -1,5 +1,4 @@
 import { AwbStatus } from '@/app/ui/tracker/awbStatus';
-import { awbs, customers } from '@/app/lib/placeholder-data';
 import { fetchAwbByAwbNum } from '@/app/lib/data';
 import NotFound from './not-found';
 

@@ -199,7 +199,10 @@ export async function deleteCustomer(id: string) {
   }
 }
 
-export async function trackAwb(prevState: SearchState, formData: FormData) {
+export async function trackAwbAdmin(
+  prevState: SearchState,
+  formData: FormData,
+) {
   const validatedFields = validatedFieldsFormTrack(formData);
 
   // If form validation fails, return errors early. Otherwise, continue.
@@ -212,6 +215,6 @@ export async function trackAwb(prevState: SearchState, formData: FormData) {
 
   const awb_num = validatedFields.data.awb_num;
 
-  revalidatePath(`/tracker/${awb_num}/status`);
-  redirect(`/tracker/${awb_num}/status`);
+  revalidatePath(`/dashboard/tracker/${awb_num}/status`);
+  redirect(`/dashboard/tracker/${awb_num}/status`);
 }

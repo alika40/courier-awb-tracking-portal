@@ -67,72 +67,67 @@ export default function VerticalLinearStepper({ awb }: { awb: TrackAwbNum }) {
         ))}
       </Stepper>
       {steps.length === initialActiveStep && (
-        <Paper square elevation={5} sx={{ p: 3, backgroundColor: '#e6e5e5' }}>
-          {/* <Typography>All steps completed - you&apos;re finished</Typography> */}
-          <div>
-            <div className="flex items-start justify-between">
-              <span className="text-md font-bold text-gray-700 md:text-xl">
-                Sender:{' '}
-              </span>
-              <span className="text-md font-medium text-slate-600 md:text-xl">
-                {awb.sender}
-              </span>
-            </div>
-            <Divider
-              textAlign="left"
-              className="text-lg font-black italic text-pink-700"
-            >
-              Delivery Details
-            </Divider>
-            <div className="flex items-start justify-between">
-              <span className="text-md font-bold text-gray-700 md:text-xl">
-                Receiver:{' '}
-              </span>
-              <span className="text-md font-medium text-slate-600 md:text-xl">
-                {awb.receiver}
-              </span>
-            </div>
-            <div className="flex items-start justify-between">
-              <span className="text-md font-bold text-gray-700 md:text-xl">
-                Delivered To:{' '}
-              </span>
-              <span className="text-md font-medium text-slate-600 md:text-xl">
-                {awb.delivered_to}
-              </span>
-            </div>
-            <div className="flex items-start justify-between">
-              <span className="text-md font-bold text-gray-700 md:text-xl">
-                Delivery Date:{' '}
-              </span>
-              <span className="text-md font-medium text-slate-600 md:text-xl">
-                {awb &&
-                  awb.delivery_date &&
-                  formatDateToLocal(awb.delivery_date)}
-              </span>
-            </div>
-            <div className="flex items-start justify-between">
-              <span className="text-md font-bold text-gray-700 md:text-xl">
-                Delivery Time:{' '}
-              </span>
-              <span className="text-md font-medium text-slate-600 md:text-xl">
-                {awb &&
-                  awb.delivery_time &&
-                  formatTimeToLocal(awb.delivery_time)}
-              </span>
-            </div>
-            <div className="mt-5 flex flex-col items-center justify-center">
-              <h5 className="text-md font-extrabold text-green-500 md:text-2xl">
-                Thanks For Your Patronage!
-              </h5>
-              <CheckCircleOutline
-                sx={{
-                  color: '#22c55e',
-                  fontSize: '2.5rem',
-                }}
-              />
-            </div>
+        // <Paper square elevation={5} sx={{ p: 3, backgroundColor: '#e6e5e5' }}>
+        <div className="rounded-md p-4 shadow-inner shadow-pink-400">
+          <div className="flex items-start justify-between">
+            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
+              Sender:{' '}
+            </span>
+            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+              {awb.sender}
+            </span>
           </div>
-        </Paper>
+          <Divider
+            textAlign="left"
+            className="text-lg font-black italic text-pink-700"
+          >
+            Delivery Details
+          </Divider>
+          <div className="flex items-start justify-between">
+            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
+              Receiver:{' '}
+            </span>
+            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+              {awb.receiver}
+            </span>
+          </div>
+          <div className="flex items-start justify-between">
+            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
+              Delivered To:{' '}
+            </span>
+            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+              {awb.delivered_to}
+            </span>
+          </div>
+          <div className="flex items-start justify-between">
+            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
+              Delivery Date:{' '}
+            </span>
+            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+              {awb && awb.delivery_date && formatDateToLocal(awb.delivery_date)}
+            </span>
+          </div>
+          <div className="flex items-start justify-between">
+            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
+              Delivery Time:{' '}
+            </span>
+            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+              {awb && awb.delivery_time && formatTimeToLocal(awb.delivery_time)}
+            </span>
+          </div>
+          <div className="mt-5 flex flex-col items-center justify-center">
+            <h5 className="text-md font-extrabold text-green-500 md:text-2xl">
+              Thanks For Your Patronage!
+            </h5>
+            <CheckCircleOutline
+              sx={{
+                color: '#22c55e',
+                fontSize: '2.5rem',
+              }}
+            />
+          </div>
+        </div>
+        // </Paper>
       )}
     </Box>
   );
