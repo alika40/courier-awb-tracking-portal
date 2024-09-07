@@ -1,12 +1,12 @@
 import { TrackAwbNum } from '@/app/lib/definitions';
 import { lusitana } from '../../fonts';
 import VerticalLinearStepper from '../verticalStepper';
-import NotFound from '@/app/dashboard/tracker/[awb_num]/status/not-found';
 import clsx from 'clsx';
+import NotFound from '@/app/dashboard/tracker/[awb_num]/status/not-found';
 
 export const AwbStatus = ({ awb }: { awb: TrackAwbNum }) => (
-  <div className="flex h-screen flex-col items-center justify-center">
-    <div className="mt-10 w-full">
+  <div className="flex  h-screen flex-col items-center justify-center">
+    <div className="w-full">
       <h1
         className={clsx(
           lusitana.className,
@@ -16,11 +16,11 @@ export const AwbStatus = ({ awb }: { awb: TrackAwbNum }) => (
         AWB Status
       </h1>
     </div>
-    <div className="z-40 mt-4 rounded-sm border border-pink-300 p-4 shadow-lg shadow-pink-400 dark:shadow-pink-800 md:mt-10 md:rounded-md md:p-8">
+    <div className="z-40 mt-4 rounded-sm  border border-pink-300 p-4 shadow-lg shadow-pink-400 dark:shadow-pink-800 md:mt-10 md:rounded-md md:p-8">
       <div className="mb-2 flex justify-center">
         <div className="stroke">
           <h2
-            className={`${lusitana.className} text-sm font-bold text-pink-600 md:text-3xl`}
+            className={`${lusitana.className} text-base font-bold text-pink-600 md:text-3xl`}
           >
             STATUS
           </h2>

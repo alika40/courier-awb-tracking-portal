@@ -58,7 +58,7 @@ const Page = async ({
             <UsersTable />
           </Suspense>
         </div>
-        <div className="mx-auto hidden w-full justify-center pt-14 md:block">
+        <div className="mx-auto w-full justify-center pt-14">
           <div>
             <Suspense
               key={query + currentPage}

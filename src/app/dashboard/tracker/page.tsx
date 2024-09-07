@@ -9,22 +9,22 @@
  */
 //"use client";
 import Breadcrumbs from '@/app/ui/dashboard/breadcrumbs';
-import TrackAWBForm from '../../ui/tracker/dashboard/track-awb-form';
+import TrackAWBFormAdmin from '../../ui/tracker/dashboard/track-awb-form';
 
 const Page = () => {
   return (
     <main>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Tracking Portal', href: '/dashboard' },
+          { label: 'Portal', href: '/dashboard' },
           {
-            label: 'Track AWB Status.',
+            label: 'Track AWB.',
             href: '/dashboard/tracker',
             active: true,
           },
         ]}
       />
-      <TrackAWBForm />
+      <TrackAWBFormAdmin />
     </main>
   );
 };

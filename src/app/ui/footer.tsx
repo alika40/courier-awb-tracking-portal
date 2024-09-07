@@ -57,7 +57,7 @@ export default function Footer() {
   );
 }
 
-const Icons = () => (
+export const Icons = () => (
   <div className="w-full space-y-2 px-4 md:ml-4 md:items-start md:space-y-8">
     {/* <!-- Compoany Logo --> */}
     <AppLogo className="text-3xl md:text-6xl"> </AppLogo>

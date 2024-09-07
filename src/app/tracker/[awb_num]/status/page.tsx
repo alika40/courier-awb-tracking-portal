@@ -18,7 +18,7 @@ const Page = async ({ params }: { params: { awb_num: string } }) => {
   const awb_num = params?.awb_num;
   const awb = await fetchAwbByAwbNum(awb_num);
 
-  if (!awb) NotFound;
+  if (!awb) return <NotFound />;
 
   return <AwbStatus awb={awb} />;
 };

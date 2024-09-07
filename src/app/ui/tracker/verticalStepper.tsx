@@ -47,8 +47,8 @@ export default function VerticalLinearStepper({ awb }: { awb: TrackAwbNum }) {
             <StepLabel>
               <div
                 className={`${lusitana.className}
-                    text-sm font-bold md:text-2xl 
-                    ${clsx(initialActiveStep <= index - 1 ? 'text-gray-600' : 'text-pink-600')}`}
+                    text-base font-bold md:text-2xl md:font-black 
+                    ${clsx(initialActiveStep <= index - 1 ? 'text-gray-400' : 'text-pink-400')}`}
               >
                 {step.label}
               </div>
@@ -68,55 +68,49 @@ export default function VerticalLinearStepper({ awb }: { awb: TrackAwbNum }) {
       </Stepper>
       {steps.length === initialActiveStep && (
         // <Paper square elevation={5} sx={{ p: 3, backgroundColor: '#e6e5e5' }}>
-        <div className="rounded-md p-4 shadow-inner shadow-pink-400">
-          <div className="flex items-start justify-between">
-            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
-              Sender:{' '}
-            </span>
-            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+        <div className="mt-6 rounded-md p-4 shadow-inner shadow-pink-400">
+          <div className="flex items-start justify-between text-slate-400">
+            <span className="text-base font-bold  md:text-xl">Sender: </span>
+            <span className="text-base font-medium italic md:text-xl">
               {awb.sender}
             </span>
           </div>
           <Divider
             textAlign="left"
-            className="text-lg font-black italic text-pink-700"
+            className="text-base font-black italic text-pink-500 md:text-lg"
           >
             Delivery Details
           </Divider>
-          <div className="flex items-start justify-between">
-            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
-              Receiver:{' '}
-            </span>
-            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+          <div className="flex items-start justify-between text-slate-400">
+            <span className="text-md font-bold md:text-xl">Receiver: </span>
+            <span className="text-md font-medium italic md:text-xl">
               {awb.receiver}
             </span>
           </div>
-          <div className="flex items-start justify-between">
-            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
-              Delivered To:{' '}
-            </span>
-            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+          <div className="flex items-start justify-between text-slate-400">
+            <span className="text-md font-bold md:text-xl">Delivered To: </span>
+            <span className="text-md font-medium italic md:text-xl">
               {awb.delivered_to}
             </span>
           </div>
-          <div className="flex items-start justify-between">
-            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
+          <div className="flex items-start justify-between text-slate-400">
+            <span className="text-md font-bold md:text-xl">
               Delivery Date:{' '}
             </span>
-            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+            <span className="text-md font-medium italic md:text-xl">
               {awb && awb.delivery_date && formatDateToLocal(awb.delivery_date)}
             </span>
           </div>
-          <div className="flex items-start justify-between">
-            <span className="text-md font-bold text-gray-700 dark:text-slate-500 md:text-xl">
+          <div className="flex items-start justify-between text-slate-400">
+            <span className="text-md font-bold md:text-xl">
               Delivery Time:{' '}
             </span>
-            <span className="text-md font-medium italic text-slate-600 dark:text-slate-400 md:text-xl">
+            <span className="text-md font-medium italic md:text-xl">
               {awb && awb.delivery_time && formatTimeToLocal(awb.delivery_time)}
             </span>
           </div>
           <div className="mt-5 flex flex-col items-center justify-center">
-            <h5 className="text-md font-extrabold text-green-500 md:text-2xl">
+            <h5 className="text-base font-extrabold text-green-500 md:text-2xl">
               Thanks For Your Patronage!
             </h5>
             <CheckCircleOutline

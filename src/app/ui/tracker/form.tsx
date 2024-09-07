@@ -22,7 +22,7 @@ export default function TrackAwbForm({
 }) {
   return (
     <div
-      className={`flex h-screen flex-col items-center justify-center bg-cover bg-fixed
+      className={`flex h-screen flex-col items-center justify-center bg-cover bg-fixed md:h-screen
         ${clsx(
           bg_image_for === 'DASHBOARD'
             ? "bg-white bg-[url('/background-network.jpg')] dark:bg-black"

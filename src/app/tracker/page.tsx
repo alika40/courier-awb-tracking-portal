@@ -12,7 +12,7 @@
 
 import Link from 'next/link';
 import { NavHeader } from '../ui/header';
-import TrackAwbForm from '../ui/tracker/track-awb-form';
+import TrackAWBFormCustomer from '../ui/tracker/track-awb-form';
 import Footer from '../ui/footer';
 // import Image from 'next/image';
 // import { NavHeader } from './ui/tracker/header';
@@ -53,7 +53,7 @@ const Page = () => {
   return (
     <main className="flex min-h-screen flex-col">
       <NavHeader />
-      <TrackAwbForm />
+      <TrackAWBFormCustomer />
       <Footer />
     </main>
   );

@@ -1,3 +1,5 @@
+'use server';
+
 import { SearchState } from '../../definitions';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
@@ -11,7 +13,7 @@ const FormTrackSchema = z.object({
   }),
 });
 
-export const validatedFieldsFormTrack = (formData: FormData) => {
+const validatedFieldsFormTrack = (formData: FormData) => {
   // Validate form using Zod
   const validatedFields = FormTrackSchema.safeParse({
     awb_num: formData.get('awb_num'),

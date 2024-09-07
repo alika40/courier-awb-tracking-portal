@@ -23,7 +23,7 @@ export const CustomersTable = async ({
 
   return (
     <div className="flow-root">
-      <div className="inline-block min-w-full align-middle">
+      <div className="inline-block w-full align-middle md:min-w-full">
         <div className=" overflow-x-auto rounded-lg bg-gray-50 p-2 dark:bg-zinc-900 md:pt-0">
           {/* <table className="hidden min-w-full md:table"> */}
           <table className="min-w-full">

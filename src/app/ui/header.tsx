@@ -162,6 +162,15 @@ export const NavHeader = () => {
                   Contact us
                 </A>
               </li>
+              <li>
+                <A
+                  className={`${clsx(pathnameOrHash === '/dashboard' && 'text-opacity-50')}`}
+                  href="/dashboard"
+                  onClick={handleClick}
+                >
+                  Dashboard
+                </A>
+              </li>
             </ul>
           </div>
         </div>
