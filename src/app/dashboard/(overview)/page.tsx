@@ -13,6 +13,7 @@ import {
   UsersTableSkeleton,
   CustomersTableSkeleton,
 } from '@/app/ui/skeletons';
+import { LaptopMac } from '@mui/icons-material';
 import clsx from 'clsx';
 import { Suspense } from 'react';
 
@@ -71,8 +72,9 @@ const Page = async ({
             </div>
           </div>
         </div>
-        <div className="mt-4 block w-full pt-4 text-center font-semibold text-gray-950 dark:text-white md:hidden">
-          Login to PC for better User Experience
+        <div className="mt-4 flex w-full flex-col items-center justify-center pt-4 font-semibold text-gray-950 dark:text-white md:hidden">
+          <LaptopMac className="text-pink-900" />
+          <p>Login to PC for better User Experience</p>
         </div>
       </div>
     </>

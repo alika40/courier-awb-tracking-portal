@@ -1,8 +1,15 @@
-import { TrackAwbNum, ReactNode } from '@/app/lib/definitions';
+'use client';
+
+import { TrackAwbNum } from '@/app/lib/definitions';
 import VerticalLinearStepper from './verticalStepper';
 import { lusitana } from '../fonts';
 import { NavHeader } from '../header';
 import Footer from '../footer';
+import useShowActivePathname from '../hooks/useShowActivePathname';
+import { useSmoothScrollToTop } from '../hooks/useSmoothSrcollToTop';
+import SmoothScrollToTop from '@/app/smoothScrollToTop';
+import Banner from '@/app/banner';
+import { formatUrlText } from '@/app/lib/utils';
 
 // interface ChildrenProps extends ReactNode {
 //   awb: TrackAwbNum;
@@ -25,12 +32,33 @@ const AwbStatusWrapper = ({ awb }: { awb: TrackAwbNum }) => (
   </main>
 );
 
-export const AwbStatus = ({ awb }: { awb: TrackAwbNum }) => (
-  <main className="flex min-h-screen flex-col bg-[url('/delivery_man.jpg')] bg-cover bg-fixed">
-    <NavHeader />
-    <div className="mt-10 md:mb-10 md:mt-24">
+export const AwbStatus = ({ awb }: { awb: TrackAwbNum }) => {
+  const { handleClick, smoothScrollHandler, isActive, pathnameOrHash } =
+    useShowActivePathname();
+
+  const { smoothScrollToTopHandler, scrollToTop, onTarget } =
+    useSmoothScrollToTop();
+
+  return (
+    <main className="mt-14 flex  min-h-screen flex-col bg-[url('/background-network.jpg')] bg-cover bg-fixed md:mt-20">
+      <NavHeader
+        isActive={isActive}
+        pathnameOrHash={pathnameOrHash}
+        handleClick={handleClick}
+        smoothScrollHandler={smoothScrollHandler}
+      />
+      <Banner
+        current_route={formatUrlText(pathnameOrHash)}
+        onTarget={onTarget}
+      />
+
       <AwbStatusWrapper awb={awb} />
-    </div>
-    <Footer />
-  </main>
-);
+
+      <SmoothScrollToTop
+        smoothScrollToTopHandler={smoothScrollToTopHandler}
+        scrollToTop={scrollToTop}
+      />
+      <Footer />
+    </main>
+  );
+};

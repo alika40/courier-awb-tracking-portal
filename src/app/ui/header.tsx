@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { lusitana } from './fonts';
 import clsx from 'clsx';
 import AppLogo from './app-logo';
@@ -24,49 +23,17 @@ const A = ({ children, className, ...rest }: AnchorProps) => (
   </a>
 );
 
-export const NavHeader = () => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const handleClick = () => setIsActive(() => (isActive ? false : true));
-  const [pathnameOrHash, setPathnameOrHash] = useState('');
-  // const pathname = usePathname();
-
-  const handleClick2 = (urlSegment: string) => {
-    setPathnameOrHash(urlSegment);
-    smoothScroll(urlSegment);
-  };
-
-  const smoothScroll = (urlSegment: string) => {
-    // ScrollToView for jump to section
-    if (urlSegment) {
-      const element = document.querySelector(urlSegment);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'start',
-          });
-        }, 500);
-      }
-    }
-  };
-
-  useEffect(() => {
-    // Check if the code is running on the client side: NodeJS.Process
-    if (process) {
-      const location = window.location;
-      const includesHash = location.href.includes('#');
-      if (!includesHash) {
-        setPathnameOrHash(location.pathname);
-      }
-      if (includesHash) {
-        const hash = location.hash;
-        setPathnameOrHash(hash);
-        smoothScroll(hash);
-      }
-    }
-  }, []);
-
+export const NavHeader = ({
+  isActive,
+  pathnameOrHash,
+  handleClick,
+  smoothScrollHandler,
+}: {
+  isActive: boolean;
+  pathnameOrHash: string;
+  smoothScrollHandler: (text: string) => void;
+  handleClick: () => void;
+}) => {
   const slideUp = `-translate-y-44 transition duration-[700ms] ease-in md:translate-y-0 md:transition-none bg-opacity-0`;
   const slideDown = `translate-y-44 border-t border-double border-pink-400 py-3 transition duration-[600ms] 
                       ease-linear md:translate-y-0 md:border-t-0 md:transition-none bg-opacity-100`;
@@ -74,7 +41,7 @@ export const NavHeader = () => {
   return (
     // <!--Main Navigation-->
     <header>
-      <nav className="fixed top-0 z-10 w-full bg-pink-900 shadow-md shadow-black/5">
+      <nav className="shadow-black/1 fixed top-0 z-20 w-full bg-pink-900 shadow-md">
         <div className="flex h-14 w-full flex-col md:h-20 md:flex-row md:items-center">
           {/* <!-- Hamburger button for mobile view --> */}
           <div className="flex flex-row justify-start py-2">
@@ -123,6 +90,19 @@ export const NavHeader = () => {
                   Tracking Portal
                 </A>
               </li>
+              {/* <!-- Services link --> */}
+              <li>
+                <A
+                  className={`${clsx(pathnameOrHash === '#services' && 'text-opacity-50')}`}
+                  href="/#services"
+                  onClick={() => {
+                    handleClick();
+                    smoothScrollHandler('#services');
+                  }}
+                >
+                  Services
+                </A>
+              </li>
               {/* <!-- About me link --> */}
               <li>
                 <A
@@ -130,23 +110,10 @@ export const NavHeader = () => {
                   href="/#about_us"
                   onClick={() => {
                     handleClick();
-                    handleClick2('#about_us');
+                    smoothScrollHandler('#about_us');
                   }}
                 >
-                  About us
-                </A>
-              </li>
-              {/* <!-- Testimonials link --> */}
-              <li>
-                <A
-                  className={`${clsx(pathnameOrHash === '#testimonials' && 'text-opacity-50')}`}
-                  href="/#testimonials"
-                  onClick={() => {
-                    handleClick();
-                    handleClick2('#testimonials');
-                  }}
-                >
-                  Testimonials
+                  About Us
                 </A>
               </li>
               {/* <!-- Contact link --> */}
@@ -156,10 +123,10 @@ export const NavHeader = () => {
                   href="/#contact_us"
                   onClick={() => {
                     handleClick();
-                    handleClick2('#contact_us');
+                    smoothScrollHandler('#contact_us');
                   }}
                 >
-                  Contact us
+                  Contact Us
                 </A>
               </li>
               <li>

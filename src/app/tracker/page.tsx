@@ -10,10 +10,7 @@
 //"use client";
 // https://android-server.cyclic.app/api/courses
 
-import Link from 'next/link';
-import { NavHeader } from '../ui/header';
-import TrackAWBFormCustomer from '../ui/tracker/track-awb-form';
-import Footer from '../ui/footer';
+import { TrackAwb } from '../ui/tracker/track-awb';
 // import Image from 'next/image';
 // import { NavHeader } from './ui/tracker/header';
 // import Footer from './ui/footer';
@@ -49,14 +46,6 @@ const fetchData2 = async () => {
   return data;
 };
 
-const Page = () => {
-  return (
-    <main className="flex min-h-screen flex-col">
-      <NavHeader />
-      <TrackAWBFormCustomer />
-      <Footer />
-    </main>
-  );
-};
+const Page = () => <TrackAwb />;
 
 export default Page;

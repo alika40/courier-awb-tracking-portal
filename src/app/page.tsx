@@ -1,9 +1,5 @@
 // https://android-server.cyclic.app/api/courses
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { NavHeader } from './ui/header';
-import Footer from './ui/footer';
 import Home from './ui/home/home';
 
 // Default: Static Site Generation method where data is cached and request is made only once
@@ -39,13 +35,7 @@ const fetchData2 = async () => {
 };
 
 const Page = () => {
-  return (
-    <main className="flex min-h-screen flex-col">
-      <NavHeader />
-      <Home />
-      <Footer />
-    </main>
-  );
+  return <Home />;
 };
 
 export default Page;

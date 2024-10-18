@@ -22,13 +22,7 @@ export default function TrackAwbForm({
 }) {
   return (
     <div
-      className={`flex h-screen flex-col items-center justify-center bg-cover bg-fixed md:h-screen
-        ${clsx(
-          bg_image_for === 'DASHBOARD'
-            ? "bg-white bg-[url('/background-network.jpg')] dark:bg-black"
-            : "bg-[url('/delivery_man.jpg')]",
-        )}
-        `}
+      className={`flex h-screen flex-col items-center justify-center bg-white bg-[url('/background-network.jpg')] bg-cover bg-fixed dark:bg-black md:h-screen`}
     >
       <div
         className={`stroke rounded-sm bg-black bg-opacity-50 p-2 md:rounded-md`}

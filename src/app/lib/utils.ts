@@ -1,11 +1,24 @@
 /*import { Revenue } from './definitions';
 
-export const formatCurrency = (amount: number) => {
-  return (amount / 100).toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
-};*/
+// export const formatCurrency = (amount: number) => {
+//   return (amount / 100).toLocaleString('en-US', {
+//     style: 'currency',
+//     currency: 'USD',
+//   });
+// };*/
+
+export const formatUrlText = (pathnameOrHash: string): string => {
+  let texts = '';
+  if (pathnameOrHash === '/') return 'Home';
+  if (pathnameOrHash === '/tracker') return 'tracking portal';
+  if (pathnameOrHash.includes('status')) return 'Awb Status';
+  const splitText = pathnameOrHash.split('#')[1]?.split('_');
+  if (!splitText) return splitText;
+  for (let text of splitText) {
+    texts += `  ${text}`;
+  }
+  return texts;
+};
 
 export const formatDateToLocal = (
   dateStr: string,

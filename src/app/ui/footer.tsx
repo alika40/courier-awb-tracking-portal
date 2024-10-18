@@ -20,7 +20,7 @@ const A = ({ children, className, ...rest }: AnchorProps) => (
     {...rest}
     href="#"
     className={clsx(
-      'text-sm font-normal text-slate-400 transition duration-200 hover:text-pink-300 hover:ease-in-out focus:text-pink-300 disabled:text-black/30 motion-reduce:transition-none dark:hover:text-neutral-300 dark:focus:text-neutral-300  md:text-base md:font-medium [&.active]:text-black/90 dark:[&.active]:text-neutral-400',
+      'transition duration-200 hover:text-pink-300 hover:ease-in-out focus:text-pink-300 disabled:text-black/30 motion-reduce:transition-none dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400',
       className,
     )}
   >
@@ -37,11 +37,11 @@ const A = ({ children, className, ...rest }: AnchorProps) => (
 export default function Footer() {
   return (
     <footer className="min-h-[80px] bg-slate-500">
-      <div className="footer gray-500 mt-auto flex w-full flex-col items-center justify-center space-y-10 divide-y-2 divide-solid divide-pink-900 bg-gray-900 md:space-y-20">
-        <div className="mt-5 flex flex-col gap-10 md:mt-20 md:grid md:grid-flow-col md:grid-rows-3 md:gap-4">
+      <div className="footer flex w-full flex-col space-y-10 divide-y-2 divide-solid divide-pink-900 bg-gray-900 md:space-y-10">
+        <div className="mt-5 flex flex-col gap-10 md:mt-28 md:grid md:grid-flow-col md:grid-rows-3">
           {/* <!-- Company Logo and Mission Statement --> */}
           <div className="md:row-span-3">
-            <Icons />
+            <About />
           </div>
 
           {/* <!-- Company Information and Activities --> */}
@@ -57,48 +57,59 @@ export default function Footer() {
   );
 }
 
-export const Icons = () => (
+export const About = () => (
   <div className="w-full space-y-2 px-4 md:ml-4 md:items-start md:space-y-8">
     {/* <!-- Compoany Logo --> */}
     <AppLogo className="text-3xl md:text-6xl"> </AppLogo>
 
     {/* <!-- Company Mission Statement --> */}
     <div className="">
-      <h2 className="font-black text-white">Mission:</h2>
-      <p className="mb-2 ml-2 text-slate-400 md:ml-4">
+      <h2 className="text-sm font-medium text-white md:text-lg md:font-black">
+        Mission:
+      </h2>
+      <p className="mb-2 ml-2 text-xs text-slate-400 md:ml-4 md:text-sm">
         Making the world a better place through constructing elegant hierarchies
       </p>
-      <h2 className="font-black text-white">Office Address:</h2>
-      <p className="mb-2 ml-2 text-slate-400 md:ml-4">
+      <h2 className="text-sm font-medium text-white md:text-lg md:font-black">
+        Office Address:
+      </h2>
+      <p className="mb-2 ml-2 text-xs text-slate-400 md:ml-4 md:text-sm">
         138, Obafemi Awolowo Way, 1st Floor, Unity Hospital building by Balogun
         b/stop, Ikeja
       </p>
-      <h2 className="font-black text-white">Telephone Numbers:</h2>
-      <p className="ml-2 text-slate-400">
+      <h2 className="text-sm font-medium text-white md:text-lg md:font-black">
+        Telephone Numbers:
+      </h2>
+      <p className="font-mediun ml-2 text-xs text-slate-400 md:text-sm">
         0802 2492 478, 0706 7332 973, 0816 0839 548
       </p>
     </div>
+    <Icons />
+  </div>
+);
 
+export const Icons = () => (
+  <>
     {/* <!-- Company social media link Icons --> */}
     <div className="relative flex items-center justify-center space-x-4 md:justify-normal md:space-x-6">
       {/* <!-- Email Icon --> */}
-      <A>
-        <Email sx={{ fontSize: '20px' }} className="text-gray-500" />
+      <A className="text-gray-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+        <Email />
       </A>
       {/* <!-- WhatsApp Icon --> */}
-      <A>
-        <WhatsApp sx={{ fontSize: '20px' }} className="text-green-500" />
+      <A className="text-green-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+        <WhatsApp />
       </A>
 
       {/* <!-- Facebook Icon --> */}
-      <A>
-        <Facebook sx={{ fontSize: '20px' }} className="text-blue-500" />
+      <A className="text-blue-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+        <Facebook />
       </A>
 
       {/* <!-- X or Twitter Icon --> */}
       <A>
         {/* <Twitter className="text-blue-500" /> */}
-        <span className="[&>svg]:w-5">
+        <span className="[&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-4 w-4"
@@ -111,31 +122,31 @@ export const Icons = () => (
       </A>
 
       {/* <!-- Instagram Icon --> */}
-      <A>
-        <Instagram sx={{ fontSize: '20px' }} className="text-gray-500" />
+      <A className="text-gray-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+        <Instagram />
       </A>
 
       {/* <!-- YouTube Icon --> */}
-      <A>
-        <YouTube sx={{ fontSize: '20px' }} className="text-red-700" />
+      <A className="text-red-700 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+        <YouTube />
       </A>
 
       {/* <!-- WWW Icon --> */}
-      <A>
-        <Language sx={{ fontSize: '20px' }} className="text-gray-500" />
+      <A className="text-gray-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+        <Language />
       </A>
     </div>
-  </div>
+  </>
 );
 
 const CompanyInfomation = () => (
-  <div className="grid grid-flow-row grid-cols-4 gap-1 px-4 md:gap-4">
+  <div className="grid grid-flow-row grid-cols-4 gap-1 px-4 md:gap-6">
     {/* <!-- Company Solution --> */}
     <div>
-      <h2 className="text-base font-medium text-white underline underline-offset-4 md:text-xl md:font-black">
+      <h2 className="text-sm font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
         Solutions
       </h2>
-      <ul className="space-y-1 md:space-y-5">
+      <ul className="space-y-1 text-xs text-slate-400 md:space-y-5 md:text-base">
         <li className="my-2 md:mt-5">
           <A>Marketing</A>
         </li>
@@ -153,10 +164,10 @@ const CompanyInfomation = () => (
 
     {/* <!-- Company Support --> */}
     <div>
-      <h2 className="text-base font-medium text-white underline underline-offset-4 md:text-xl md:font-black">
+      <h2 className="text-sm font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
         Support
       </h2>
-      <ul className="space-y-2 md:space-y-5">
+      <ul className="space-y-2 text-xs text-slate-400 md:space-y-5 md:text-base">
         <li className="my-2 md:my-5">
           <A>Pricing</A>
         </li>
@@ -174,10 +185,10 @@ const CompanyInfomation = () => (
 
     {/* <!-- Company --> */}
     <div>
-      <h2 className="text-base font-medium text-white underline underline-offset-4 md:text-xl md:font-black">
+      <h2 className="text-sm font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
         Company
       </h2>
-      <ul className="space-y-2 md:space-y-5">
+      <ul className="space-y-2 text-xs text-slate-400 md:space-y-5 md:text-base">
         <li className="my-2 md:my-5">
           <A>About</A>
         </li>
@@ -195,10 +206,10 @@ const CompanyInfomation = () => (
 
     {/* <!-- Legal --> */}
     <div>
-      <h2 className="text-base font-medium text-white underline underline-offset-4 md:text-xl md:font-black">
+      <h2 className="text-sm font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
         Legal
       </h2>
-      <ul className="space-y-2 md:space-y-5">
+      <ul className="space-y-2 text-xs text-slate-400 md:space-y-5 md:text-base">
         <li className="my-2 md:my-5">
           <A>Claim</A>
         </li>
@@ -215,22 +226,24 @@ const CompanyInfomation = () => (
 
 const DevCopyright = () => (
   <div className="flex w-full flex-col items-center justify-center p-4 md:p-8">
-    <div className="mr-2 text-center text-sm font-semibold text-slate-500">
+    <div className="mr-2 text-center text-xs font-semibold text-slate-500 md:text-sm">
       Trailblazer, Inc. 1004, Heaven Gate, Jupiter.
     </div>
     <div className="item-center flex w-full flex-row items-center justify-center">
       <div>
-        <span className="text-sm text-slate-500">Copyright</span>
-        <sup>
-          <Copyright className=" text-pink-900" sx={{ fontSize: '16px' }} />
+        <span className="text-xs text-slate-500 md:text-sm">Copyright</span>
+        <sup className="text-pink-900 [&>svg]:h-3 [&>svg]:w-3 md:[&>svg]:h-4 md:[&>svg]:w-4">
+          <Copyright />
         </sup>
       </div>
       <div>
-        <span className="text-sm  font-semibold text-pink-900">
+        <span className="text-xs font-semibold text-pink-900 md:text-sm">
           {new Date().getFullYear()}
         </span>
-        <span className="mr-2 text-sm text-slate-500">.</span>
-        <span className="text-sm text-slate-500">All rights reserved.</span>
+        <span className="mr-2 text-xs text-slate-500 md:text-sm">.</span>
+        <span className="text-xs text-slate-500 md:text-sm">
+          All rights reserved.
+        </span>
       </div>
     </div>
   </div>

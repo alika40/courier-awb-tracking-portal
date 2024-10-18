@@ -113,12 +113,9 @@ export default function VerticalLinearStepper({ awb }: { awb: TrackAwbNum }) {
             <h5 className="text-base font-extrabold text-green-500 md:text-2xl">
               Thanks For Your Patronage!
             </h5>
-            <CheckCircleOutline
-              sx={{
-                color: '#22c55e',
-                fontSize: '2.5rem',
-              }}
-            />
+            <span className="text-green-500 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-10 md:[&>svg]:w-10">
+              <CheckCircleOutline />
+            </span>
           </div>
         </div>
         // </Paper>
