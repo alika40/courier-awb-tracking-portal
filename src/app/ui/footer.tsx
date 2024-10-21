@@ -64,23 +64,23 @@ export const About = () => (
 
     {/* <!-- Company Mission Statement --> */}
     <div className="">
-      <h2 className="text-sm font-medium text-white md:text-lg md:font-black">
+      <h2 className="text-base font-medium text-white md:text-lg md:font-black">
         Mission:
       </h2>
-      <p className="mb-2 ml-2 text-xs text-slate-400 md:ml-4 md:text-sm">
+      <p className="mb-2 ml-2 text-sm text-slate-400 md:ml-4 md:text-base">
         Making the world a better place through constructing elegant hierarchies
       </p>
-      <h2 className="text-sm font-medium text-white md:text-lg md:font-black">
+      <h2 className="text-base font-medium text-white md:text-lg md:font-black">
         Office Address:
       </h2>
-      <p className="mb-2 ml-2 text-xs text-slate-400 md:ml-4 md:text-sm">
+      <p className="mb-2 ml-2 text-sm text-slate-400 md:ml-4 md:text-base">
         138, Obafemi Awolowo Way, 1st Floor, Unity Hospital building by Balogun
         b/stop, Ikeja
       </p>
-      <h2 className="text-sm font-medium text-white md:text-lg md:font-black">
+      <h2 className="text-base font-medium text-white md:text-lg md:font-black">
         Telephone Numbers:
       </h2>
-      <p className="font-mediun ml-2 text-xs text-slate-400 md:text-sm">
+      <p className="font-mediun ml-2 text-sm text-slate-400 md:text-base">
         0802 2492 478, 0706 7332 973, 0816 0839 548
       </p>
     </div>
@@ -93,23 +93,23 @@ export const Icons = () => (
     {/* <!-- Company social media link Icons --> */}
     <div className="relative flex items-center justify-center space-x-4 md:justify-normal md:space-x-6">
       {/* <!-- Email Icon --> */}
-      <A className="text-gray-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+      <A className="text-gray-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
         <Email />
       </A>
       {/* <!-- WhatsApp Icon --> */}
-      <A className="text-green-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+      <A className="text-green-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
         <WhatsApp />
       </A>
 
       {/* <!-- Facebook Icon --> */}
-      <A className="text-blue-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+      <A className="text-blue-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
         <Facebook />
       </A>
 
       {/* <!-- X or Twitter Icon --> */}
       <A>
         {/* <Twitter className="text-blue-500" /> */}
-        <span className="[&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+        <span className="md:[&>svg]:h-5 md:[&>svg]:w-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-4 w-4"
@@ -122,17 +122,17 @@ export const Icons = () => (
       </A>
 
       {/* <!-- Instagram Icon --> */}
-      <A className="text-gray-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+      <A className="text-gray-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
         <Instagram />
       </A>
 
       {/* <!-- YouTube Icon --> */}
-      <A className="text-red-700 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+      <A className="text-red-700 md:[&>svg]:h-5 md:[&>svg]:w-5">
         <YouTube />
       </A>
 
       {/* <!-- WWW Icon --> */}
-      <A className="text-gray-500 [&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
+      <A className="text-gray-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
         <Language />
       </A>
     </div>
@@ -143,10 +143,10 @@ const CompanyInfomation = () => (
   <div className="grid grid-flow-row grid-cols-4 gap-1 px-4 md:gap-6">
     {/* <!-- Company Solution --> */}
     <div>
-      <h2 className="text-sm font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
+      <h2 className="text-base font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
         Solutions
       </h2>
-      <ul className="space-y-1 text-xs text-slate-400 md:space-y-5 md:text-base">
+      <ul className="space-y-1 text-sm text-slate-400 md:space-y-5 md:text-base">
         <li className="my-2 md:mt-5">
           <A>Marketing</A>
         </li>
@@ -164,10 +164,10 @@ const CompanyInfomation = () => (
 
     {/* <!-- Company Support --> */}
     <div>
-      <h2 className="text-sm font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
+      <h2 className="text-base font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
         Support
       </h2>
-      <ul className="space-y-2 text-xs text-slate-400 md:space-y-5 md:text-base">
+      <ul className="space-y-2 text-sm text-slate-400 md:space-y-5 md:text-base">
         <li className="my-2 md:my-5">
           <A>Pricing</A>
         </li>
@@ -185,10 +185,10 @@ const CompanyInfomation = () => (
 
     {/* <!-- Company --> */}
     <div>
-      <h2 className="text-sm font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
+      <h2 className="text-base font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
         Company
       </h2>
-      <ul className="space-y-2 text-xs text-slate-400 md:space-y-5 md:text-base">
+      <ul className="space-y-2 text-sm text-slate-400 md:space-y-5 md:text-base">
         <li className="my-2 md:my-5">
           <A>About</A>
         </li>
@@ -206,10 +206,10 @@ const CompanyInfomation = () => (
 
     {/* <!-- Legal --> */}
     <div>
-      <h2 className="text-sm font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
+      <h2 className="text-base font-medium text-white underline underline-offset-4 md:text-lg md:font-black">
         Legal
       </h2>
-      <ul className="space-y-2 text-xs text-slate-400 md:space-y-5 md:text-base">
+      <ul className="space-y-2 text-sm text-slate-400 md:space-y-5 md:text-base">
         <li className="my-2 md:my-5">
           <A>Claim</A>
         </li>
@@ -226,10 +226,10 @@ const CompanyInfomation = () => (
 
 const DevCopyright = () => (
   <div className="flex w-full flex-col items-center justify-center p-4 md:p-8">
-    <div className="mr-2 text-center text-xs font-semibold text-slate-500 md:text-sm">
+    <div className="mr-2 text-center text-sm font-semibold text-slate-500 md:text-base">
       Trailblazer, Inc. 1004, Heaven Gate, Jupiter.
     </div>
-    <div className="item-center flex w-full flex-row items-center justify-center">
+    <div className="item-center mt-2 flex w-full flex-row items-center justify-center">
       <div>
         <span className="text-xs text-slate-500 md:text-sm">Copyright</span>
         <sup className="text-pink-900 [&>svg]:h-3 [&>svg]:w-3 md:[&>svg]:h-4 md:[&>svg]:w-4">

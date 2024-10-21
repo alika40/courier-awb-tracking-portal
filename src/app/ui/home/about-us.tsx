@@ -16,7 +16,7 @@ const AboutUs = () => {
       <div className={styles.stroke}>
         <h1
           className={`${clsx(
-            'mb-0.5 text-center text-base font-black uppercase text-pink-900 md:mb-3 md:text-2xl',
+            'mb-0.5 text-center text-lg font-black uppercase text-pink-900 md:mb-3 md:text-2xl',
             jf_shadow.className,
           )}`}
         >
@@ -24,7 +24,7 @@ const AboutUs = () => {
         </h1>
       </div>
       <div
-        className={`${roboto.className} w-full space-y-3 text-sm text-slate-500 md:space-y-5 md:text-lg`}
+        className={`${roboto.className} w-full space-y-3 text-base text-slate-500 md:space-y-5 md:text-lg`}
       >
         <p>
           XL Express & Logistics Ltd is one of subsidiaries of XL Africa Group,
@@ -47,13 +47,13 @@ const AboutUs = () => {
         <div className="flex flex-col md:flex-row md:space-x-2 md:space-y-0">
           <h1
             className={`${clsx(
-              '-mb-0.5 text-center text-sm font-black uppercase text-pink-900 md:mb-2 md:text-2xl',
+              '-mb-0.5 text-center text-base font-black uppercase text-pink-900 md:mb-2 md:text-2xl',
               pacifico.className,
             )}`}
           >
             VISION
           </h1>
-          <p className="text-xs md:text-lg">
+          <p className="text-sm md:text-lg">
             To become known and respected for the provision of excellent
             services consistently and to reflect excellence in everything we do
             and in all things that are associated with the XL Africa Group
@@ -63,13 +63,13 @@ const AboutUs = () => {
         <div className="flex flex-col md:flex-row md:space-x-2 md:space-y-0">
           <h1
             className={`${clsx(
-              '-mb-0.5 text-center text-sm font-black uppercase text-pink-900 md:mb-2 md:text-2xl',
+              '-mb-0.5 text-center text-base font-black uppercase text-pink-900 md:mb-2 md:text-2xl',
               pacifico.className,
             )}`}
           >
             MISSION
           </h1>
-          <p className="text-xs md:text-lg">
+          <p className="text-sm md:text-lg">
             To create sustainable value for our stakeholders through consistent
             excellent service delivery, respect for the environment and
             aggressive pursuit of profitability through responsible and ethical
@@ -80,13 +80,13 @@ const AboutUs = () => {
       <div className="mt-5 md:mt-12">
         <h1
           className={`${clsx(
-            '-mb-.05 text-start text-sm font-black uppercase text-pink-900 md:text-2xl',
+            '-mb-.05 text-start text-base font-black uppercase text-pink-900 md:text-2xl',
             cormorantGaramond.className,
           )}`}
         >
           MEET OUR TEAM
         </h1>
-        <p className="text-sm font-bold text-pink-900">
+        <p className="text-sm font-semibold text-pink-900">
           Members of the executive team of the group.
         </p>
         <div className="mb-10 mt-5 flex items-center justify-center">

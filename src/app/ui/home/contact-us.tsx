@@ -9,7 +9,7 @@ const ContactUs = () => {
       <div className={styles.stroke}>
         <h1
           className={`${clsx(
-            'mb-0.5 text-center text-base font-black uppercase text-pink-900 md:mb-3 md:text-2xl',
+            'mb-0.5 text-center text-lg font-black uppercase text-pink-900 md:mb-3 md:text-2xl',
             jf_shadow.className,
           )}`}
         >
@@ -20,23 +20,23 @@ const ContactUs = () => {
       <div className="">
         <div>
           <h2
-            className={`${cormorantGaramond.className} text-base font-black text-slate-900 md:text-lg`}
+            className={`${cormorantGaramond.className} text-lg font-black text-slate-900 md:text-2xl`}
           >
             Office Address:
           </h2>
           <p
-            className={`${roboto.className} mb-2 ml-2 text-sm text-slate-500 md:ml-4`}
+            className={`${roboto.className} md:lg mb-2 ml-2 text-base text-slate-500 md:ml-4`}
           >
             138, Obafemi Awolowo Way, 1st Floor, Unity Hospital building by
             Balogun b/stop, Ikeja.
           </p>
           <h2
-            className={`${cormorantGaramond.className} text-base font-black text-slate-900 md:text-lg`}
+            className={`${cormorantGaramond.className} text-lg font-black text-slate-900 md:text-2xl`}
           >
             Telephone Numbers:
           </h2>
           <p
-            className={`${fastOne.className} ml-2 text-sm text-pink-900 md:text-lg`}
+            className={`${fastOne.className} ml-2 text-base text-pink-900 md:text-lg`}
           >
             0802 2492 478, 0706 7332 973, 0816 0839 548.
           </p>

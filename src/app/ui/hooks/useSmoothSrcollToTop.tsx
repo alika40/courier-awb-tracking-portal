@@ -8,7 +8,7 @@ export const useSmoothScrollToTop = () => {
   const isScrollToTop = (): boolean => {
     // When scrolling reaches 400px of of the screen height  show scrollToTop Button
     const position = window.scrollY;
-    return position >= 400;
+    return position >= 300;
   };
 
   const isBannerInView = (): boolean => {

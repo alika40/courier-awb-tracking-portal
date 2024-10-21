@@ -12,7 +12,7 @@ const Services = () => {
       <div className={styles.stroke}>
         <h1
           className={`${clsx(
-            'mb-0.5 text-center text-base font-black uppercase text-pink-900 md:mb-3 md:text-2xl',
+            'mb-0.5 text-center text-lg font-black uppercase text-pink-900 md:mb-3 md:text-2xl',
             jf_shadow.className,
           )}`}
         >
@@ -20,7 +20,7 @@ const Services = () => {
         </h1>
       </div>
 
-      <p className={`${roboto.className} text-sm text-slate-500 md:text-lg`}>
+      <p className={`${roboto.className} text-base text-slate-500 md:text-lg`}>
         We have grown our National Distribution Footprint and through alliance
         with our foreign partners, developed an international delivery
         capability that is efficient and cost effective. The following are the
@@ -29,7 +29,7 @@ const Services = () => {
 
       <div
         ref={elemRef}
-        className={`${roboto.className} mt-2 grid grid-flow-row grid-cols-1 gap-2 text-slate-500 md:mt-8 md:grid-cols-2 md:gap-4`}
+        className={`${roboto.className} mt-3 grid grid-flow-row grid-cols-1 gap-2 text-slate-500 md:mt-8 md:grid-cols-2 md:gap-4`}
       >
         <ServicesWithAnim />
       </div>

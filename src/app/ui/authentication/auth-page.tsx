@@ -17,7 +17,7 @@ export const AuthPage = ({ children }: ReactNode) => {
     useSmoothScrollToTop();
 
   return (
-    <>
+    <main className="mt-14 flex min-h-screen flex-col md:mt-20">
       <NavHeader
         isActive={isActive}
         pathnameOrHash={pathnameOrHash}
@@ -36,6 +36,6 @@ export const AuthPage = ({ children }: ReactNode) => {
         scrollToTop={scrollToTop}
       />
       <Footer />
-    </>
+    </main>
   );
 };

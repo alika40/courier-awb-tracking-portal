@@ -32,7 +32,7 @@ export default function SignUpForm() {
   // const { setEmail, email, emailValid } = useEmailValidator();
 
   return (
-    <div className="bg-[url('/web-contour.jpg')] bg-cover bg-fixed pb-4 pt-20 md:pb-20 md:pt-40">
+    <div className="bg-[url('/web-contour.jpg')] bg-cover bg-fixed pb-4 pt-8 md:pb-20 md:pt-40">
       <form
         action={dispatch}
         className="m-auto sm:w-[50%] md:w-[40%] lg:w-[35%]"
