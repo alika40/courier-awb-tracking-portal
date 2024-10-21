@@ -1,8 +1,15 @@
+'use client';
+
 import Link from 'next/link';
 import Face from '@mui/icons-material/Face';
 import { lusitana } from '@/app/ui/fonts';
 import { NavHeader } from '@/app/ui/header';
 import Footer from '@/app/ui/footer';
+import useShowActivePathname from '@/app/ui/hooks/useShowActivePathname';
+import { formatUrlText } from '@/app/lib/utils';
+import Banner from '@/app/banner';
+import { useSmoothScrollToTop } from '@/app/ui/hooks/useSmoothSrcollToTop';
+import SmoothScrollToTop from '@/app/smoothScrollToTop';
 
 const NotFoundWrapper = () => {
   return (
@@ -48,10 +55,29 @@ const NotFoundWrapper = () => {
 };
 
 export default function NotFound() {
+  const { handleClick, smoothScrollHandler, isActive, pathnameOrHash } =
+    useShowActivePathname();
+
+  const { smoothScrollToTopHandler, scrollToTop, onTarget } =
+    useSmoothScrollToTop();
+
   return (
-    <main className="flex min-h-screen flex-col">
-      <NavHeader />
+    <main className="mt-14 flex  min-h-screen flex-col md:mt-20">
+      <NavHeader
+        isActive={isActive}
+        pathnameOrHash={pathnameOrHash}
+        handleClick={handleClick}
+        smoothScrollHandler={smoothScrollHandler}
+      />
+      <Banner
+        current_route={formatUrlText(pathnameOrHash)}
+        onTarget={onTarget}
+      />
       <NotFoundWrapper />
+      <SmoothScrollToTop
+        smoothScrollToTopHandler={smoothScrollToTopHandler}
+        scrollToTop={scrollToTop}
+      />
       <Footer />
     </main>
   );

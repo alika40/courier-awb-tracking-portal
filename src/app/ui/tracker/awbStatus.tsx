@@ -40,7 +40,7 @@ export const AwbStatus = ({ awb }: { awb: TrackAwbNum }) => {
     useSmoothScrollToTop();
 
   return (
-    <main className="mt-14 flex  min-h-screen flex-col bg-[url('/background-network.jpg')] bg-cover bg-fixed md:mt-20">
+    <main className="mt-14 flex min-h-screen flex-col bg-[url('/background-network.jpg')] bg-cover bg-fixed md:mt-20">
       <NavHeader
         isActive={isActive}
         pathnameOrHash={pathnameOrHash}
