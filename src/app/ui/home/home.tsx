@@ -45,13 +45,16 @@ const HomeWrapper = ({ pathnameOrHash }: { pathnameOrHash: string }) => {
           <img src="/fast_delivery.jpg" width="100%" height="100%" />
         </div>
         <div className="mt-4 space-y-16 px-8 md:mt-10 md:space-y-32 md:pl-10 md:pr-10">
-          <div id="services" className="w-full">
+          <div id="services" />
+          <div className="w-full">
             <Services />
           </div>
-          <div id="about_us" className="w-full">
+          <div id="about_us" />
+          <div className="w-full">
             <AboutUs />
           </div>
-          <div id="contact_us" className="w-full">
+          <div id="contact_us" />
+          <div className="w-full">
             <ContactUs />
           </div>
         </div>

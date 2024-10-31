@@ -1,4 +1,10 @@
-import { jf_shadow, roboto, pacifico, cormorantGaramond } from '../fonts';
+import {
+  jf_shadow,
+  roboto,
+  pacifico,
+  cormorantGaramond,
+  lexend,
+} from '../fonts';
 import clsx from 'clsx';
 import styles from './home.module.css';
 import { Carousel } from './carousel';
@@ -47,13 +53,13 @@ const AboutUs = () => {
         <div className="flex flex-col md:flex-row md:space-x-2 md:space-y-0">
           <h1
             className={`${clsx(
-              '-mb-0.5 text-center text-base font-black uppercase text-pink-900 md:mb-2 md:text-2xl',
-              pacifico.className,
+              '-mb-0.5 text-center text-base font-medium uppercase text-pink-900 md:mb-2 md:text-lg',
+              lexend.className,
             )}`}
           >
             VISION
           </h1>
-          <p className="text-sm md:text-lg">
+          <p className="text-sm/5 md:text-base">
             To become known and respected for the provision of excellent
             services consistently and to reflect excellence in everything we do
             and in all things that are associated with the XL Africa Group
@@ -63,13 +69,13 @@ const AboutUs = () => {
         <div className="flex flex-col md:flex-row md:space-x-2 md:space-y-0">
           <h1
             className={`${clsx(
-              '-mb-0.5 text-center text-base font-black uppercase text-pink-900 md:mb-2 md:text-2xl',
-              pacifico.className,
+              '-mb-0.5 text-center text-base font-medium uppercase text-pink-900 md:mb-2 md:text-lg',
+              lexend.className,
             )}`}
           >
             MISSION
           </h1>
-          <p className="text-sm md:text-lg">
+          <p className="text-sm/5 md:text-base">
             To create sustainable value for our stakeholders through consistent
             excellent service delivery, respect for the environment and
             aggressive pursuit of profitability through responsible and ethical
@@ -80,13 +86,15 @@ const AboutUs = () => {
       <div className="mt-5 md:mt-12">
         <h1
           className={`${clsx(
-            '-mb-.05 text-start text-base font-black uppercase text-pink-900 md:text-2xl',
+            '-mb-.05 text-start text-base font-bold uppercase text-pink-900 md:text-2xl',
             cormorantGaramond.className,
           )}`}
         >
           MEET OUR TEAM
         </h1>
-        <p className="text-sm font-semibold text-pink-900">
+        <p
+          className={`text-xs font-medium text-pink-900 md:text-sm ${lexend.className}`}
+        >
           Members of the executive team of the group.
         </p>
         <div className="mb-10 mt-5 flex items-center justify-center">

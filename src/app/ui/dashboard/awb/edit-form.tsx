@@ -15,7 +15,10 @@ export default function EditAwbForm({
 }) {
   // const updateInvoiceWithId = updateInvoice.bind(null, airWayBill.id);
   // const [state, dispatch] = useFormState(updateInvoiceWithId, initialState);
-  const updateAwbWithId = updateAwb.bind(null, awb.id);
+  const customer = customers.filter(
+    (cust) => cust.customer_id === awb.customer_id,
+  );
+  const updateAwbWithId = updateAwb.bind(null, awb.id, customer[0]);
   const [state, dispatch] = useFormState(updateAwbWithId, undefined);
 
   return (
@@ -24,7 +27,7 @@ export default function EditAwbForm({
       customers={customers}
       state={state}
       dispatch={dispatch}
-      btnText={ACTION.EDIT}
+      btnText={ACTION.EDIT === 'Edit' ? 'Save Changes' : ACTION.EDIT}
     />
   );
 }

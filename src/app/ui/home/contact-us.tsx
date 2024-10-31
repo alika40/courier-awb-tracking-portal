@@ -20,7 +20,7 @@ const ContactUs = () => {
       <div className="">
         <div>
           <h2
-            className={`${cormorantGaramond.className} text-lg font-black text-slate-900 md:text-2xl`}
+            className={`${cormorantGaramond.className} text-lg font-bold text-slate-600 md:text-2xl`}
           >
             Office Address:
           </h2>
@@ -31,12 +31,12 @@ const ContactUs = () => {
             Balogun b/stop, Ikeja.
           </p>
           <h2
-            className={`${cormorantGaramond.className} text-lg font-black text-slate-900 md:text-2xl`}
+            className={`${cormorantGaramond.className} text-lg font-bold text-slate-600 md:text-2xl`}
           >
             Telephone Numbers:
           </h2>
           <p
-            className={`${fastOne.className} ml-2 text-base text-pink-900 md:text-lg`}
+            className={`${fastOne.className} ml-2 text-base text-slate-600 md:text-lg`}
           >
             0802 2492 478, 0706 7332 973, 0816 0839 548.
           </p>

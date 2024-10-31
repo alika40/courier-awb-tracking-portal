@@ -4,7 +4,12 @@ import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { STATUS } from '../../constants';
-import { CustomerState, SearchState, State } from '../../definitions';
+import {
+  CustomerField,
+  CustomerState,
+  SearchState,
+  State,
+} from '../../definitions';
 import {
   validatedFieldCustomer,
   validatedFieldsFormTrack,
@@ -90,6 +95,7 @@ export async function createAwb(prevState: State, formData: FormData) {
 
 export async function updateAwb(
   id: string,
+  customer: CustomerField,
   prevState: State,
   formData: FormData,
 ) {
@@ -134,8 +140,12 @@ export async function updateAwb(
     updateDataDB(validatedFields.data, id);
   }
 
-  revalidatePath('/dashboard');
-  redirect('/dashboard');
+  revalidatePath(
+    `/dashboard/customers/details/${customer.name}/${customer.customer_id}`,
+  );
+  redirect(
+    `/dashboard/customers/details/${customer.name}/${customer.customer_id}`,
+  );
 }
 
 export async function deleteAwb(id: string) {

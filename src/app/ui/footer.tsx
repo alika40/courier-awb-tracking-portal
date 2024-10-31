@@ -7,6 +7,7 @@ import {
   Email,
   Copyright,
   Language,
+  Twitter,
 } from '@mui/icons-material';
 import clsx from 'clsx';
 import AppLogo from './app-logo';
@@ -20,7 +21,7 @@ const A = ({ children, className, ...rest }: AnchorProps) => (
     {...rest}
     href="#"
     className={clsx(
-      'transition duration-200 hover:text-pink-300 hover:ease-in-out focus:text-pink-300 disabled:text-black/30 motion-reduce:transition-none dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400',
+      'hover:ease-in-outfocus:text-pink-300 transition duration-200 hover:text-pink-300 disabled:text-black/30 motion-reduce:transition-none dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400',
       className,
     )}
   >
@@ -91,28 +92,36 @@ export const About = () => (
 export const Icons = () => (
   <>
     {/* <!-- Company social media link Icons --> */}
-    <div className="relative flex items-center justify-center space-x-4 md:justify-normal md:space-x-6">
+    <div className="flex h-5 items-center space-x-4 md:h-7 md:justify-normal md:space-x-8">
       {/* <!-- Email Icon --> */}
-      <A className="text-gray-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
-        <Email />
+      <A>
+        <span className="text-gray-500 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+          <Email />
+        </span>
       </A>
       {/* <!-- WhatsApp Icon --> */}
-      <A className="text-green-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
-        <WhatsApp />
+      <A>
+        <span className="text-green-500 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+          <WhatsApp />
+        </span>
       </A>
 
       {/* <!-- Facebook Icon --> */}
-      <A className="text-blue-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
-        <Facebook />
+      <A>
+        <span className="text-blue-500 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+          <Facebook />
+        </span>
       </A>
 
       {/* <!-- X or Twitter Icon --> */}
       <A>
-        {/* <Twitter className="text-blue-500" /> */}
-        <span className="md:[&>svg]:h-5 md:[&>svg]:w-5">
+        {/* <span className="h-5 w-5 text-blue-500 md:[&>svg]:h-7 md:[&>svg]:w-7">
+          <Twitter />
+        </span> */}
+        <span className="[&>svg]:h-4 [&>svg]:w-4 md:[&>svg]:h-5 md:[&>svg]:w-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
+            // className="h-4 w-4"
             viewBox="0 0 512 512"
             fill="gray"
           >
@@ -122,18 +131,24 @@ export const Icons = () => (
       </A>
 
       {/* <!-- Instagram Icon --> */}
-      <A className="text-gray-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
-        <Instagram />
+      <A>
+        <span className="text-gray-500 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+          <Instagram />
+        </span>
       </A>
 
       {/* <!-- YouTube Icon --> */}
-      <A className="text-red-700 md:[&>svg]:h-5 md:[&>svg]:w-5">
-        <YouTube />
+      <A>
+        <span className="text-red-700 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+          <YouTube />
+        </span>
       </A>
 
       {/* <!-- WWW Icon --> */}
-      <A className="text-gray-500 md:[&>svg]:h-5 md:[&>svg]:w-5">
-        <Language />
+      <A>
+        <span className="text-gray-500 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+          <Language />
+        </span>
       </A>
     </div>
   </>

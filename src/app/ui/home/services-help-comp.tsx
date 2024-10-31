@@ -1,4 +1,4 @@
-import { cormorantGaramond, roboto } from '../fonts';
+import { cormorantGaramond, lexend, roboto } from '../fonts';
 import clsx from 'clsx';
 import {
   LocalShipping,
@@ -13,17 +13,19 @@ const ServicesWithAnim = () => (
   <>
     <div className="flex flex-col">
       <div id="mail-service-mgt-div">
-        <h1
-          className={`${clsx(
-            'mt-2 text-start text-base font-black uppercase text-pink-900 md:text-2xl',
-            cormorantGaramond.className,
-          )}`}
-        >
-          <span>
-            <LocalShipping className="mr-2" />
+        <div className="mt-4 flex flex-row items-stretch md:mt-5">
+          <span className="mr-2 text-pink-900 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+            <LocalShipping />
           </span>
-          Mail Room Management
-        </h1>
+          <h1
+            className={`${clsx(
+              'text-start text-base font-bold uppercase text-pink-900 md:text-2xl',
+              cormorantGaramond.className,
+            )}`}
+          >
+            Mail Room Management.
+          </h1>
+        </div>
         <p
           className={`${roboto.className} text-base text-slate-500 md:text-lg`}
         >
@@ -36,21 +38,27 @@ const ServicesWithAnim = () => (
         className={`${roboto.className} text-base text-slate-500 md:text-lg`}
         id="cargo-div"
       >
-        <h1
-          className={`${clsx(
-            'text-star mt-4 text-sm font-black uppercase text-pink-900 md:mt-5 md:text-2xl',
-            cormorantGaramond.className,
-          )}`}
-          id="cargo-heading"
-        >
-          <Public className="mr-2" />
-          Cargo clearing and forwarding Services.
-        </h1>
+        <div className="mt-4  flex flex-row items-stretch md:mt-5">
+          <span className="mr-2 text-pink-900 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+            <Public />
+          </span>
+          <h1
+            className={`${clsx(
+              'text-start text-base font-bold uppercase text-pink-900 md:text-2xl',
+              cormorantGaramond.className,
+            )}`}
+            id="cargo-heading"
+          >
+            Cargo clearing and forwarding Services.
+          </h1>
+        </div>
         <div>
-          <p className="mx-1 text-base font-medium text-pink-900 md:mx-2 md:text-base md:font-black">
+          <p
+            className={`mx-1 text-sm font-medium text-pink-900 md:mx-2 md:text-base ${lexend.className}`}
+          >
             Our list of service offering for the Cargo Division include:
           </p>
-          <ul className="list-inside list-image-[url('/checked_pink.png')] space-y-0 text-sm md:space-y-3">
+          <ul className="list-inside list-image-[url('/checked_pink.png')] space-y-0 text-sm/5 md:space-y-3 md:text-base">
             <li>Airfreight Import and Export</li>
             <li>Sea freight Import and Export</li>
             <li>Customs Clearance & Brokerage</li>
@@ -64,17 +72,19 @@ const ServicesWithAnim = () => (
     </div>
     <div className="flex flex-col md:space-x-2 md:space-y-0">
       <div id="express-mail-and-courier">
-        <h1
-          className={`${clsx(
-            'mt-3 text-start text-base font-black uppercase text-pink-900 md:mt-0 md:text-2xl',
-            cormorantGaramond.className,
-          )}`}
-        >
-          <span>
-            <FlightTakeoff className="mr-2" />
+        <div className="mt-4 flex flex-row items-stretch md:mt-5">
+          <span className="mr-2 text-pink-900 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+            <FlightTakeoff />
           </span>
-          Express Mail & Courier Services
-        </h1>
+          <h1
+            className={`${clsx(
+              'text-start text-base font-bold uppercase text-pink-900 md:text-2xl',
+              cormorantGaramond.className,
+            )}`}
+          >
+            Express Mail & Courier Services.
+          </h1>
+        </div>
         <p
           className={`${roboto.className} text-base text-slate-500 md:text-lg`}
         >
@@ -84,17 +94,19 @@ const ServicesWithAnim = () => (
         </p>
       </div>
       <div id="bulk-mail-eliveries">
-        <h1
-          className={`${clsx(
-            'mt-4 text-start text-base font-black uppercase text-pink-900 md:mt-5 md:text-2xl',
-            cormorantGaramond.className,
-          )}`}
-        >
-          <span>
-            <RocketLaunch className="mr-2" />
+        <div className="mt-4 flex flex-row items-stretch md:mt-5">
+          <span className="mr-2 text-pink-900 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+            <RocketLaunch />
           </span>
-          Bulk Mail Deliveries
-        </h1>
+          <h1
+            className={`${clsx(
+              'text-start text-base font-bold uppercase text-pink-900 md:text-2xl',
+              cormorantGaramond.className,
+            )}`}
+          >
+            Bulk Mail Deliveries.
+          </h1>
+        </div>
         <p
           className={`${roboto.className} text-base text-slate-500 md:text-lg`}
         >
@@ -105,14 +117,19 @@ const ServicesWithAnim = () => (
         </p>
       </div>
       <div id="haulage">
-        <h1
-          className={`${clsx(
-            'mt-4 text-start text-base font-black uppercase text-pink-900 md:mt-5 md:text-2xl',
-            cormorantGaramond.className,
-          )}`}
-        >
-          <FireTruck className="mr-2" /> Haulage.
-        </h1>
+        <div className="mt-4 flex flex-row items-stretch md:mt-5">
+          <span className="mr-2 text-pink-900 [&>svg]:h-5 [&>svg]:w-5 md:[&>svg]:h-7 md:[&>svg]:w-7">
+            <FireTruck />
+          </span>
+          <h1
+            className={`${clsx(
+              'text-start text-base font-bold uppercase text-pink-900 md:text-2xl',
+              cormorantGaramond.className,
+            )}`}
+          >
+            Haulage.
+          </h1>
+        </div>
         <p
           className={`${roboto.className} text-base text-slate-500 md:text-lg`}
         >

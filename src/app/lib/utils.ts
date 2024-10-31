@@ -12,7 +12,7 @@ export const formatUrlText = (pathnameOrHash: string): string => {
   if (pathnameOrHash === '/') return 'Home';
   if (pathnameOrHash === '/tracker') return 'tracking portal';
   if (pathnameOrHash.includes('status')) return 'Awb Status';
-  if (pathnameOrHash.includes('login')) return 'login';
+  if (pathnameOrHash.includes('login')) return 'Log In';
   if (pathnameOrHash.includes('sign-up')) return 'Register';
   const splitText = pathnameOrHash.split('#')[1]?.split('_');
   if (!splitText) return splitText;

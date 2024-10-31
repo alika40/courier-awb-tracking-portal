@@ -79,7 +79,7 @@ export const Carousel = () => {
           {/* appCarousel */}
           {data.map((person, index) => {
             return (
-              <div className={styles.card} key={index}>
+              <div className={`${styles.card}`} key={index}>
                 <Card data={person} />
                 {/* 
                   <p>

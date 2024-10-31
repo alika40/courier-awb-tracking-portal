@@ -73,7 +73,9 @@ const Page = async ({
           </div>
         </div>
         <div className="mt-4 flex w-full flex-col items-center justify-center pt-4 font-semibold text-gray-950 dark:text-white md:hidden">
-          <LaptopMac className="text-pink-900" />
+          <span className="text-pink-900 [&>svg]:h-28 [&>svg]:w-28">
+            <LaptopMac />
+          </span>
           <p>Login to PC for better User Experience</p>
         </div>
       </div>

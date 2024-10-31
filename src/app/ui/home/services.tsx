@@ -29,7 +29,7 @@ const Services = () => {
 
       <div
         ref={elemRef}
-        className={`${roboto.className} mt-3 grid grid-flow-row grid-cols-1 gap-2 text-slate-500 md:mt-8 md:grid-cols-2 md:gap-4`}
+        className={`${roboto.className} mt-3 grid grid-flow-row grid-cols-1 gap-2 text-slate-500 md:mt-8 md:grid-cols-2 md:gap-6`}
       >
         <ServicesWithAnim />
       </div>

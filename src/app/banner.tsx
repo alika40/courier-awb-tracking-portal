@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { jf_shadow } from './ui/fonts';
+import { eater, jf_shadow } from './ui/fonts';
 
 const Banner = ({
   current_route,
@@ -19,7 +19,7 @@ const Banner = ({
       <h1
         className={`${clsx(
           'text-lg font-black uppercase md:mb-3 md:text-2xl',
-          jf_shadow.className,
+          eater.className,
         )}`}
       >
         {current_route}
